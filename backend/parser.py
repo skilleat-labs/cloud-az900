@@ -210,7 +210,7 @@ def extract_options_from_mc_text(question_lines: list[str]) -> tuple[str, list[s
     return question, options
 
 
-def parse_question_paragraph(q_text: str, a_text: str, q_index: int) -> dict:
+def parse_question_paragraph(q_text: str, a_text: str, q_index: int, exam_stem: str = '') -> dict:
     """
     Parse a single Q/A pair into structured data.
 
@@ -256,7 +256,7 @@ def parse_question_paragraph(q_text: str, a_text: str, q_index: int) -> dict:
     if is_yes_no:
         return parse_yes_no_question(q_seq, orig_num, content_lines, a_text)  # returns list
     else:
-        return [parse_multiple_choice_question(q_seq, orig_num, content_lines, a_text)]  # wrap in list
+        return [parse_multiple_choice_question(q_seq, orig_num, content_lines, a_text, exam_stem=exam_stem)]  # wrap in list
 
 
 def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a_text: str) -> list[dict]:
@@ -296,7 +296,13 @@ def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a
     return result
 
 
-def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: list[str], a_text: str) -> dict:
+# 정답 오버라이드: {(파일명 stem, q_seq): 0-indexed 정답}
+_ANSWER_OVERRIDES: dict[tuple[str, str], int] = {
+    ('1-1_클라우드컴퓨팅_2부 (32문제)', '9'): 3,  # Azure China → 4번 (Microsoft Azure의 고유한 개별 인스턴스)
+}
+
+
+def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: list[str], a_text: str, exam_stem: str = '') -> dict:
     """Parse a multiple choice question."""
 
     question_text, options = extract_options_from_mc_text(content_lines)
@@ -305,8 +311,10 @@ def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: lis
     question_text = clean_text(question_text)
     options = [clean_text(o) for o in options]
 
-    # Parse answer
-    answer_idx = parse_multiple_choice_answer(a_text)
+    # Parse answer (with override support)
+    answer_idx = _ANSWER_OVERRIDES.get((exam_stem, q_seq)) if exam_stem else None
+    if answer_idx is None:
+        answer_idx = parse_multiple_choice_answer(a_text)
 
     # Get answer text
     answer_text = None
@@ -326,7 +334,7 @@ def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: lis
     }
 
 
-def parse_docx_file(filepath: str) -> dict:
+def parse_docx_file(filepath: str, exam_stem: str = '') -> dict:
     """
     Parse a DOCX file and return structured data with title and questions.
 
@@ -371,7 +379,7 @@ def parse_docx_file(filepath: str) -> dict:
 
             if a_text is not None:
                 try:
-                    parsed_list = parse_question_paragraph(q_text, a_text, q_index)
+                    parsed_list = parse_question_paragraph(q_text, a_text, q_index, exam_stem=exam_stem)
                     for parsed in (parsed_list or []):
                         if parsed:
                             parsed['id'] = f'q{q_index + 1}'

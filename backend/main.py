@@ -63,7 +63,7 @@ def load_exam(exam_id: str) -> dict | None:
     docx_files = get_docx_files()
     for f in docx_files:
         if get_exam_id_from_filename(f.name) == exam_id:
-            data = parse_docx_file(str(f))
+            data = parse_docx_file(str(f), exam_stem=f.stem)
             data['exam_id'] = exam_id
             data['filename'] = f.name
             _questions_cache[exam_id] = data
