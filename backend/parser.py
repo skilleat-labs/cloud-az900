@@ -254,12 +254,12 @@ def parse_question_paragraph(q_text: str, a_text: str, q_index: int, exam_stem: 
         is_yes_no = '예 아니오' in combined_start
 
     if is_yes_no:
-        return parse_yes_no_question(q_seq, orig_num, content_lines, a_text)  # returns list
+        return parse_yes_no_question(q_seq, orig_num, content_lines, a_text, exam_stem=exam_stem)  # returns list
     else:
         return [parse_multiple_choice_question(q_seq, orig_num, content_lines, a_text, exam_stem=exam_stem)]  # wrap in list
 
 
-def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a_text: str) -> list[dict]:
+def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a_text: str, exam_stem: str = '') -> list[dict]:
     """Parse a yes/no type question into individual questions per statement."""
     statements = []
     for line in content_lines:
@@ -282,6 +282,9 @@ def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a
     # Return one question dict per statement
     result = []
     for i, stmt in enumerate(statements):
+        answer = _YES_NO_OVERRIDES.get((exam_stem, q_seq, i)) if exam_stem else None
+        if answer is None:
+            answer = answer_list[i] if i < len(answer_list) else '아니오'
         result.append({
             'id': f'q{q_seq}_{i+1}',
             'original_num': orig_num,
@@ -289,7 +292,7 @@ def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a
             'question': clean_text(stmt),
             'statements': [],
             'options': [],
-            'answer': answer_list[i] if i < len(answer_list) else '아니오',
+            'answer': answer,
             'answer_index': None,
             'answer_text': None,
         })
@@ -301,6 +304,11 @@ _ANSWER_OVERRIDES: dict[tuple[str, str], int] = {
     ('1-1_클라우드컴퓨팅_2부 (32문제)', '9'): 3,   # Azure China → 4번 (Microsoft Azure의 고유한 개별 인스턴스)
     ('2-2_컴퓨팅및네트워크_2부 (21문제)', '5'): 1,  # 온프레미스 서버 관리 → 2번 (Azure Arc)
     ('2-2_컴퓨팅및네트워크_2부 (21문제)', '12'): 0, # 컨테이너 인스턴스 분류 → 1번 (컴퓨팅 서비스)
+}
+
+# yes/no 정답 오버라이드: {(파일명 stem, q_seq, statement_index): '예'|'아니오'}
+_YES_NO_OVERRIDES: dict[tuple[str, str, int], str] = {
+    ('3-3_리소스관리및배포_2부 (11문제)', '3', 2): '아니오',  # Windows에서만 Azure Portal 접근? → 아니오
 }
 
 
