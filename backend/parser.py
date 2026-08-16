@@ -298,7 +298,9 @@ def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a
 
 # 정답 오버라이드: {(파일명 stem, q_seq): 0-indexed 정답}
 _ANSWER_OVERRIDES: dict[tuple[str, str], int] = {
-    ('1-1_클라우드컴퓨팅_2부 (32문제)', '9'): 3,  # Azure China → 4번 (Microsoft Azure의 고유한 개별 인스턴스)
+    ('1-1_클라우드컴퓨팅_2부 (32문제)', '9'): 3,   # Azure China → 4번 (Microsoft Azure의 고유한 개별 인스턴스)
+    ('2-2_컴퓨팅및네트워크_2부 (21문제)', '5'): 1,  # 온프레미스 서버 관리 → 2번 (Azure Arc)
+    ('2-2_컴퓨팅및네트워크_2부 (21문제)', '12'): 0, # 컨테이너 인스턴스 분류 → 1번 (컴퓨팅 서비스)
 }
 
 
