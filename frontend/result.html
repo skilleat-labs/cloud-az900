@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AZ-900 모의고사 - 결과</title>
+  <style>
+    :root {
+      --bg-primary: #0f1923;
+      --bg-secondary: #1B2A4A;
+      --bg-card: #1e3a5f;
+      --azure-blue: #0078D4;
+      --azure-light: #50e6ff;
+      --text-primary: #e8f4fd;
+      --text-secondary: #a8c4d8;
+      --text-muted: #6b8fa8;
+      --border: #2a4a6b;
+      --success: #00c853;
+      --error: #ff4444;
+      --warning: #ffd166;
+      --radius: 12px;
+      --shadow: 0 8px 32px rgba(0, 120, 212, 0.15);
+      --transition: all 0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    .top-bar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .back-btn {
+      color: var(--azure-light);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    .back-btn:hover { color: white; }
+
+    .top-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    /* ── Score Hero ── */
+    .score-hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .score-circle-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .score-circle {
+      position: relative;
+      width: 180px;
+      height: 180px;
+    }
+
+    .score-svg {
+      transform: rotate(-90deg);
+      width: 180px;
+      height: 180px;
+    }
+
+    .score-bg { fill: none; stroke: var(--border); stroke-width: 12; }
+    .score-arc { fill: none; stroke-width: 12; stroke-linecap: round; transition: stroke-dashoffset 1.2s ease; }
+
+    .score-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-big {
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .score-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .grade-badge {
+      display: inline-block;
+      padding: 8px 24px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .grade-pass   { background: rgba(0, 200, 83, 0.15); color: #00c853; border: 2px solid rgba(0, 200, 83, 0.4); }
+    .grade-warn   { background: rgba(255, 209, 102, 0.15); color: #ffd166; border: 2px solid rgba(255, 209, 102, 0.4); }
+    .grade-fail   { background: rgba(255, 68, 68, 0.15); color: #ff4444; border: 2px solid rgba(255, 68, 68, 0.4); }
+
+    .score-meta {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── Sections ── */
+    .section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--transition);
+    }
+
+    .section-header:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-count {
+      background: rgba(0, 120, 212, 0.15);
+      color: var(--azure-light);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .section-chevron {
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+      font-size: 18px;
+    }
+
+    .section-chevron.open { transform: rotate(180deg); }
+
+    .section-body {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-body.open { display: block; }
+
+    /* ── Correct Questions ── */
+    .correct-list {
+      padding: 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .correct-item {
+      padding: 10px 14px;
+      background: rgba(0, 200, 83, 0.05);
+      border: 1px solid rgba(0, 200, 83, 0.2);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .correct-item .q-num {
+      color: var(--success);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* ── Wrong Answer Cards ── */
+    .wrong-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrong-card {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .wrong-card:last-child { border-bottom: none; }
+
+    .wrong-q-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    .wrong-q-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      white-space: pre-wrap;
+    }
+
+    .stmt-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .stmt-row {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 6px 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .stmt-num { color: var(--text-muted); min-width: 20px; }
+
+    .answer-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .answer-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+    }
+
+    .answer-box-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .answer-box-value {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .answer-wrong {
+      background: rgba(255, 68, 68, 0.08);
+      border: 1px solid rgba(255, 68, 68, 0.25);
+    }
+
+    .answer-wrong .answer-box-label { color: var(--error); }
+    .answer-wrong .answer-box-value { color: #ff8888; }
+
+    .answer-correct {
+      background: rgba(0, 200, 83, 0.08);
+      border: 1px solid rgba(0, 200, 83, 0.25);
+    }
+
+    .answer-correct .answer-box-label { color: var(--success); }
+    .answer-correct .answer-box-value { color: #66dd88; }
+
+    /* ── Explanation ── */
+    .explanation-block {
+      background: rgba(0, 120, 212, 0.06);
+      border: 1px solid rgba(0, 120, 212, 0.2);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .explanation-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--azure-light);
+      margin-bottom: 12px;
+    }
+
+    .explanation-content {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .explanation-content strong,
+    .explanation-content b {
+      color: var(--text-primary);
+    }
+
+    .explanation-loading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--azure-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Bottom Actions ── */
+    .bottom-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+    }
+    .btn-outline:hover { border-color: var(--azure-blue); color: var(--text-primary); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0078D4, #0061b0);
+      border: none;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 120, 212, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0, 120, 212, 0.45); }
+
+    .loading-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      gap: 16px;
+      color: var(--text-secondary);
+    }
+
+    .big-spinner {
+      width: 48px; height: 48px;
+      border: 4px solid var(--border);
+      border-top-color: var(--azure-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    /* Markdown-like rendering */
+    .explanation-content p { margin-bottom: 8px; }
+    .explanation-content ul, .explanation-content ol { padding-left: 20px; margin-bottom: 8px; }
+    .explanation-content li { margin-bottom: 4px; }
+    .md-table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 14px; }
+    .md-table th, .md-table td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+    .md-table th { background: rgba(0, 120, 212, 0.15); color: var(--azure-light); font-weight: 600; }
+    .md-table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+
+    @media (max-width: 500px) {
+      .answer-comparison { grid-template-columns: 1fr; }
+      .score-circle { width: 140px; height: 140px; }
+      .score-svg { width: 140px; height: 140px; }
+      .score-big { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="back-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    홈으로
+  </a>
+  <span class="top-title">시험 결과</span>
+</div>
+
+<div class="container" id="container">
+  <div class="loading-screen">
+    <div class="big-spinner"></div>
+    <p>결과를 불러오는 중...</p>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const SESSION_ID = params.get('session_id') || sessionStorage.getItem('sessionId');
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\n/g, '<br>');
+}
+
+function formatTime(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}분 ${s}초`;
+}
+
+function simpleMarkdown(text) {
+  if (!text) return '';
+
+  // 테이블 파싱 (| col | col | 형태)
+  text = text.replace(/((?:^\|.+\|\n?)+)/gm, (block) => {
+    const rows = block.trim().split('\n').filter(r => r.trim());
+    let html = '<table class="md-table">';
+    rows.forEach((row, i) => {
+      // 구분선(|---|---|) 건너뜀
+      if (/^\|[\s\-|:]+\|$/.test(row.trim())) return;
+      const cells = row.split('|').filter((_, ci) => ci > 0 && ci < row.split('|').length - 1);
+      const tag = i === 0 ? 'th' : 'td';
+      html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+    });
+    html += '</table>';
+    return html;
+  });
+
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^### (.+)$/gm, '<h4 style="color:var(--text-primary);margin:8px 0 4px">$1</h4>')
+    .replace(/^## (.+)$/gm, '<h3 style="color:var(--text-primary);margin:10px 0 6px">$1</h3>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+    .replace(/\n\n/g, '</p><p>');
+}
+
+function formatYNAnswer(arr) {
+  if (!Array.isArray(arr)) return '미응답';
+  return arr.map((v, i) => `${i + 1}번: ${v || '미응답'}`).join(' / ');
+}
+
+function formatMCAnswer(idx, options) {
+  if (idx === undefined || idx === null || idx < 0) return '미응답';
+  const opt = options && options[idx];
+  return `${idx + 1}번${opt ? ': ' + opt : ''}`;
+}
+
+async function loadResult() {
+  if (!SESSION_ID) {
+    document.getElementById('container').innerHTML = `
+      <div class="loading-screen">
+        <p style="color: var(--error)">세션 정보를 찾을 수 없습니다.</p>
+        <a href="index.html" style="color: var(--azure-light)">홈으로 돌아가기</a>
+      </div>`;
+    return;
+  }
+
+  try {
+    const res = await fetch(`/api/sessions/${SESSION_ID}/result`);
+    if (!res.ok) throw new Error('결과를 불러올 수 없습니다');
+    const data = await res.json();
+    renderResult(data);
+  } catch (e) {
+    document.getElementById('container').innerHTML = `
+      <div class="loading-screen">
+        <p style="color: var(--error)">${e.message}</p>
+        <a href="index.html" style="color: var(--azure-light)">홈으로 돌아가기</a>
+      </div>`;
+  }
+}
+
+function renderResult(data) {
+  const { score, total, percentage, time_seconds, user_name, questions, exam_id } = data;
+
+  const correctQs = questions.filter(q => q.is_correct);
+  const wrongQs = questions.filter(q => !q.is_correct);
+
+  let gradeClass = 'grade-fail';
+  let gradeText = '재도전';
+  if (percentage >= 90) { gradeClass = 'grade-pass'; gradeText = '합격권'; }
+  else if (percentage >= 70) { gradeClass = 'grade-warn'; gradeText = '주의'; }
+
+  // SVG arc params
+  const radius = 72;
+  const circumference = 2 * Math.PI * radius;
+  const strokeColor = percentage >= 90 ? '#00c853' : percentage >= 70 ? '#ffd166' : '#ff4444';
+
+  const html = `
+    <div class="score-hero">
+      <div class="score-circle-wrap">
+        <div class="score-circle">
+          <svg class="score-svg" viewBox="0 0 180 180">
+            <circle class="score-bg" cx="90" cy="90" r="${radius}" />
+            <circle class="score-arc" id="scoreArc" cx="90" cy="90" r="${radius}"
+              stroke="${strokeColor}"
+              stroke-dasharray="${circumference}"
+              stroke-dashoffset="${circumference}" />
+          </svg>
+          <div class="score-inner">
+            <div class="score-big">${score}<span style="font-size:20px;color:var(--text-muted)">/${total}</span></div>
+            <div class="score-label">${percentage}%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grade-badge ${gradeClass}">${gradeText}</div>
+
+      <div class="score-meta">
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          ${formatTime(time_seconds || 0)}
+        </div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          ${escapeHtml(user_name)}
+        </div>
+      </div>
+    </div>
+
+    <!-- Correct Section -->
+    <div class="section">
+      <div class="section-header" onclick="toggleSection('correct')">
+        <div class="section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          정답
+          <span class="section-count">${correctQs.length}문제</span>
+        </div>
+        <span class="section-chevron" id="chevron-correct">▼</span>
+      </div>
+      <div class="section-body" id="body-correct">
+        <div class="correct-list">
+          ${correctQs.length === 0
+            ? '<p style="color: var(--text-muted); font-size: 14px;">정답이 없습니다.</p>'
+            : correctQs.map((q, i) => `
+              <div class="correct-item">
+                <span class="q-num">문제 ${questions.indexOf(q) + 1}</span>
+                ${escapeHtml(q.type === 'yes_no' ? '예/아니오 문제' : q.question.substring(0, 60))}
+              </div>
+            `).join('')
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Wrong Section -->
+    <div class="section">
+      <div class="section-header" onclick="toggleSection('wrong')">
+        <div class="section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4444" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          오답 노트
+          <span class="section-count">${wrongQs.length}문제</span>
+        </div>
+        <span class="section-chevron open" id="chevron-wrong">▼</span>
+      </div>
+      <div class="section-body open" id="body-wrong">
+        <div class="wrong-list">
+          ${wrongQs.length === 0
+            ? '<div style="padding: 24px; color: var(--text-muted);">오답이 없습니다. 완벽합니다!</div>'
+            : wrongQs.map((q, wi) => renderWrongCard(q, questions.indexOf(q) + 1)).join('')
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-actions">
+      <a href="index.html?exam_id=${encodeURIComponent(exam_id)}" class="btn btn-outline">다시 풀기</a>
+      <a href="leaderboard.html?exam_id=${encodeURIComponent(exam_id)}" class="btn btn-primary">리더보드 보기</a>
+    </div>
+  `;
+
+  document.getElementById('container').innerHTML = html;
+
+  // Animate score circle
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      const arc = document.getElementById('scoreArc');
+      if (arc) {
+        const offset = circumference - (percentage / 100) * circumference;
+        arc.style.strokeDashoffset = offset;
+      }
+    }, 100);
+  });
+
+  // Open wrong section by default if there are wrong answers
+  if (wrongQs.length === 0) {
+    toggleSection('correct');
+  }
+}
+
+function renderWrongCard(q, qNum) {
+  const isYN = q.type === 'yes_no';
+  let userAnsDisplay = '';
+  let correctAnsDisplay = '';
+
+  if (isYN) {
+    userAnsDisplay = q.user_answer || '미응답';
+    correctAnsDisplay = q.correct_answer || '';
+  } else {
+    const opts = q.options || [];
+    userAnsDisplay = (q.user_answer !== null && q.user_answer >= 0)
+      ? formatMCAnswer(q.user_answer, opts) : '미응답';
+    correctAnsDisplay = formatMCAnswer(q.correct_answer_index, opts);
+  }
+
+  const stmtsHtml = '';
+
+  const explanationHtml = q.explanation
+    ? `<div class="explanation-block">
+        <div class="explanation-content">${simpleMarkdown(q.explanation)}</div>
+      </div>`
+    : `<div class="explanation-block">
+        <div class="explanation-loading">
+          <span style="color: var(--text-muted); font-size: 14px;">해설이 아직 준비되지 않았습니다.</span>
+        </div>
+      </div>`;
+
+  return `
+    <div class="wrong-card">
+      <div class="wrong-q-num">문제 ${qNum}</div>
+      <div class="wrong-q-text">${escapeHtml(q.question)}</div>
+      <div class="answer-comparison">
+        <div class="answer-box answer-wrong">
+          <div class="answer-box-label">내 답변</div>
+          <div class="answer-box-value">${userAnsDisplay}</div>
+        </div>
+        <div class="answer-box answer-correct">
+          <div class="answer-box-label">정답</div>
+          <div class="answer-box-value">${correctAnsDisplay}</div>
+        </div>
+      </div>
+      ${explanationHtml}
+    </div>
+  `;
+}
+
+function toggleSection(id) {
+  const body = document.getElementById(`body-${id}`);
+  const chevron = document.getElementById(`chevron-${id}`);
+  body.classList.toggle('open');
+  chevron.classList.toggle('open');
+}
+
+loadResult();
+</script>
+</body>
+</html>

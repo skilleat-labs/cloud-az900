@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AZ-900 관리자 — 오답 분석</title>
+  <style>
+    :root {
+      --bg-primary: #0f1923;
+      --bg-secondary: #1B2A4A;
+      --bg-card: #1e3a5f;
+      --azure-blue: #0078D4;
+      --azure-light: #50e6ff;
+      --text-primary: #e8f4fd;
+      --text-secondary: #a8c4d8;
+      --text-muted: #6b8fa8;
+      --border: #2a4a6b;
+      --success: #00c853;
+      --error: #ff4444;
+      --warning: #ffd166;
+      --radius: 12px;
+      --transition: all 0.25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* ── Top Bar ── */
+    .top-bar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .top-bar h1 { font-size: 17px; font-weight: 700; }
+    .top-bar h1 span { color: var(--azure-light); }
+    .spacer { flex: 1; }
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: var(--transition);
+    }
+    .back-link:hover { color: var(--text-primary); }
+
+    /* ── Controls ── */
+    .controls {
+      max-width: 900px;
+      margin: 28px auto 0;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .controls label { font-size: 14px; color: var(--text-secondary); }
+    select {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      padding: 8px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      min-width: 260px;
+    }
+    select:focus { outline: none; border-color: var(--azure-blue); }
+
+    .mode-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .mode-btn {
+      padding: 8px 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+    .mode-btn.active {
+      background: var(--azure-blue);
+      color: white;
+    }
+
+    /* ── Stats Summary ── */
+    .summary {
+      max-width: 900px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .stat-chip {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .stat-chip strong { color: var(--text-primary); font-size: 18px; margin-right: 4px; }
+
+    /* ── List View ── */
+    .list-view {
+      max-width: 900px;
+      margin: 24px auto 60px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .wrong-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--transition);
+    }
+    .card-header:hover { background: rgba(0,120,212,0.05); }
+
+    .rank-badge {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .rank-1 { background: #FFD700; color: #000; }
+    .rank-2 { background: #C0C0C0; color: #000; }
+    .rank-3 { background: #CD7F32; color: #fff; }
+    .rank-n { background: var(--bg-card); color: var(--text-muted); }
+
+    .rate-bar-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+    .q-text-preview {
+      font-size: 14px;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 6px;
+    }
+    .rate-bar-bg {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .rate-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.6s ease;
+    }
+
+    .rate-info {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .rate-pct {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .rate-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .chevron {
+      color: var(--text-muted);
+      font-size: 12px;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .chevron.open { transform: rotate(180deg); }
+
+    .card-body {
+      display: none;
+      border-top: 1px solid var(--border);
+      padding: 20px;
+    }
+    .card-body.open { display: block; }
+
+    .q-full { font-size: 15px; font-weight: 600; margin-bottom: 14px; line-height: 1.6; }
+    .q-type-tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .answer-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .answer-pill {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .answer-pill.correct {
+      background: rgba(0,200,83,0.12);
+      border: 1px solid #00c853;
+      color: #00c853;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .opt-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+    .opt-row.correct-opt {
+      border-color: #00c853;
+      background: rgba(0,200,83,0.08);
+      color: #00c853;
+    }
+    .opt-num {
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .opt-row.correct-opt .opt-num { background: #00c853; color: #000; }
+
+    .explanation-box {
+      background: rgba(0,120,212,0.06);
+      border: 1px solid rgba(0,120,212,0.25);
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .explanation-box strong, .explanation-box b { color: var(--text-primary); }
+    .explanation-box ul, .explanation-box ol { padding-left: 18px; margin: 6px 0; }
+    .explanation-box li { margin-bottom: 4px; }
+    .md-table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 13px; }
+    .md-table th, .md-table td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; }
+    .md-table th { background: rgba(0,120,212,0.15); color: var(--azure-light); font-weight: 600; }
+    .md-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+    /* ── Slide Mode ── */
+    .slide-view { display: none; }
+    .slide-view.active { display: block; }
+    .list-view-wrap { }
+    .list-view-wrap.hidden { display: none; }
+
+    .slide-container {
+      max-width: 720px;
+      margin: 28px auto 60px;
+      padding: 0 20px;
+    }
+    .slide-nav-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .slide-counter {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--azure-light);
+    }
+    .slide-counter span { font-size: 14px; color: var(--text-muted); font-weight: 400; }
+    .slide-progress {
+      flex: 1;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .slide-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0078D4, #50e6ff);
+      transition: width 0.4s ease;
+    }
+
+    .slide-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .slide-rank-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .slide-wrong-rate {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .slide-wrong-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .slide-q-text {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .slide-nav-bottom {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .nav-btn {
+      padding: 12px 24px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .nav-btn:hover:not(:disabled) { border-color: var(--azure-blue); color: var(--text-primary); }
+    .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .nav-btn.primary {
+      background: linear-gradient(135deg, #0078D4, #0061b0);
+      border: none;
+      color: white;
+      flex: 1;
+    }
+    .nav-btn.primary:hover { opacity: 0.9; }
+
+    /* ── Empty / Loading ── */
+    .center-msg {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--azure-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>AZ-900 <span>오답 분석</span></h1>
+  <div class="spacer"></div>
+  <a href="index.html" class="back-link">← 홈으로</a>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <label>시험지</label>
+  <select id="examSelect" onchange="load()">
+    <option value="">전체</option>
+  </select>
+
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="btnList" onclick="setMode('list')">목록 보기</button>
+    <button class="mode-btn" id="btnSlide" onclick="setMode('slide')">오답풀이 모드</button>
+  </div>
+</div>
+
+<!-- Summary chips -->
+<div class="summary" id="summary"></div>
+
+<!-- List view -->
+<div class="list-view-wrap" id="listViewWrap">
+  <div class="list-view" id="listView">
+    <div class="center-msg"><div class="spinner"></div><p>불러오는 중...</p></div>
+  </div>
+</div>
+
+<!-- Slide view -->
+<div class="slide-view" id="slideView">
+  <div class="slide-container">
+    <div class="slide-nav-top">
+      <div class="slide-counter" id="slideCounter">1 <span>/ 0</span></div>
+      <div class="slide-progress"><div class="slide-progress-fill" id="slideProgressFill" style="width:0%"></div></div>
+    </div>
+    <div id="slideCard"></div>
+    <div class="slide-nav-bottom">
+      <button class="nav-btn" id="btnPrev" onclick="slideMove(-1)" disabled>← 이전</button>
+      <button class="nav-btn primary" id="btnNext" onclick="slideMove(1)">다음 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let allData = [];
+let slideIdx = 0;
+let currentMode = 'list';
+
+// ── Init ──
+async function init() {
+  // 시험지 목록 로드
+  const res = await fetch('/api/exams');
+  const exams = await res.json();
+  const sel = document.getElementById('examSelect');
+  exams.forEach(e => {
+    const opt = document.createElement('option');
+    opt.value = e.id;
+    opt.textContent = e.title;
+    sel.appendChild(opt);
+  });
+
+  await load();
+}
+
+async function load() {
+  document.getElementById('listView').innerHTML =
+    '<div class="center-msg"><div class="spinner"></div><p>불러오는 중...</p></div>';
+  document.getElementById('summary').innerHTML = '';
+
+  const examId = document.getElementById('examSelect').value;
+  const url = '/api/admin/wrong-stats' + (examId ? `?exam_id=${encodeURIComponent(examId)}` : '');
+
+  const res = await fetch(url);
+  allData = await res.json();
+
+  renderSummary();
+  if (currentMode === 'list') renderList();
+  else renderSlide();
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btnList').classList.toggle('active', mode === 'list');
+  document.getElementById('btnSlide').classList.toggle('active', mode === 'slide');
+  document.getElementById('listViewWrap').classList.toggle('hidden', mode === 'slide');
+  document.getElementById('slideView').classList.toggle('active', mode === 'slide');
+
+  if (mode === 'list') renderList();
+  else { slideIdx = 0; renderSlide(); }
+}
+
+// ── Summary ──
+function renderSummary() {
+  if (!allData.length) { document.getElementById('summary').innerHTML = ''; return; }
+  const totalQ = allData.length;
+  const highRisk = allData.filter(d => d.wrong_rate >= 50).length;
+  const avgRate = (allData.reduce((s, d) => s + d.wrong_rate, 0) / totalQ).toFixed(1);
+  document.getElementById('summary').innerHTML = `
+    <div class="stat-chip"><strong>${totalQ}</strong>문제 집계</div>
+    <div class="stat-chip"><strong>${highRisk}</strong>문제 오답률 50% 이상</div>
+    <div class="stat-chip">평균 오답률 <strong>${avgRate}%</strong></div>
+  `;
+}
+
+// ── List View ──
+function renderList() {
+  const container = document.getElementById('listView');
+  if (!allData.length) {
+    container.innerHTML = '<div class="center-msg"><p>아직 제출된 답변 데이터가 없습니다.</p></div>';
+    return;
+  }
+  container.innerHTML = allData.map((d, i) => renderCard(d, i)).join('');
+}
+
+function renderCard(d, i) {
+  const rank = i + 1;
+  const rankClass = rank <= 3 ? `rank-${rank}` : 'rank-n';
+  const rankLabel = rank <= 3 ? ['🥇','🥈','🥉'][rank-1] : rank;
+  const color = rateColor(d.wrong_rate);
+  const preview = (d.question || '').split('\n')[0].substring(0, 60);
+  const bodyId = `body-${i}`;
+  const chevronId = `chev-${i}`;
+
+  return `
+    <div class="wrong-card">
+      <div class="card-header" onclick="toggleCard('${bodyId}','${chevronId}')">
+        <div class="rank-badge ${rankClass}">${rankLabel}</div>
+        <div class="rate-bar-wrap">
+          <div class="q-text-preview">${escHtml(preview)}${(d.question||'').length > 60 ? '...' : ''}</div>
+          <div class="rate-bar-bg">
+            <div class="rate-bar-fill" style="width:${d.wrong_rate}%;background:${color}"></div>
+          </div>
+        </div>
+        <div class="rate-info">
+          <div class="rate-pct" style="color:${color}">${d.wrong_rate}%</div>
+          <div class="rate-sub">오답 ${d.wrong_count}/${d.attempts}명</div>
+        </div>
+        <div class="chevron" id="${chevronId}">▼</div>
+      </div>
+      <div class="card-body" id="${bodyId}">
+        ${renderCardBody(d)}
+      </div>
+    </div>`;
+}
+
+function renderCardBody(d) {
+  const typeTag = d.type === 'yes_no' ? '예/아니오' : '객관식';
+  let answerHtml = '';
+
+  if (d.type === 'yes_no') {
+    answerHtml = `<div class="answer-row">
+      <span class="answer-pill correct">정답: ${d.answer}</span>
+    </div>`;
+  } else {
+    const opts = d.options || [];
+    const ai = d.answer_index;
+    answerHtml = `<div class="options-list">
+      ${opts.map((o, i) => `
+        <div class="opt-row ${i === ai ? 'correct-opt' : ''}">
+          <div class="opt-num">${i+1}</div>
+          <span>${escHtml(o)}</span>
+        </div>`).join('')}
+    </div>`;
+  }
+
+  const expHtml = d.explanation
+    ? `<div class="explanation-box">${mdToHtml(d.explanation)}</div>`
+    : `<div class="explanation-box" style="color:var(--text-muted)">해설이 아직 준비되지 않았습니다.</div>`;
+
+  return `
+    <span class="q-type-tag">${typeTag}</span>
+    <div class="q-full">${escHtml(d.question || '')}</div>
+    ${answerHtml}
+    ${expHtml}`;
+}
+
+function toggleCard(bodyId, chevronId) {
+  document.getElementById(bodyId).classList.toggle('open');
+  document.getElementById(chevronId).classList.toggle('open');
+}
+
+// ── Slide Mode ──
+function renderSlide() {
+  if (!allData.length) {
+    document.getElementById('slideCard').innerHTML =
+      '<div class="center-msg"><p>데이터가 없습니다.</p></div>';
+    return;
+  }
+  const total = allData.length;
+  const d = allData[slideIdx];
+
+  document.getElementById('slideCounter').innerHTML =
+    `${slideIdx + 1} <span>/ ${total}</span>`;
+  document.getElementById('slideProgressFill').style.width =
+    `${((slideIdx + 1) / total) * 100}%`;
+  document.getElementById('btnPrev').disabled = slideIdx === 0;
+  document.getElementById('btnNext').textContent =
+    slideIdx === total - 1 ? '완료' : '다음 →';
+
+  const color = rateColor(d.wrong_rate);
+  const typeTag = d.type === 'yes_no' ? '예/아니오' : '객관식';
+
+  let answerHtml = '';
+  if (d.type === 'yes_no') {
+    answerHtml = `<div class="answer-row">
+      <span class="answer-pill correct">정답: ${d.answer}</span>
+    </div>`;
+  } else {
+    const opts = d.options || [];
+    const ai = d.answer_index;
+    answerHtml = `<div class="options-list">
+      ${opts.map((o, i) => `
+        <div class="opt-row ${i === ai ? 'correct-opt' : ''}">
+          <div class="opt-num">${i+1}</div>
+          <span>${escHtml(o)}</span>
+        </div>`).join('')}
+    </div>`;
+  }
+
+  const expHtml = d.explanation
+    ? `<div class="explanation-box">${mdToHtml(d.explanation)}</div>`
+    : `<div class="explanation-box" style="color:var(--text-muted)">해설이 아직 준비되지 않았습니다.</div>`;
+
+  document.getElementById('slideCard').innerHTML = `
+    <div class="slide-card">
+      <div class="slide-rank-line">
+        <div>
+          <div class="slide-wrong-rate" style="color:${color}">${d.wrong_rate}%</div>
+          <div class="slide-wrong-label">오답 ${d.wrong_count}/${d.attempts}명 · ${d.exam_title || d.exam_id}</div>
+        </div>
+        <div style="margin-left:auto">
+          <span class="q-type-tag">${typeTag}</span>
+        </div>
+      </div>
+      <div class="slide-q-text">${escHtml(d.question || '')}</div>
+      ${answerHtml}
+      ${expHtml}
+    </div>`;
+}
+
+function slideMove(dir) {
+  const next = slideIdx + dir;
+  if (next < 0 || next >= allData.length) return;
+  slideIdx = next;
+  renderSlide();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Helpers ──
+function rateColor(rate) {
+  if (rate >= 70) return '#ff4444';
+  if (rate >= 40) return '#ffd166';
+  return '#00c853';
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+function mdToHtml(text) {
+  if (!text) return '';
+  // 테이블
+  text = text.replace(/((?:^\|.+\|\n?)+)/gm, (block) => {
+    const rows = block.trim().split('\n').filter(r => r.trim());
+    let html = '<table class="md-table">';
+    rows.forEach((row, i) => {
+      if (/^\|[\s\-|:]+\|$/.test(row.trim())) return;
+      const cells = row.split('|').filter((_, ci) => ci > 0 && ci < row.split('|').length - 1);
+      const tag = i === 0 ? 'th' : 'td';
+      html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+    });
+    return html + '</table>';
+  });
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^### (.+)$/gm, '<h4 style="color:var(--text-primary);margin:8px 0 4px">$1</h4>')
+    .replace(/^## (.+)$/gm, '<h3 style="color:var(--text-primary);margin:10px 0 6px">$1</h3>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+    .replace(/\n\n/g, '</p><p>');
+}
+
+init();
+</script>
+</body>
+</html>

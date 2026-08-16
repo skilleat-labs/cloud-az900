@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AZ-900 모의고사</title>
+  <style>
+    :root {
+      --bg-primary: #0f1923;
+      --bg-secondary: #1B2A4A;
+      --bg-card: #1e3a5f;
+      --azure-blue: #0078D4;
+      --azure-light: #50e6ff;
+      --accent: #00b4d8;
+      --text-primary: #e8f4fd;
+      --text-secondary: #a8c4d8;
+      --text-muted: #6b8fa8;
+      --border: #2a4a6b;
+      --success: #00c853;
+      --error: #ff4444;
+      --radius: 12px;
+      --shadow: 0 8px 32px rgba(0, 120, 212, 0.15);
+      --transition: all 0.3s ease;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(0, 120, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(80, 230, 255, 0.05) 0%, transparent 40%);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .azure-logo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #0078D4, #50e6ff);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+      color: white;
+      box-shadow: 0 4px 16px rgba(0, 120, 212, 0.4);
+      letter-spacing: -1px;
+    }
+
+    h1 {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 700;
+      background: linear-gradient(135deg, #e8f4fd, #50e6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg-primary);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-family: inherit;
+      transition: var(--transition);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b8fa8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    select option {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      padding: 8px;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--azure-blue);
+      box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.15);
+    }
+
+    input[type="text"]::placeholder {
+      color: var(--text-muted);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0078D4, #0061b0);
+      color: white;
+      box-shadow: 0 4px 16px rgba(0, 120, 212, 0.35);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: linear-gradient(135deg, #1e8fe0, #0078D4);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 120, 212, 0.45);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 28px 0;
+    }
+
+    .leaderboard-link {
+      text-align: center;
+    }
+
+    .leaderboard-link a {
+      color: var(--azure-light);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .leaderboard-link a:hover {
+      color: white;
+    }
+
+    .error-msg {
+      color: var(--error);
+      font-size: 13px;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .error-msg.visible {
+      display: block;
+    }
+
+    .loading-indicator {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .loading-indicator.visible {
+      display: flex;
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-top-color: var(--azure-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .stats-bar {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+      margin-bottom: -8px;
+    }
+
+    .stat-item {
+      flex: 1;
+      background: rgba(0, 120, 212, 0.08);
+      border: 1px solid rgba(0, 120, 212, 0.2);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--azure-light);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="azure-logo">Az</div>
+      <h1>AZ-900 모의고사</h1>
+    </div>
+    <p class="subtitle">Microsoft Azure Fundamentals 시험 대비</p>
+  </header>
+
+  <div class="card">
+    <div class="form-group">
+      <label for="userName">이름</label>
+      <input type="text" id="userName" placeholder="이름을 입력하세요" autocomplete="name" />
+      <span class="error-msg" id="nameError">이름을 입력해주세요.</span>
+    </div>
+
+    <div class="form-group">
+      <label for="examSelect">시험 선택</label>
+      <select id="examSelect">
+        <option value="">시험을 선택하세요</option>
+      </select>
+      <div class="loading-indicator" id="loadingExams">
+        <div class="spinner"></div>
+        <span>시험 목록 불러오는 중...</span>
+      </div>
+      <span class="error-msg" id="examError">시험을 선택해주세요.</span>
+    </div>
+
+    <div id="statsBar" class="stats-bar" style="display:none; margin-bottom: 24px;">
+      <div class="stat-item">
+        <div class="stat-num" id="statQuestions">-</div>
+        <div class="stat-label">문제 수</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" id="startBtn" onclick="startQuiz()">
+      시험 시작
+    </button>
+
+    <div class="divider"></div>
+
+    <div class="leaderboard-link">
+      <a href="leaderboard.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+        </svg>
+        리더보드 보기
+      </a>
+      <a href="admin.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        관리자 — 오답 분석
+      </a>
+    </div>
+  </div>
+
+  <script>
+    let examsData = [];
+
+    async function loadExams() {
+      const loading = document.getElementById('loadingExams');
+      const select = document.getElementById('examSelect');
+      loading.classList.add('visible');
+
+      try {
+        const res = await fetch('/api/exams');
+        if (!res.ok) throw new Error('Failed to load exams');
+        examsData = await res.json();
+
+        select.innerHTML = '<option value="">시험을 선택하세요</option>';
+        examsData.forEach(exam => {
+          const opt = document.createElement('option');
+          opt.value = exam.id;
+          opt.textContent = `${exam.title} (${exam.question_count}문제)`;
+          select.appendChild(opt);
+        });
+      } catch (e) {
+        select.innerHTML = '<option value="">시험 목록을 불러올 수 없습니다</option>';
+        console.error(e);
+      } finally {
+        loading.classList.remove('visible');
+      }
+    }
+
+    document.getElementById('examSelect').addEventListener('change', function() {
+      const examId = this.value;
+      const statsBar = document.getElementById('statsBar');
+      const statQuestions = document.getElementById('statQuestions');
+
+      if (examId) {
+        const exam = examsData.find(e => e.id === examId);
+        if (exam) {
+          statQuestions.textContent = exam.question_count;
+          statsBar.style.display = 'flex';
+        }
+        document.getElementById('examError').classList.remove('visible');
+      } else {
+        statsBar.style.display = 'none';
+      }
+    });
+
+    document.getElementById('userName').addEventListener('input', function() {
+      if (this.value.trim()) {
+        document.getElementById('nameError').classList.remove('visible');
+      }
+    });
+
+    function startQuiz() {
+      const name = document.getElementById('userName').value.trim();
+      const examId = document.getElementById('examSelect').value;
+      let valid = true;
+
+      if (!name) {
+        document.getElementById('nameError').classList.add('visible');
+        valid = false;
+      }
+
+      if (!examId) {
+        document.getElementById('examError').classList.add('visible');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      sessionStorage.setItem('userName', name);
+      window.location.href = `quiz.html?exam_id=${encodeURIComponent(examId)}&name=${encodeURIComponent(name)}`;
+    }
+
+    document.getElementById('userName').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') startQuiz();
+    });
+
+    loadExams();
+  </script>
+</body>
+</html>

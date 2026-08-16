@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AZ-900 모의고사 - 시험 중</title>
+  <style>
+    :root {
+      --bg-primary: #0f1923;
+      --bg-secondary: #1B2A4A;
+      --bg-card: #1e3a5f;
+      --azure-blue: #0078D4;
+      --azure-light: #50e6ff;
+      --accent: #00b4d8;
+      --text-primary: #e8f4fd;
+      --text-secondary: #a8c4d8;
+      --text-muted: #6b8fa8;
+      --border: #2a4a6b;
+      --success: #00c853;
+      --error: #ff4444;
+      --yes-color: #00c853;
+      --no-color: #ff6b35;
+      --radius: 12px;
+      --shadow: 0 8px 32px rgba(0, 120, 212, 0.15);
+      --transition: all 0.3s ease;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Top Bar ── */
+    .top-bar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .exam-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      max-width: 40%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .top-center {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .timer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 120, 212, 0.1);
+      border: 1px solid rgba(0, 120, 212, 0.3);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 18px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--azure-light);
+      letter-spacing: 1px;
+    }
+
+    .progress-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* ── Progress Bar ── */
+    .progress-track {
+      height: 3px;
+      background: var(--border);
+      position: sticky;
+      top: 64px;
+      z-index: 99;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0078D4, #50e6ff);
+      transition: width 0.4s ease;
+    }
+
+    /* ── Main Content ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 120px;
+    }
+
+    .question-card {
+      width: 100%;
+      max-width: 720px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-header {
+      padding: 20px 28px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .q-badge {
+      background: var(--azure-blue);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .q-type-badge {
+      font-size: 12px;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .question-body {
+      padding: 28px;
+    }
+
+    .question-text {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      white-space: pre-wrap;
+    }
+
+    /* ── Yes/No Question ── */
+    .yn-options {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .yn-btn {
+      flex: 1;
+      padding: 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      letter-spacing: 1px;
+    }
+
+    .yn-btn:hover {
+      border-color: var(--azure-blue);
+      color: var(--text-primary);
+    }
+
+    .yn-btn.selected-yes {
+      background: rgba(0, 200, 83, 0.15);
+      border-color: var(--yes-color);
+      color: var(--yes-color);
+    }
+
+    .yn-btn.selected-no {
+      background: rgba(255, 107, 53, 0.15);
+      border-color: var(--no-color);
+      color: var(--no-color);
+    }
+
+    /* ── Multiple Choice ── */
+    .mc-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mc-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      color: var(--text-primary);
+    }
+
+    .mc-option:hover {
+      background: rgba(0, 120, 212, 0.08);
+      border-color: rgba(0, 120, 212, 0.4);
+    }
+
+    .mc-option.selected {
+      background: rgba(0, 120, 212, 0.15);
+      border-color: var(--azure-blue);
+    }
+
+    .mc-num {
+      min-width: 28px;
+      height: 28px;
+      background: var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .mc-option.selected .mc-num {
+      background: var(--azure-blue);
+      color: white;
+    }
+
+    .mc-text {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+
+    /* ── Navigation ── */
+    .nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      padding: 12px 24px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      border-color: var(--azure-blue);
+      color: var(--text-primary);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .spacer { flex: 1; }
+
+    .submit-btn {
+      padding: 12px 32px;
+      background: linear-gradient(135deg, #0078D4, #0061b0);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      box-shadow: 0 4px 12px rgba(0, 120, 212, 0.35);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 120, 212, 0.45);
+    }
+
+    /* ── Question Navigator ── */
+    .q-navigator {
+      width: 100%;
+      max-width: 720px;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .q-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+
+    .q-dot:hover {
+      border-color: var(--azure-blue);
+      color: var(--text-primary);
+    }
+
+    .q-dot.current {
+      border-color: var(--azure-blue);
+      background: var(--azure-blue);
+      color: white;
+    }
+
+    .q-dot.answered {
+      border-color: rgba(0, 200, 83, 0.5);
+      background: rgba(0, 200, 83, 0.1);
+      color: var(--yes-color);
+    }
+
+    .q-dot.current.answered {
+      background: var(--azure-blue);
+      color: white;
+      border-color: var(--azure-blue);
+    }
+
+    .q-dot.flagged {
+      border-color: #ffd166;
+      background: rgba(255, 209, 102, 0.12);
+      color: #ffd166;
+    }
+
+    .q-dot.current.flagged {
+      background: #ffd166;
+      color: #0f1923;
+      border-color: #ffd166;
+    }
+
+    /* ── Flag Button ── */
+    .flag-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      padding: 5px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .flag-btn:hover {
+      border-color: #ffd166;
+      color: #ffd166;
+    }
+
+    .flag-btn.flagged {
+      border-color: #ffd166;
+      background: rgba(255, 209, 102, 0.12);
+      color: #ffd166;
+    }
+
+    .flag-icon { font-size: 14px; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.visible {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .modal p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .modal-warn {
+      color: #ffd166;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-cancel {
+      flex: 1;
+      padding: 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .btn-cancel:hover {
+      border-color: var(--text-secondary);
+      color: var(--text-primary);
+    }
+
+    .btn-confirm {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0078D4, #0061b0);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .loading-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--text-secondary);
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--azure-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 600px) {
+      .exam-title { display: none; }
+      .question-body { padding: 20px; }
+      .question-header { padding: 16px 20px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="exam-title" id="examTitle">로딩 중...</span>
+  <div class="top-center">
+    <div class="timer" id="timer">00:00</div>
+    <span class="progress-text" id="progressText">Q -/-</span>
+  </div>
+</div>
+
+<div class="progress-track">
+  <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+</div>
+
+<div class="main" id="main">
+  <div class="loading-screen">
+    <div class="spinner"></div>
+    <p>문제를 불러오는 중...</p>
+  </div>
+</div>
+
+<!-- Submit Confirm Modal -->
+<div class="modal-overlay" id="submitModal">
+  <div class="modal">
+    <h2>시험 제출</h2>
+    <p id="modalStats"></p>
+    <p class="modal-warn" id="modalWarn"></p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">계속 풀기</button>
+      <button class="btn-confirm" onclick="confirmSubmit()">제출하기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const EXAM_ID = params.get('exam_id') || '';
+const USER_NAME = params.get('name') || sessionStorage.getItem('userName') || '익명';
+
+let questions = [];
+let answers = {};    // question_id -> answer value
+let flagged = new Set();  // question_id
+let currentIdx = 0;
+let sessionId = null;
+let timerSeconds = 0;
+let timerInterval = null;
+let examTitle = '';
+
+// ── Initialization ──
+async function init() {
+  try {
+    // Load questions
+    const res = await fetch(`/api/exams/${encodeURIComponent(EXAM_ID)}/questions`);
+    if (!res.ok) throw new Error('Failed to load questions');
+    const data = await res.json();
+    questions = data.questions;
+    examTitle = data.title;
+
+    document.getElementById('examTitle').textContent = examTitle;
+
+    // Create session
+    const sessRes = await fetch('/api/sessions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ exam_id: EXAM_ID, user_name: USER_NAME }),
+    });
+    if (!sessRes.ok) throw new Error('Failed to create session');
+    const sessData = await sessRes.json();
+    sessionId = sessData.id;
+    sessionStorage.setItem('sessionId', sessionId);
+
+    // Start timer
+    timerInterval = setInterval(tickTimer, 1000);
+
+    // Render first question
+    renderQuestion();
+  } catch (e) {
+    document.getElementById('main').innerHTML = `
+      <div class="loading-screen">
+        <p style="color: var(--error)">오류: ${e.message}</p>
+        <a href="index.html" style="color: var(--azure-light)">홈으로 돌아가기</a>
+      </div>`;
+  }
+}
+
+function tickTimer() {
+  timerSeconds++;
+  const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+  const s = String(timerSeconds % 60).padStart(2, '0');
+  document.getElementById('timer').textContent = `${m}:${s}`;
+}
+
+// ── Rendering ──
+function renderQuestion() {
+  const total = questions.length;
+  const q = questions[currentIdx];
+
+  // Update progress
+  document.getElementById('progressText').textContent = `Q ${currentIdx + 1}/${total}`;
+  document.getElementById('progressFill').style.width = `${((currentIdx + 1) / total) * 100}%`;
+
+  const main = document.getElementById('main');
+
+  const isFlagged = flagged.has(q.id);
+  const typeLabel = q.type === 'yes_no' ? '예/아니오' : '객관식';
+
+  let bodyHtml = '';
+  if (q.type === 'yes_no') {
+    bodyHtml = renderYesNo(q);
+  } else {
+    bodyHtml = renderMultipleChoice(q);
+  }
+
+  main.innerHTML = `
+    <div class="question-card" id="questionCard">
+      <div class="question-header">
+        <span class="q-badge">문제 ${currentIdx + 1}</span>
+        <span class="q-type-badge">${typeLabel}</span>
+        <button class="flag-btn ${isFlagged ? 'flagged' : ''}" onclick="toggleFlag('${q.id}')" id="flagBtn">
+          <span class="flag-icon">${isFlagged ? '🚩' : '⚑'}</span>
+          ${isFlagged ? '플래그 해제' : '모르겠어요'}
+        </button>
+      </div>
+      <div class="question-body">
+        <div class="question-text">${escapeHtml(q.question)}</div>
+        ${bodyHtml}
+      </div>
+    </div>
+    <div class="q-navigator" id="qNavigator">
+      ${questions.map((qq, i) => {
+        const ans = answers[qq.id];
+        const hasAns = ans !== undefined && ans !== null && ans !== '';
+        const cls = [
+          i === currentIdx ? 'current' : '',
+          hasAns ? 'answered' : '',
+          flagged.has(qq.id) ? 'flagged' : '',
+        ].filter(Boolean).join(' ');
+        return `<button class="q-dot ${cls}" onclick="goTo(${i})">${i + 1}</button>`;
+      }).join('')}
+    </div>
+    <div style="height: 80px;"></div>
+    <div class="nav-bar" style="max-width: 720px; left: 50%; transform: translateX(-50%); position: fixed; width: calc(100% - 32px); bottom: 16px; border-radius: 10px;">
+      <button class="nav-btn" onclick="goTo(${currentIdx - 1})" ${currentIdx === 0 ? 'disabled' : ''}>
+        ← 이전
+      </button>
+      <div class="spacer"></div>
+      <button class="nav-btn" onclick="goTo(${currentIdx + 1})" ${currentIdx === total - 1 ? 'disabled' : ''}>
+        다음 →
+      </button>
+      <button class="submit-btn" onclick="openSubmitModal()">제출하기</button>
+    </div>
+  `;
+
+  restoreAnswers(q);
+}
+
+function renderYesNo(q) {
+  return `
+    <div class="yn-options">
+      <button class="yn-btn" id="yn-yes" onclick="selectYN('${q.id}', '예')">예</button>
+      <button class="yn-btn" id="yn-no" onclick="selectYN('${q.id}', '아니오')">아니오</button>
+    </div>
+  `;
+}
+
+function renderMultipleChoice(q) {
+  const opts = q.options || [];
+  return `
+    <div class="mc-options">
+      ${opts.map((opt, oi) => `
+        <button class="mc-option" id="mc-opt-${oi}" onclick="selectMC('${q.id}', ${oi})">
+          <span class="mc-num">${oi + 1}</span>
+          <span class="mc-text">${escapeHtml(opt)}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+}
+
+function restoreAnswers(q) {
+  const saved = answers[q.id];
+  if (saved === undefined || saved === null) return;
+
+  if (q.type === 'yes_no') {
+    if (saved === '예') {
+      document.getElementById('yn-yes')?.classList.add('selected-yes');
+    } else if (saved === '아니오') {
+      document.getElementById('yn-no')?.classList.add('selected-no');
+    }
+  } else {
+    document.getElementById(`mc-opt-${saved}`)?.classList.add('selected');
+  }
+}
+
+// ── Answer Selection ──
+function selectYN(qId, value) {
+  answers[qId] = value;
+
+  const yesBtn = document.getElementById('yn-yes');
+  const noBtn = document.getElementById('yn-no');
+  yesBtn?.classList.remove('selected-yes', 'selected-no');
+  noBtn?.classList.remove('selected-yes', 'selected-no');
+
+  if (value === '예') {
+    yesBtn?.classList.add('selected-yes');
+  } else {
+    noBtn?.classList.add('selected-no');
+  }
+}
+
+function selectMC(qId, optIdx) {
+  answers[qId] = optIdx;
+
+  // Update UI
+  document.querySelectorAll('.mc-option').forEach(el => el.classList.remove('selected'));
+  document.getElementById(`mc-opt-${optIdx}`)?.classList.add('selected');
+}
+
+// ── Flag ──
+function toggleFlag(qId) {
+  if (flagged.has(qId)) {
+    flagged.delete(qId);
+  } else {
+    flagged.add(qId);
+  }
+  renderQuestion();  // re-render to update button + navigator
+}
+
+// ── Navigation ──
+function goTo(idx) {
+  if (idx < 0 || idx >= questions.length) return;
+  currentIdx = idx;
+  renderQuestion();
+}
+
+// ── Submit ──
+function countAnswered() {
+  return questions.filter(q => {
+    const ans = answers[q.id];
+    return ans !== undefined && ans !== null;
+  }).length;
+}
+
+function openSubmitModal() {
+  const answered = countAnswered();
+  const total = questions.length;
+  const unanswered = total - answered;
+  const flaggedCount = flagged.size;
+
+  document.getElementById('modalStats').textContent =
+    `${total}문제 중 ${answered}문제 답변 완료`;
+
+  const warns = [];
+  if (unanswered > 0) warns.push(`⚠️ 미응답 ${unanswered}문제`);
+  if (flaggedCount > 0) warns.push(`🚩 플래그 ${flaggedCount}문제`);
+
+  document.getElementById('modalWarn').textContent =
+    warns.length > 0 ? warns.join('  |  ') : '모든 문제에 답변했습니다.';
+
+  document.getElementById('submitModal').classList.add('visible');
+}
+
+function closeModal() {
+  document.getElementById('submitModal').classList.remove('visible');
+}
+
+async function confirmSubmit() {
+  closeModal();
+  clearInterval(timerInterval);
+
+  const submitBtn = document.querySelector('.submit-btn');
+  if (submitBtn) {
+    submitBtn.textContent = '제출 중...';
+    submitBtn.disabled = true;
+  }
+
+  // Build answers array
+  const answersArr = questions.map(q => ({
+    question_id: q.id,
+    user_answer: answers[q.id] !== undefined ? answers[q.id] : (q.type === 'yes_no' ? '' : -1),
+  }));
+
+  try {
+    const res = await fetch(`/api/sessions/${sessionId}/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        answers: answersArr,
+        time_seconds: timerSeconds,
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || 'Submit failed');
+    }
+
+    // Redirect to result page
+    window.location.href = `result.html?session_id=${sessionId}`;
+  } catch (e) {
+    alert(`제출 오류: ${e.message}`);
+    if (submitBtn) {
+      submitBtn.textContent = '제출하기';
+      submitBtn.disabled = false;
+    }
+    timerInterval = setInterval(tickTimer, 1000);
+  }
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/\n/g, '<br>');
+}
+
+// Start
+init();
+</script>
+</body>
+</html>

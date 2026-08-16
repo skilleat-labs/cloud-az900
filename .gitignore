@@ -1,0 +1,12 @@
+# 환경변수 (API 키 등)
+.env
+
+# Python 가상환경
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
