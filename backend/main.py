@@ -34,6 +34,7 @@ _questions_cache: dict[str, dict] = {}
 
 
 ALLOWED_FILES = {
+    '모의고사1번 (30문제).docx',
     '1-1_클라우드컴퓨팅_2부 (32문제).docx',
     '1-2_클라우드서비스이점_2부 (13문제).docx',
     '1-3_클라우드서비스유형_2부 (10문제).docx',
