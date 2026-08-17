@@ -1,4 +1,4 @@
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q1', '# 하이브리드 클라우드 모델과 온프레미스 네트워크
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q1', '# 하이브리드 클라우드 모델과 온프레미스 네트워크
 
 ## 1. 왜 ''아니오''인가?
 
@@ -12,8 +12,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3. 핵심 개념 (한 줄 요약)
 
-**하이브리드 클라우드는 여러 클라우드 환경의 조합이며, 온프레미스 인프라는 필수가 아닙니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q2', '# 하이브리드 클라우드와 네트워크 용량 확장
+**하이브리드 클라우드는 여러 클라우드 환경의 조합이며, 온프레미스 인프라는 필수가 아닙니다.**', '2026-08-15T18:38:05.714512');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q2', '# 하이브리드 클라우드와 네트워크 용량 확장
 
 ## 1️⃣ 왜 ''예''인가? (Azure 공식 개념)
 
@@ -33,8 +33,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3️⃣ 핵심 한 줄 요약
 
-**하이브리드 클라우드 = 온프레미스 + Azure 연결 → 부족한 용량을 클라우드로 유연하게 확장**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q3', '# 퍼블릭 클라우드 접근 권한 문제 해설
+**하이브리드 클라우드 = 온프레미스 + Azure 연결 → 부족한 용량을 클라우드로 유연하게 확장**', '2026-08-15T18:38:11.126302');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q3', '# 퍼블릭 클라우드 접근 권한 문제 해설
 
 ## 1. 왜 ''아니오''인가?
 
@@ -47,8 +47,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3. 핵심 요약
 
-**퍼블릭 클라우드는 개방적이지만, 모든 리소스 접근에는 반드시 인증과 권한 부여가 필요합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q4', '# AZ-900: 프라이빗 클라우드의 제어권
+**퍼블릭 클라우드는 개방적이지만, 모든 리소스 접근에는 반드시 인증과 권한 부여가 필요합니다.**', '2026-08-15T18:38:16.236966');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q4', '# AZ-900: 프라이빗 클라우드의 제어권
 
 ## 1️⃣ 정답 근거 (왜 ''예''인가?)
 
@@ -68,18 +68,18 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**프라이빗 클라우드는 조직의 독점 환경이므로 리소스와 보안을 완전히 제어할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q5', '# 하이브리드 클라우드에서 앱 위치 제어 해설
+**프라이빗 클라우드는 조직의 독점 환경이므로 리소스와 보안을 완전히 제어할 수 있습니다.**', '2026-08-15T18:38:20.624492');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q5', '# 하이브리드 클라우드에서 앱 위치 제어 해설
 
 ## 정답: 예
 
-하이브리드 클라우드의 핵심 장점 중 하나는 애플리케이션을 온-프레미스 또는 퍼블릭 클라우드 중 어디서 실행할지 회사가 직접 선택·제어할 수 있다는 점입니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q6', '# 퍼블릭 클라우드 VM 확장 = OpEx 해설
+하이브리드 클라우드의 핵심 장점 중 하나는 애플리케이션을 온-프레미스 또는 퍼블릭 클라우드 중 어디서 실행할지 회사가 직접 선택·제어할 수 있다는 점입니다.', '2026-08-15T18:38:25.560155');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q6', '# 퍼블릭 클라우드 VM 확장 = OpEx 해설
 
 ## 정답: 아니오
 
-퍼블릭 클라우드에서 VM을 확장할 때는 사용한 만큼 지불하는 OpEx(운영 비용) 방식입니다. CapEx(자본 지출)는 물리적 자산(서버, 데이터 센터 등)을 직접 구매할 때 발생합니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q7', '# AZ-900: 데이터 센터 인프라는 CapEx vs OpEx
+퍼블릭 클라우드에서 VM을 확장할 때는 사용한 만큼 지불하는 OpEx(운영 비용) 방식입니다. CapEx(자본 지출)는 물리적 자산(서버, 데이터 센터 등)을 직접 구매할 때 발생합니다.', '2026-08-15T18:38:32.437944');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q7', '# AZ-900: 데이터 센터 인프라는 CapEx vs OpEx
 
 ## 1. 정답이 ''아니오''인 이유
 
@@ -100,8 +100,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3. 핵심 요약
 
-**클라우드 도입 = 자신의 데이터센터 구축(CapEx) 제거 → OpEx 기반의 유연한 비용 구조**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q8', '# 기술 인력의 월급은 OpEx인가?
+**클라우드 도입 = 자신의 데이터센터 구축(CapEx) 제거 → OpEx 기반의 유연한 비용 구조**', '2026-08-15T18:38:37.860912');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q8', '# 기술 인력의 월급은 OpEx인가?
 
 ## 1. 왜 ''예''인가? (Azure 공식 개념)
 
@@ -121,8 +121,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3. 핵심 개념 (한 줄 요약)
 
-**OpEx = 정기적으로 발생하는 운영 비용 (월급, 전기료, 클라우드 구독료 등)**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q9', '# 소프트웨어 임대와 OpEx (운영 비용)
+**OpEx = 정기적으로 발생하는 운영 비용 (월급, 전기료, 클라우드 구독료 등)**', '2026-08-15T18:38:42.284935');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q9', '# 소프트웨어 임대와 OpEx (운영 비용)
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -139,8 +139,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3️⃣ 한 줄 요약
 
-💡 **소프트웨어를 소유하지 않고 이용료를 반복해서 지불하면 OpEx입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q10', '# 클라우드 컴퓨팅의 탄력적 확장성
+💡 **소프트웨어를 소유하지 않고 이용료를 반복해서 지불하면 OpEx입니다.**', '2026-08-15T18:38:46.876375');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q10', '# 클라우드 컴퓨팅의 탄력적 확장성
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -155,8 +155,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**클라우드는 트래픽 변화에 자동으로 대응하며 리소스를 신축적으로 조절합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q11', '# 퍼블릭 클라우드와 CapEx 최소화
+**클라우드는 트래픽 변화에 자동으로 대응하며 리소스를 신축적으로 조절합니다.**', '2026-08-15T18:38:50.767319');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q11', '# 퍼블릭 클라우드와 CapEx 최소화
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -170,8 +170,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3️⃣ 핵심 한 줄 요약
 
-**퍼블릭 클라우드는 물리적 인프라 구매 비용(CapEx)을 제거하고 사용량에 따른 월간 지불(OpEx)로 전환합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q12', '# 클라우드 컴퓨팅과 가상화
+**퍼블릭 클라우드는 물리적 인프라 구매 비용(CapEx)을 제거하고 사용량에 따른 월간 지불(OpEx)로 전환합니다.**', '2026-08-15T18:38:55.547932');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q12', '# 클라우드 컴퓨팅과 가상화
 
 ## 1. 정답 해설 (예 ✓)
 
@@ -196,8 +196,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 - **하이퍼바이저(Hypervisor)**: 가상화를 관리하는 소프트웨어
 - **다중 테넌시(Multi-tenancy)**: 여러 고객이 동일 자원을 공유
-- **격리(Isolation)**: 고객 간 데이터/리소스 분리');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q13', '# Azure 클라우드 서비스 관리 - 플랫폼 독립성
+- **격리(Isolation)**: 고객 간 데이터/리소스 분리', '2026-08-15T18:39:00.784812');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q13', '# Azure 클라우드 서비스 관리 - 플랫폼 독립성
 
 ## 1. 왜 ''아니오''인가?
 
@@ -210,8 +210,8 @@ Azure는 **플랫폼 독립적(Platform-agnostic)** 클라우드 서비스입니
 
 ## 3. 핵심 개념 한 줄 요약
 
-**Azure는 Windows를 포함한 모든 주요 운영체제에서 동일하게 관리 가능한 멀티플랫폼 클라우드 서비스입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q14', '# Azure 명령줄 관리 - AZ-900 해설
+**Azure는 Windows를 포함한 모든 주요 운영체제에서 동일하게 관리 가능한 멀티플랫폼 클라우드 서비스입니다.**', '2026-08-15T18:39:05.100221');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q14', '# Azure 명령줄 관리 - AZ-900 해설
 
 ## 1. **정답이 ''예''인 이유**
 
@@ -229,8 +229,8 @@ Azure는 **Azure CLI(Command Line Interface)** 와 **Azure PowerShell** 같은 �
 
 ---
 
-*AZ-900 팁: Azure의 관리 도구는 "선택지"이지 "제한"이 아닙니다!*');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q15', '# Azure 웹 브라우저 관리 - AZ-900 해설
+*AZ-900 팁: Azure의 관리 도구는 "선택지"이지 "제한"이 아닙니다!*', '2026-08-15T18:39:09.562731');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q15', '# Azure 웹 브라우저 관리 - AZ-900 해설
 
 ## 1️⃣ 정답 근거 (예)
 
@@ -252,8 +252,8 @@ Azure 관리 방식은 3가지입니다:
 - 💻 **Azure CLI** (명령어)
 - 🔧 **PowerShell** (스크립트)
 
-모두 가능하지만, AZ-900에서는 **Portal 기반 접근**을 기본으로 이해하세요!');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q16', '# Azure 지역(Region) - 아니오 해설
+모두 가능하지만, AZ-900에서는 **Portal 기반 접근**을 기본으로 이해하세요!', '2026-08-15T18:39:15.022771');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q16', '# Azure 지역(Region) - 아니오 해설
 
 ## 1. 왜 ''아니오''인가?
 
@@ -267,8 +267,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-**북미는 지역 그룹이며, 그 안에 여러 개의 개별 Azure 지역이 존재합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q17', '# Azure 지역과 데이터 센터 해설
+**북미는 지역 그룹이며, 그 안에 여러 개의 개별 Azure 지역이 존재합니다.**', '2026-08-15T18:39:19.037968');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q17', '# Azure 지역과 데이터 센터 해설
 
 ## 1. 왜 ''예''인가? (공식 개념 기반)
 
@@ -282,8 +282,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-**Azure의 각 지역은 최소 2개 이상의 물리적 데이터 센터로 운영되어 장애 격리 및 고가용성을 보장합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q18', '# Azure 지역 간 데이터 전송 비용 - 해설
+**Azure의 각 지역은 최소 2개 이상의 물리적 데이터 센터로 운영되어 장애 격리 및 고가용성을 보장합니다.**', '2026-08-15T18:39:23.443407');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q18', '# Azure 지역 간 데이터 전송 비용 - 해설
 
 ## 📌 정답: 아니오
 
@@ -303,8 +303,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ### 3. 핵심 요약
 
-**"Azure 지역 간 데이터 전송은 유료이며, 비용 최적화를 위해 리소스를 같은 지역에 배치하는 것이 중요합니다."**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q19', '# Azure 종량제 요금과 CapEx/OpEx 이해
+**"Azure 지역 간 데이터 전송은 유료이며, 비용 최적화를 위해 리소스를 같은 지역에 배치하는 것이 중요합니다."**', '2026-08-15T18:39:27.495732');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q19', '# Azure 종량제 요금과 CapEx/OpEx 이해
 
 ## 1. 왜 ''아니오''인가? (공식 개념 근거)
 
@@ -321,13 +321,13 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3. 핵심 요약
 
-**클라우드 종량제는 초기 투자 없이 사용한 만큼만 지불하는 OpEx 모델입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q20', '# 데이터 센터 전기 요금 = OpEx 해설
+**클라우드 종량제는 초기 투자 없이 사용한 만큼만 지불하는 OpEx 모델입니다.**', '2026-08-15T18:39:32.738601');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q20', '# 데이터 센터 전기 요금 = OpEx 해설
 
 ## 정답: 예
 
-전기 요금은 지속적으로 발생하는 운영 비용(OpEx)의 대표적인 예입니다. 반면 데이터 센터 건물이나 서버 장비 구입은 CapEx에 해당합니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q21', '# CapEx vs OpEx: 자체 데이터 센터 배포
+전기 요금은 지속적으로 발생하는 운영 비용(OpEx)의 대표적인 예입니다. 반면 데이터 센터 건물이나 서버 장비 구입은 CapEx에 해당합니다.', '2026-08-15T18:39:38.275678');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q21', '# CapEx vs OpEx: 자체 데이터 센터 배포
 
 ## 1. 왜 ''예''인가? (AZ-900 공식 개념)
 
@@ -351,8 +351,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 4. 시험 팁
 
-- CapEx = 옛날식(온프레미스), OpEx = 클라우드식으로 기억하면 됩니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q22', '# CapEx vs 클라우드 컴퓨팅 해설
+- CapEx = 옛날식(온프레미스), OpEx = 클라우드식으로 기억하면 됩니다.', '2026-08-15T18:39:43.302786');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q22', '# CapEx vs 클라우드 컴퓨팅 해설
 
 ## 1️⃣ 왜 ''예''인가? (공식 개념 기반)
 
@@ -370,8 +370,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3️⃣ 핵심 요약
 
-**"클라우드는 CapEx 부담을 없애고 OpEx로 전환하는 비용 구조를 제공합니다."**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q23', '# AZ-900 해설: 클라우드 vs 온-프레미스 배포 모델
+**"클라우드는 CapEx 부담을 없애고 OpEx로 전환하는 비용 구조를 제공합니다."**', '2026-08-15T18:39:48.042660');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q23', '# AZ-900 해설: 클라우드 vs 온-프레미스 배포 모델
 
 ## 1. 왜 ''아니오''인가?
 
@@ -384,8 +384,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3. 핵심 한 줄 요약
 
-**클라우드는 온-프레미스보다 훨씬 더 많은 배포 선택지와 확장성 옵션을 제공합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q24', '# 클라우드 컴퓨팅 크기 조정 - 해설
+**클라우드는 온-프레미스보다 훨씬 더 많은 배포 선택지와 확장성 옵션을 제공합니다.**', '2026-08-15T18:39:52.598415');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q24', '# 클라우드 컴퓨팅 크기 조정 - 해설
 
 ## 1. 정답이 ''예''인 이유 (Azure 공식 개념 기반)
 
@@ -399,8 +399,8 @@ Azure의 핵심 장점 중 하나는 **확장성(Scalability)**입니다. 비즈
 
 ## 3. 핵심 개념 (한 줄 요약)
 
-**Azure는 비즈니스 수요 변화에 따라 리소스를 실시간으로 유연하게 확장·축소할 수 있는 클라우드 솔루션입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q25', '# Azure China 문제 해설
+**Azure는 비즈니스 수요 변화에 따라 리소스를 실시간으로 유연하게 확장·축소할 수 있는 클라우드 솔루션입니다.**', '2026-08-15T18:39:57.807694');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q25', '# Azure China 문제 해설
 
 ## 정답: 4번. Microsoft Azure의 고유한 개별 인스턴스입니다.
 
@@ -418,8 +418,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
   → Azure China의 핵심 특징이 아닙니다.
 
 - **4번 ✅ Microsoft Azure의 고유한 개별 인스턴스입니다.**
-  → 정답. Microsoft 공식 문서에서 Azure China를 "physically separated instance of cloud services located in China"로 정의합니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q26', '# AZ-900 문제 해설: 물리적 서버와 퍼블릭 클라우드
+  → 정답. Microsoft 공식 문서에서 Azure China를 "physically separated instance of cloud services located in China"로 정의합니다.', '2026-08-15T18:40:02.428689');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q26', '# AZ-900 문제 해설: 물리적 서버와 퍼블릭 클라우드
 
 ## 1️⃣ 왜 ''아니오''인가?
 
@@ -437,8 +437,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**퍼블릭 클라우드는 공급자의 관리 인프라를 공유하는 것이지, 개인 물리 서버를 추가하는 것이 아닙니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q27', '# AZ-900 해설: 프라이빗 클라우드의 인터넷 연결
+**퍼블릭 클라우드는 공급자의 관리 인프라를 공유하는 것이지, 개인 물리 서버를 추가하는 것이 아닙니다.**', '2026-08-15T18:40:07.077932');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q27', '# AZ-900 해설: 프라이빗 클라우드의 인터넷 연결
 
 ## 📌 왜 ''아니오''인가?
 
@@ -456,8 +456,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 🎯 핵심 요약
 
-**프라이빗 클라우드의 특징은 소유권과 제어권이지, 인터넷 연결 가능 여부가 아닙니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q28', '# 하이브리드 클라우드와 퍼블릭 클라우드 관계
+**프라이빗 클라우드의 특징은 소유권과 제어권이지, 인터넷 연결 가능 여부가 아닙니다.**', '2026-08-15T18:40:11.446849');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q28', '# 하이브리드 클라우드와 퍼블릭 클라우드 관계
 
 ## 1️⃣ 정답 분석 (예 - 맞음)
 
@@ -477,8 +477,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 
 ## 3️⃣ 핵심 요약
 
-**하이브리드 클라우드는 퍼블릭 클라우드를 반드시 포함하는 멀티 환경 통합 방식입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q29', '# AZ-900: 클라우드 모델과 물리적 서버 배포
+**하이브리드 클라우드는 퍼블릭 클라우드를 반드시 포함하는 멀티 환경 통합 방식입니다.**', '2026-08-15T18:40:16.066786');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q29', '# AZ-900: 클라우드 모델과 물리적 서버 배포
 
 ## 정답 해설 (2번)
 
@@ -491,8 +491,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 - **4번**: 하이브리드 클라우드도 물리적 서버 배포 가능하므로 너무 제한적 ❌
 
 ## 핵심 개념
-**소유권과 관리 권한**: 프라이빗/하이브리드는 조직이 직접 관리하는 물리적 인프라 포함 가능, 퍼블릭은 제공자 관리 자원만 사용.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q30', '# Azure 종량제(PAYG) 설명
+**소유권과 관리 권한**: 프라이빗/하이브리드는 조직이 직접 관리하는 물리적 인프라 포함 가능, 퍼블릭은 제공자 관리 자원만 사용.', '2026-08-15T18:40:20.868412');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q30', '# Azure 종량제(PAYG) 설명
 
 ## 1. 진술이 ''예''인 이유
 
@@ -512,18 +512,18 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1
 ## 4. 추가 팁
 
 - 🔑 **시험 포인트**: PAYG는 비용 예측이 어려우므로 예산 알림(Budget Alert) 설정이 중요합니다
-- 💡 **실무 활용**: 개발/테스트 환경에 적합하며, 프로덕션은 예약 인스턴스가 더 경제적입니다');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q31', '# 클라우드 서비스 지불 = OpEx 해설
+- 💡 **실무 활용**: 개발/테스트 환경에 적합하며, 프로덕션은 예약 인스턴스가 더 경제적입니다', '2026-08-15T18:40:25.982490');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q31', '# 클라우드 서비스 지불 = OpEx 해설
 
 ## 정답: 아니오
 
-클라우드 서비스 공급자에게 지불하는 비용은 사용량 기반의 운영 비용(OpEx)입니다. CapEx는 물리적 자산을 직접 구입할 때 발생하는 자본 지출입니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q32', '# 사용량 기반 모델 = OpEx 해설
+클라우드 서비스 공급자에게 지불하는 비용은 사용량 기반의 운영 비용(OpEx)입니다. CapEx는 물리적 자산을 직접 구입할 때 발생하는 자본 지출입니다.', '2026-08-15T18:40:30.665233');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-1_클라우드컴퓨팅_2부 (32문제)', 'q32', '# 사용량 기반 모델 = OpEx 해설
 
 ## 정답: 예
 
-사용량 기반(종량제) 모델로 제공되는 서비스는 운영 비용(OpEx)으로 간주됩니다. 사용한 만큼만 비용을 지불하므로 초기 자본 투자가 없습니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q1', '# Azure AZ-900: 탄력성(Elasticity) 문제 해설
+사용량 기반(종량제) 모델로 제공되는 서비스는 운영 비용(OpEx)으로 간주됩니다. 사용한 만큼만 비용을 지불하므로 초기 자본 투자가 없습니다.', '2026-08-15T18:40:35.955325');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q1', '# Azure AZ-900: 탄력성(Elasticity) 문제 해설
 
 ## ✅ 정답 분석: 3번. 탄력
 
@@ -543,8 +543,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 
 ## 💡 핵심 개념 한 줄 요약
 
-**탄력성 = 변동하는 수요에 따라 자동으로 리소스를 스케일링하여 비용을 절감하는 클라우드의 이점**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q2', '# Azure 심층 방어(Defense in Depth) 전략 해설
+**탄력성 = 변동하는 수요에 따라 자동으로 리소스를 스케일링하여 비용을 절감하는 클라우드의 이점**', '2026-08-15T18:40:40.495302');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q2', '# Azure 심층 방어(Defense in Depth) 전략 해설
 
 ## 1️⃣ 정답 분석
 
@@ -565,8 +565,8 @@ Microsoft Azure의 공식 심층 방어 모델은 **7개 계층**으로 구성�
 
 ## 4️⃣ 학습 팁
 
-Azure 시험에서는 **계층적 보안 구조**를 이해하는 것이 중요합니다. 단순히 계층을 외우기보다 **"바깥쪽부터 안쪽까지 모든 영역을 보호"**한다는 개념을 기억하세요!');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q3', '# AZ-900 클라우드 컴퓨팅 장점 매칭 문제 해설
+Azure 시험에서는 **계층적 보안 구조**를 이해하는 것이 중요합니다. 단순히 계층을 외우기보다 **"바깥쪽부터 안쪽까지 모든 영역을 보호"**한다는 개념을 기억하세요!', '2026-08-15T18:40:45.043092');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q3', '# AZ-900 클라우드 컴퓨팅 장점 매칭 문제 해설
 
 ## 정답
 - **확장성** → **2번**
@@ -590,8 +590,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 ---
 
 ## 핵심 개념 (한 줄 요약)
-**확장성은 자원의 유연한 조정, 민첩성은 빠른 개발·배포 속도**를 의미합니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q4', '# Azure AZ-900: 클라우드 마이그레이션과 관리 책임
+**확장성은 자원의 유연한 조정, 민첩성은 빠른 개발·배포 속도**를 의미합니다.', '2026-08-15T18:40:49.600528');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q4', '# Azure AZ-900: 클라우드 마이그레이션과 관리 책임
 
 ## 📌 정답 분석
 
@@ -623,8 +623,8 @@ Azure 가상 컴퓨터로 마이그레이션하면, **Microsoft가 기본 인프
 
 - ✅ **Azure 책임 분담 모델** 이해 필수
 - ✅ **PaaS/SaaS로 업그레이드할수록 고객 책임 감소**
-- ✅ **IaaS(VM)는 OS 패치 관리가 고객 책임**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q5', '# Azure AZ-900: 가상 머신 크기 조정 개념 해설
+- ✅ **IaaS(VM)는 OS 패치 관리가 고객 책임**', '2026-08-15T18:40:56.064654');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q5', '# Azure AZ-900: 가상 머신 크기 조정 개념 해설
 
 ## ✅ 정답: 1번. 수직 크기 조정
 
@@ -644,8 +644,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 
 ## 💡 핵심 요약
 
-**수직 크기 조정 = 1개 VM의 리소스(CPU/메모리)를 더 강하게 만드는 것**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q6', '# Azure Site Recovery - AZ-900 해설
+**수직 크기 조정 = 1개 VM의 리소스(CPU/메모리)를 더 강하게 만드는 것**', '2026-08-15T18:41:01.932223');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q6', '# Azure Site Recovery - AZ-900 해설
 
 ## 1. 정답이 맞는 이유
 
@@ -659,8 +659,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 
 ## 3. 핵심 요약
 
-**Azure Site Recovery = 재해 상황에서 VM과 데이터를 다른 지역으로 복제·복구하는 재해 복구 서비스**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q7', '# AZ-900 문제 해설: 클라우드 민첩성
+**Azure Site Recovery = 재해 상황에서 VM과 데이터를 다른 지역으로 복제·복구하는 재해 복구 서비스**', '2026-08-15T18:41:07.383875');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q7', '# AZ-900 문제 해설: 클라우드 민첩성
 
 ## ✅ 정답: 2번. 민첩성
 
@@ -679,8 +679,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 ---
 
 ## 🎯 핵심 요약
-**클라우드의 민첩성 = 필요한 만큼 빠르게 리소스를 조정하여 시장 변화에 즉각 대응하는 능력**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q8', '# AZ-900 클라우드 컴퓨팅 장점 매칭 문제 해설
+**클라우드의 민첩성 = 필요한 만큼 빠르게 리소스를 조정하여 시장 변화에 즉각 대응하는 능력**', '2026-08-15T18:41:11.855540');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q8', '# AZ-900 클라우드 컴퓨팅 장점 매칭 문제 해설
 
 ## 정답: 2, 3번
 
@@ -696,8 +696,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 - **4번**: 이는 **수직 확장(Scale-up)**에 해당하며, "확장성" 개념에 맞는 선택지입니다.
 
 ### 3️⃣ 핵심 한 줄 요약
-**고가용성은 장애 대응, 지역 분포는 성능 최적화를 통해 클라우드의 신뢰성을 확보합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q9', '# Azure Advisor와 Azure Backup 기능 구분
+**고가용성은 장애 대응, 지역 분포는 성능 최적화를 통해 클라우드의 신뢰성을 확보합니다.**', '2026-08-15T18:41:16.866481');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q9', '# Azure Advisor와 Azure Backup 기능 구분
 
 ## 1. 왜 ''아니오''인가?
 
@@ -710,8 +710,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 
 ## 3. 핵심 개념 한 줄 요약
 
-**Azure Advisor는 권장사항 제공 도구이고, 리소스 보호 상태 조회는 각 서비스(Backup 등)에서 담당합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q10', '# Azure Advisor 보안 권장 사항과 보안 점수
+**Azure Advisor는 권장사항 제공 도구이고, 리소스 보호 상태 조회는 각 서비스(Backup 등)에서 담당합니다.**', '2026-08-15T18:41:21.190348');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q10', '# Azure Advisor 보안 권장 사항과 보안 점수
 
 ## 1. 왜 ''아니오''인가? (공식 개념 근거)
 
@@ -740,8 +740,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 
 ## 4. 추가 학습 팁
 
-Microsoft Secure Score와 Azure Advisor는 **보안 개선 방향을 함께 제시**하는 도구이므로, 권장사항 이행은 항상 조직의 보안 태세를 긍정적으로 개선합니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q11', '# Azure Advisor 보안 권장 사항 - 해설
+Microsoft Secure Score와 Azure Advisor는 **보안 개선 방향을 함께 제시**하는 도구이므로, 권장사항 이행은 항상 조직의 보안 태세를 긍정적으로 개선합니다.', '2026-08-15T18:41:26.244571');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q11', '# Azure Advisor 보안 권장 사항 - 해설
 
 ## 1️⃣ 왜 ''아니오''인가?
 
@@ -756,8 +756,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 
 ## 3️⃣ 핵심 개념 (한 줄 요약)
 
-**Azure Advisor는 권장사항을 제공할 뿐, 구현은 선택이며 지원 유지와 무관합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q12', '# AZ-900 클라우드 컴퓨팅 장점 매칭 해설
+**Azure Advisor는 권장사항을 제공할 뿐, 구현은 선택이며 지원 유지와 무관합니다.**', '2026-08-15T18:41:30.734448');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q12', '# AZ-900 클라우드 컴퓨팅 장점 매칭 해설
 
 ## 정답 연결
 
@@ -794,8 +794,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 | **지역 분포** | 사용자 가까이 배포 ✓ |
 | **재해 복구** | 장애 시 빠른 복구 (선택지 부재) |
 
----');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q13', '# 자동 크기 조정과 탄력성
+---', '2026-08-15T18:41:36.509040');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-2_클라우드서비스이점_2부 (13문제)', 'q13', '# 자동 크기 조정과 탄력성
 
 ## ✅ 정답: 2번. 탄력성
 
@@ -810,8 +810,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-2
 | **4. 예측 가능성** | 성능 및 비용을 미리 예측하는 것으로, 자동 크기 조정의 목적이 아닙니다 |
 
 ## 💡 핵심 요약
-**탄력성 = 수요 변화에 따라 리소스를 자동으로 증감하는 능력**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q1', '# Azure 가상 컴퓨터의 SQL Server는 PaaS가 아니라 IaaS입니다
+**탄력성 = 수요 변화에 따라 리소스를 자동으로 증감하는 능력**', '2026-08-15T18:41:40.653970');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q1', '# Azure 가상 컴퓨터의 SQL Server는 PaaS가 아니라 IaaS입니다
 
 ## 1. 정답이 ''아니오''인 이유
 
@@ -829,8 +829,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 
 ## 3. 핵심 요약
 
-**"Azure VM에 소프트웨어를 설치하면 = IaaS / 서비스로 제공되면 = PaaS"**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q2', '# Azure SQL Database와 PaaS
+**"Azure VM에 소프트웨어를 설치하면 = IaaS / 서비스로 제공되면 = PaaS"**', '2026-08-15T18:41:44.767828');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q2', '# Azure SQL Database와 PaaS
 
 ## 1️⃣ 왜 ''예''인가? (공식 개념 근거)
 
@@ -855,8 +855,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 
 ---
 
-**✨ 참고**: 대비 서비스인 *Azure Virtual Machines에 SQL Server를 설치*하면 이것은 **IaaS**입니다!');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q3', '# Azure Cosmos DB와 클라우드 서비스 모델
+**✨ 참고**: 대비 서비스인 *Azure Virtual Machines에 SQL Server를 설치*하면 이것은 **IaaS**입니다!', '2026-08-15T18:41:50.156219');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q3', '# Azure Cosmos DB와 클라우드 서비스 모델
 
 ## 📌 정답 분석
 
@@ -872,8 +872,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 
 ## 🎯 핵심 요약
 
-**Azure Cosmos DB는 데이터베이스 플랫폼을 제공하는 PaaS이지, 최종 사용자 소프트웨어인 SaaS가 아닙니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q4', '# AZ-900 시험 해설: PaaS vs 다른 서비스 모델
+**Azure Cosmos DB는 데이터베이스 플랫폼을 제공하는 PaaS이지, 최종 사용자 소프트웨어인 SaaS가 아닙니다.**', '2026-08-15T18:41:54.069597');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q4', '# AZ-900 시험 해설: PaaS vs 다른 서비스 모델
 
 ## ✅ 정답: 3번. PaaS(Platform as a Service)
 
@@ -896,8 +896,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 
 ## 🎯 핵심 요약
 
-**Azure가 소프트웨어 업데이트를 관리한다 = PaaS: 플랫폼 계층을 Azure가 담당한다는 의미입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q5', '# AZ-900 시험 해설: 클라우드 서비스 모델 선택
+**Azure가 소프트웨어 업데이트를 관리한다 = PaaS: 플랫폼 계층을 Azure가 담당한다는 의미입니다.**', '2026-08-15T18:41:58.862095');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q5', '# AZ-900 시험 해설: 클라우드 서비스 모델 선택
 
 ## ✅ 정답: 1번 IaaS(Infrastructure as a Service)
 
@@ -912,8 +912,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 
 ## 🎯 핵심 개념 한 줄 요약
 
-**레거시 시스템은 IaaS로 → 기존 환경 유지 | 신규 개발은 PaaS로 → 개발 속도 향상**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q6', '# Azure AZ-900: PaaS 솔루션 선택 문제 해설
+**레거시 시스템은 IaaS로 → 기존 환경 유지 | 신규 개발은 PaaS로 → 개발 속도 향상**', '2026-08-15T18:42:03.021438');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q6', '# Azure AZ-900: PaaS 솔루션 선택 문제 해설
 
 ## 1️⃣ **정답이 맞는 이유**
 
@@ -935,8 +935,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 
 ## 3️⃣ **핵심 개념 (한 줄)**
 
-**PaaS는 개발자가 인프라 관리 없이 애플리케이션만 배포·운영하는 완전 관리형 서비스입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q7', '# Azure Cosmos DB와 클라우드 서비스 모델
+**PaaS는 개발자가 인프라 관리 없이 애플리케이션만 배포·운영하는 완전 관리형 서비스입니다.**', '2026-08-15T18:42:07.696677');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q7', '# Azure Cosmos DB와 클라우드 서비스 모델
 
 ## ✅ 정답: 1번 PaaS(Platform as a Service)
 
@@ -954,8 +954,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 | **4. SaaS** | Outlook, Microsoft 365처럼 완성된 소프트웨어를 직접 사용하는 서비스 |
 
 ## 🎯 핵심 개념
-**PaaS는 개발자가 애플리케이션만 만들고, 기본 인프라와 플랫폼은 클라우드 제공자가 관리하는 서비스 모델입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q8', '# Azure Functions와 PaaS 모델
+**PaaS는 개발자가 애플리케이션만 만들고, 기본 인프라와 플랫폼은 클라우드 제공자가 관리하는 서비스 모델입니다.**', '2026-08-15T18:42:12.601518');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q8', '# Azure Functions와 PaaS 모델
 
 ## 1. 진술이 ''예''인 이유
 
@@ -974,8 +974,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 
 ## 3. 핵심 개념 (한 줄 요약)
 
-**Azure Functions는 코드 실행 환경만 제공하고 인프라 관리는 Azure가 담당하는 PaaS 서비스입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q9', '# Microsoft 365와 SaaS 모델
+**Azure Functions는 코드 실행 환경만 제공하고 인프라 관리는 Azure가 담당하는 PaaS 서비스입니다.**', '2026-08-15T18:42:16.752393');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q9', '# Microsoft 365와 SaaS 모델
 
 ## 1. 왜 ''예''인가?
 
@@ -989,8 +989,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 
 ## 3. 핵심 요약
 
-💡 **Microsoft 365는 사용자가 설치 없이 구독으로 즉시 이용하는 완전 관리형 SaaS 서비스입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q10', '# Azure 가상 머신과 IaaS 모델
+💡 **Microsoft 365는 사용자가 설치 없이 구독으로 즉시 이용하는 완전 관리형 SaaS 서비스입니다.**', '2026-08-15T18:42:20.873188');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('1-3_클라우드서비스유형_2부 (10문제)', 'q10', '# Azure 가상 머신과 IaaS 모델
 
 ## 1. 진술이 ''예''인 이유
 
@@ -1018,8 +1018,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('1-3
 |----------|--------|----------|
 | **IaaS** | OS, 앱 담당 | **Azure VM** ✓ |
 | **PaaS** | 애플리케이션만 담당 | App Service |
-| **SaaS** | 모두 제공사가 담당 | Microsoft 365 |');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q1', '# Azure AZ-900 문제 해설
+| **SaaS** | 모두 제공사가 담당 | Microsoft 365 |', '2026-08-15T18:42:27.706105');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q1', '# Azure AZ-900 문제 해설
 
 ## 정답: 3번. Azure 정책 ✓
 
@@ -1038,8 +1038,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 ---
 
 ## 핵심 개념 한 줄 요약
-**Azure 정책은 대규모 환경에서 조직의 거버넌스 규칙을 자동으로 강제 및 감시하는 정책 엔진입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q2', '# Azure AZ-900 해설: 리소스 그룹과 접근 권한 관리
+**Azure 정책은 대규모 환경에서 조직의 거버넌스 규칙을 자동으로 강제 및 감시하는 정책 엔진입니다.**', '2026-08-15T18:42:32.665526');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q2', '# Azure AZ-900 해설: 리소스 그룹과 접근 권한 관리
 
 ## ✅ 정답: 3번 (동일한 리소스 그룹에 배포)
 
@@ -1057,8 +1057,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 | **4번: 동일한 가용성 영역** | 가용성 영역은 고가용성을 위한 개념으로, 접근 제어와 관련 없습니다. |
 
 ## 🎯 핵심 개념
-**리소스 그룹은 Azure의 권한 관리(RBAC) 적용의 최소 단위로, 같은 그룹 내 모든 리소스에 일괄적으로 접근 권한을 위임할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q3', '# Azure 리소스 그룹과 비용 관계 해설
+**리소스 그룹은 Azure의 권한 관리(RBAC) 적용의 최소 단위로, 같은 그룹 내 모든 리소스에 일괄적으로 접근 권한을 위임할 수 있습니다.**', '2026-08-15T18:42:37.478119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q3', '# Azure 리소스 그룹과 비용 관계 해설
 
 ## 1️⃣ 정답이 ''아니오''인 이유
 
@@ -1072,8 +1072,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3️⃣ 핵심 개념 (한 줄 요약)
 
-**리소스 그룹은 무료 관리 도구이며, 비용은 그룹 내의 실제 Azure 서비스 사용에만 발생합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q4', '# Azure 데이터 전송 비용 해설
+**리소스 그룹은 무료 관리 도구이며, 비용은 그룹 내의 실제 Azure 서비스 사용에만 발생합니다.**', '2026-08-15T18:42:42.281687');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q4', '# Azure 데이터 전송 비용 해설
 
 ## 1. 정답이 ''예''인 이유
 
@@ -1087,8 +1087,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 요약
 
-**Azure 인바운드는 무료, 아웃바운드는 유료 → 실제 운영 중 양방향 전송으로 비용 발생**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q5', '# Azure 데이터 전송 비용 - VPN을 통한 온-프레미스 데이터 복사
+**Azure 인바운드는 무료, 아웃바운드는 유료 → 실제 운영 중 양방향 전송으로 비용 발생**', '2026-08-15T18:42:47.394920');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q5', '# Azure 데이터 전송 비용 - VPN을 통한 온-프레미스 데이터 복사
 
 ## 1️⃣ 왜 ''아니오''인가? (공식 개념 근거)
 
@@ -1106,8 +1106,8 @@ Azure는 **아웃바운드 데이터 전송(Egress)**에만 비용을 청구합�
 
 ---
 
-*💡 팁: 비용이 청구되려면 "인터넷으로" 나가야 한다고 기억하세요!*');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q6', '# Azure Blueprint와 Resource Manager 템플릿의 관계
+*💡 팁: 비용이 청구되려면 "인터넷으로" 나가야 한다고 기억하세요!*', '2026-08-15T18:42:53.587140');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q6', '# Azure Blueprint와 Resource Manager 템플릿의 관계
 
 ## 정답: 예 (올바른 진술)
 
@@ -1127,8 +1127,8 @@ Azure Blueprint를 통해 ARM 템플릿을 포함한 전체 환경(정책, 역�
 
 ## 요약
 
-**ARM 템플릿을 Azure Blueprint에 추가하는 것은 가능하며, 이것이 Blueprint의 핵심 기능 중 하나입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q7', '# Azure Blueprint 할당 범위 해설
+**ARM 템플릿을 Azure Blueprint에 추가하는 것은 가능하며, 이것이 Blueprint의 핵심 기능 중 하나입니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q7', '# Azure Blueprint 할당 범위 해설
 
 ## 정답: 아니오 (틀린 진술)
 
@@ -1149,8 +1149,8 @@ Blueprint 할당 = 구독 또는 관리 그룹 수준. 리소스 그룹 수준�
 
 ## 요약
 
-**Azure Blueprint는 구독 또는 관리 그룹에만 할당할 수 있으며, 리소스 그룹에 직접 할당하는 것은 지원되지 않습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q8', '# Azure Blueprint와 권한 부여
+**Azure Blueprint는 구독 또는 관리 그룹에만 할당할 수 있으며, 리소스 그룹에 직접 할당하는 것은 지원되지 않습니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q8', '# Azure Blueprint와 권한 부여
 
 ## 1. 왜 ''예''인가?
 
@@ -1167,8 +1167,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ---
 
-💡 **기억하기**: Blueprint = 리소스 + 정책 + **권한** 을 한 번에 배포하는 통합 도구');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q9', '# AZ-900 문제 해설: 가용성 영역(Availability Zones)
+💡 **기억하기**: Blueprint = 리소스 + 정책 + **권한** 을 한 번에 배포하는 통합 도구', '2026-08-15T18:43:07.438197');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q9', '# AZ-900 문제 해설: 가용성 영역(Availability Zones)
 
 ## 1️⃣ 정답이 ''아니오''인 이유
 
@@ -1182,8 +1182,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3️⃣ 핵심 요약
 
-**"가용성 영역은 Azure의 모든 지역이 아닌, 특정 지역에서만 선택적으로 지원됩니다."**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q10', '# AZ-900 해설: 가용성 영역의 VM 유형
+**"가용성 영역은 Azure의 모든 지역이 아닌, 특정 지역에서만 선택적으로 지원됩니다."**', '2026-08-15T18:43:11.800540');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q10', '# AZ-900 해설: 가용성 영역의 VM 유형
 
 ## 1️⃣ 정답이 ''아니오''인 이유
 
@@ -1197,8 +1197,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**가용성 영역은 VM을 배포하는 물리적 위치이며, 모든 지원 OS(Windows, Linux 등)를 수용합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q11', '# 가용성 영역(Availability Zones) 해설
+**가용성 영역은 VM을 배포하는 물리적 위치이며, 모든 지원 OS(Windows, Linux 등)를 수용합니다.**', '2026-08-15T18:43:15.716970');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q11', '# 가용성 영역(Availability Zones) 해설
 
 ## 1. 왜 ''아니오''인가?
 
@@ -1211,8 +1211,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-**가용성 영역 = 같은 지역 내 고가용성 / 지역 간 복제 = 재해 복구**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q12', '# Azure Advisor 맞춤화 권장 사항 해설
+**가용성 영역 = 같은 지역 내 고가용성 / 지역 간 복제 = 재해 복구**', '2026-08-15T18:43:19.604440');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q12', '# Azure Advisor 맞춤화 권장 사항 해설
 
 ## 정답: 예 (올바른 진술)
 
@@ -1233,8 +1233,8 @@ Azure Advisor는 단순한 일반적인 권장 사항이 아니라, **사용자�
 
 ## 요약
 
-**Azure Advisor는 맞춤화된 권장 사항을 제공합니다 - 이는 AZ-900의 핵심 개념입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q13', '# Azure Advisor의 비용 권장 사항
+**Azure Advisor는 맞춤화된 권장 사항을 제공합니다 - 이는 AZ-900의 핵심 개념입니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q13', '# Azure Advisor의 비용 권장 사항
 
 ## 1️⃣ 정답 이유 (공식 개념 기반)
 
@@ -1249,8 +1249,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3️⃣ 핵심 한 줄 요약
 
-**Azure Advisor는 VM의 사용 패턴을 분석하여 비용 절감 기회를 자동으로 식별하고 권장합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q14', '# Azure Advisor 범위 설명
+**Azure Advisor는 VM의 사용 패턴을 분석하여 비용 절감 기회를 자동으로 식별하고 권장합니다.**', '2026-08-15T18:43:28.664428');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q14', '# Azure Advisor 범위 설명
 
 ## 1. 왜 ''아니오''인가?
 
@@ -1263,8 +1263,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 개념 (한 줄 요약)
 
-**Azure Advisor = 구독별 독립적 분석 도구 (다중 구독 통합 분석 불가)**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q15', '# Azure 삭제 잠금(Delete Lock) 해설
+**Azure Advisor = 구독별 독립적 분석 도구 (다중 구독 통합 분석 불가)**', '2026-08-15T18:43:32.997868');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q15', '# Azure 삭제 잠금(Delete Lock) 해설
 
 ## 1️⃣ 정답 근거: 왜 ''예''인가?
 
@@ -1278,8 +1278,8 @@ Azure의 **삭제 잠금(CanNotDelete)** 은 **리소스 그룹, 리소스, 구�
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**Azure 리소스는 구독/리소스 그룹/리소스 각 수준에서 여러 삭제 잠금을 동시에 가질 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q16', '# Azure 리소스 그룹 잠금 상속 해설
+**Azure 리소스는 구독/리소스 그룹/리소스 각 수준에서 여러 삭제 잠금을 동시에 가질 수 있습니다.**', '2026-08-15T18:43:37.689900');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q16', '# Azure 리소스 그룹 잠금 상속 해설
 
 ## 1. 왜 ''예''인가?
 
@@ -1295,8 +1295,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 한 줄 요약
 
-**리소스 그룹의 잠금은 자동 상속되므로, 그룹 수준에서 설정하면 모든 하위 리소스가 동일한 보호를 받습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q17', '# Azure 리소스 잠금(Lock) - 해설
+**리소스 그룹의 잠금은 자동 상속되므로, 그룹 수준에서 설정하면 모든 하위 리소스가 동일한 보호를 받습니다.**', '2026-08-15T18:43:41.744912');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q17', '# Azure 리소스 잠금(Lock) - 해설
 
 ## 1. 정답 이유 (공식 개념 기반)
 
@@ -1314,8 +1314,8 @@ Azure의 **관리 잠금은 독립적으로 작동**합니다. 읽기 전용(Rea
 
 ---
 
-**TIP**: AZ-900에서는 "리소스 그룹" 수준에서도 잠금을 적용할 수 있고, 상위 레벨의 잠금은 자식 리소스에도 상속된다는 점도 함께 기억하세요!');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q18', '# Azure 리소스 액세스 - 리소스 그룹 경계 문제 해설
+**TIP**: AZ-900에서는 "리소스 그룹" 수준에서도 잠금을 적용할 수 있고, 상위 레벨의 잠금은 자식 리소스에도 상속된다는 점도 함께 기억하세요!', '2026-08-15T18:43:46.811555');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q18', '# Azure 리소스 액세스 - 리소스 그룹 경계 문제 해설
 
 ## 1. 정답이 ''아니오''인 이유
 
@@ -1329,8 +1329,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-**리소스 그룹은 관리의 편의를 위한 논리적 그룹일 뿐, 리소스 간 액세스를 제어하지 않습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q19', '# Azure 리소스 그룹 삭제 - 해설
+**리소스 그룹은 관리의 편의를 위한 논리적 그룹일 뿐, 리소스 간 액세스를 제어하지 않습니다.**', '2026-08-15T18:43:51.416144');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q19', '# Azure 리소스 그룹 삭제 - 해설
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -1348,8 +1348,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ---
 
-이 개념은 **비용 관리**와 **재해 복구** 시나리오에서 매우 중요하니 반드시 기억하세요! 💡');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q20', '# 리소스 그룹과 Azure 지역
+이 개념은 **비용 관리**와 **재해 복구** 시나리오에서 매우 중요하니 반드시 기억하세요! 💡', '2026-08-15T18:43:56.217085');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q20', '# 리소스 그룹과 Azure 지역
 
 ## 1. 정답 근거: 왜 ''예''인가?
 
@@ -1362,8 +1362,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-**리소스 그룹은 논리적 관리 단위이지, 지역을 강제하는 물리적 경계가 아닙니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q21', '# Microsoft 계정으로 여러 Azure 구독 관리
+**리소스 그룹은 논리적 관리 단위이지, 지역을 강제하는 물리적 경계가 아닙니다.**', '2026-08-15T18:44:00.198872');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q21', '# Microsoft 계정으로 여러 Azure 구독 관리
 
 ## 정답: 예 (올바른 진술)
 
@@ -1385,8 +1385,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 요약
 
-**하나의 Microsoft 계정으로 여러 Azure 구독을 관리할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q22', '# Azure 구독 통합에 대한 해설
+**하나의 Microsoft 계정으로 여러 Azure 구독을 관리할 수 있습니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q22', '# Azure 구독 통합에 대한 해설
 
 ## 1️⃣ 정답이 ''예''인 이유
 
@@ -1403,8 +1403,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3️⃣ 핵심 한 줄 요약
 
-**여러 Azure 구독은 청구 계정 통합, 리소스 이동, 구독 통합 기능을 통해 하나로 관리할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q23', '# Azure 구독(Subscription) - 다중 구독 사용 가능 여부
+**여러 Azure 구독은 청구 계정 통합, 리소스 이동, 구독 통합 기능을 통해 하나로 관리할 수 있습니다.**', '2026-08-15T18:44:10.319939');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q23', '# Azure 구독(Subscription) - 다중 구독 사용 가능 여부
 
 ## 1️⃣ 정답: **예** (왜 맞는가?)
 
@@ -1441,8 +1441,8 @@ Azure에서는 **하나의 회사(조직)가 여러 개의 구독을 소유하�
     └─ 📦 리소스 그룹 D
 ```
 
-**→ 결론: 같은 회사가 여러 구독의 리소스를 활용 가능!** ✅');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q24', '# Azure 개인 데이터 관리 및 개인정보처리방침
+**→ 결론: 같은 회사가 여러 구독의 리소스를 활용 가능!** ✅', '2026-08-15T18:44:16.670266');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q24', '# Azure 개인 데이터 관리 및 개인정보처리방침
 
 ## ✅ 정답: 4번. Microsoft 개인정보처리방침
 
@@ -1462,8 +1462,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 🎯 핵심 개념 (한 줄 요약)
 
-**개인 데이터 수집 및 사용 목적을 알아야 할 때 → Microsoft 개인정보처리방침을 확인하세요.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q25', '# Azure 사용자 지정 역할 - 해설
+**개인 데이터 수집 및 사용 목적을 알아야 할 때 → Microsoft 개인정보처리방침을 확인하세요.**', '2026-08-15T18:44:22.192336');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q25', '# Azure 사용자 지정 역할 - 해설
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -1477,8 +1477,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3️⃣ 핵심 한 줄 요약
 
-**Azure에서는 기본 제공 역할뿐만 아니라 조직 맞춤형 사용자 지정 역할을 만들어 세밀한 접근 제어를 구현할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q26', '# Azure 역할 할당 - AZ-900 해설
+**Azure에서는 기본 제공 역할뿐만 아니라 조직 맞춤형 사용자 지정 역할을 만들어 세밀한 접근 제어를 구현할 수 있습니다.**', '2026-08-15T18:44:26.762589');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q26', '# Azure 역할 할당 - AZ-900 해설
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -1496,8 +1496,8 @@ Azure의 **RBAC(역할 기반 접근 제어)** 시스템은 **단일 사용자 �
 
 ---
 
-💡 *이는 Azure의 유연한 권한 관리 체계를 이해하는 핵심 개념입니다!*');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q27', '# Azure 리소스 그룹과 역할 할당 해설
+💡 *이는 Azure의 유연한 권한 관리 체계를 이해하는 핵심 개념입니다!*', '2026-08-15T18:44:30.924396');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q27', '# Azure 리소스 그룹과 역할 할당 해설
 
 ## 1. 왜 ''예''인가? (공식 개념 근거)
 
@@ -1511,8 +1511,8 @@ Azure의 **RBAC(Role-Based Access Control, 역할 기반 접근 제어)** 시스
 
 ## 3. 핵심 개념 한 줄 요약
 
-**Azure RBAC는 역할의 다중 할당을 지원하므로, 리소스 그룹의 소유자 역할을 필요한 만큼 여러 사용자에게 부여할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q28', '# Azure 가용성 영역(Availability Zones) - AZ-900 해설
+**Azure RBAC는 역할의 다중 할당을 지원하므로, 리소스 그룹의 소유자 역할을 필요한 만큼 여러 사용자에게 부여할 수 있습니다.**', '2026-08-15T18:44:35.085366');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q28', '# Azure 가용성 영역(Availability Zones) - AZ-900 해설
 
 ## 1. 정답 근거: 왜 ''예''인가?
 
@@ -1530,8 +1530,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-**🎯 가용성 영역은 같은 지역 내 독립적인 데이터 센터이므로, VM을 여러 AZ에 배포하면 단일 센터 장애 시에도 서비스 연속성을 보장합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q29', '# Azure 가용성 영역(Availability Zone)과 지역 오류 보호
+**🎯 가용성 영역은 같은 지역 내 독립적인 데이터 센터이므로, VM을 여러 AZ에 배포하면 단일 센터 장애 시에도 서비스 연속성을 보장합니다.**', '2026-08-15T18:44:39.736052');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q29', '# Azure 가용성 영역(Availability Zone)과 지역 오류 보호
 
 ## 📌 왜 ''아니오''인가?
 
@@ -1549,8 +1549,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 💡 핵심 한 줄 요약
 
-**가용성 영역은 지역 내 장애 대응이고, 지역 오류는 지역 간 복제로만 보호할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q30', '# Azure 가용성 영역과 관리 디스크 보호
+**가용성 영역은 지역 내 장애 대응이고, 지역 오류는 지역 간 복제로만 보호할 수 있습니다.**', '2026-08-15T18:44:44.245599');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q30', '# Azure 가용성 영역과 관리 디스크 보호
 
 ## 1. 왜 ''예''인가?
 
@@ -1563,8 +1563,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 한 줄 요약
 
-> **가용성 영역을 활용한 영역 중복 저장소는 데이터 센터 전체 장애로부터 관리 디스크를 보호하는 가장 강력한 방어 메커니즘입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q31', '# Azure 리소스 분할 구조 해설
+> **가용성 영역을 활용한 영역 중복 저장소는 데이터 센터 전체 장애로부터 관리 디스크를 보호하는 가장 강력한 방어 메커니즘입니다.**', '2026-08-15T18:44:48.344402');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q31', '# Azure 리소스 분할 구조 해설
 
 ## ✅ 정답: 3번. 복수의 구독
 
@@ -1583,8 +1583,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 ---
 
 ## 💡 핵심 요약
-**구독은 Azure의 최상위 관리 및 청구 단위로, 조직 구조에 따른 완전한 리소스 분리를 가능하게 합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q32', '# Microsoft Trust Center와 Microsoft Defender 관계 해설
+**구독은 Azure의 최상위 관리 및 청구 단위로, 조직 구조에 따른 완전한 리소스 분리를 가능하게 합니다.**', '2026-08-15T18:44:53.736191');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q32', '# Microsoft Trust Center와 Microsoft Defender 관계 해설
 
 ## 정답: 아니오 (틀린 진술)
 
@@ -1608,8 +1608,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 요약
 
-**Trust Center는 독립적인 공개 웹사이트이며, Microsoft Defender for Cloud와는 별개의 제품입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q33', '# Trust Center 접근 권한 - 해설
+**Trust Center는 독립적인 공개 웹사이트이며, Microsoft Defender for Cloud와는 별개의 제품입니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q33', '# Trust Center 접근 권한 - 해설
 
 ## 1. 정답이 ''아니오''인 이유
 
@@ -1622,8 +1622,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-🔑 **Trust Center는 Azure 보안 및 규정 준수 정보를 제공하는 공개 웹사이트로, 구독 여부와 관계없이 누구나 접근할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q34', '# Trust Center와 Azure 규정 준수
+🔑 **Trust Center는 Azure 보안 및 규정 준수 정보를 제공하는 공개 웹사이트로, 구독 여부와 관계없이 누구나 접근할 수 있습니다.**', '2026-08-15T18:45:02.382599');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q34', '# Trust Center와 Azure 규정 준수
 
 ## 1. 왜 ''예''인가? (공식 개념 근거)
 
@@ -1640,8 +1640,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ---
 
-*AZ-900 시험에서는 Azure의 거버넌스 및 규정 준수 도구들을 구분하는 것이 중요합니다!*');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q35', '# Azure AD 조인과 로그인 자격 증명
+*AZ-900 시험에서는 Azure의 거버넌스 및 규정 준수 도구들을 구분하는 것이 중요합니다!*', '2026-08-15T18:45:06.767570');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q35', '# Azure AD 조인과 로그인 자격 증명
 
 ## 1. 왜 ''예''인가? (공식 개념)
 
@@ -1656,8 +1656,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-**Windows 디바이스가 Azure AD에 조인되어야만 Azure AD 자격 증명으로 로컬 로그인이 가능합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q36', '# Azure AD 사용자 구성 방식 해설
+**Windows 디바이스가 Azure AD에 조인되어야만 Azure AD 자격 증명으로 로컬 로그인이 가능합니다.**', '2026-08-15T18:45:11.242663');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q36', '# Azure AD 사용자 구성 방식 해설
 
 ## 1. 정답이 ''아니오''인 이유
 
@@ -1672,8 +1672,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3. 핵심 한 줄 요약
 
-**Azure AD 테넌트에서 사용자를 중앙집중식으로 관리하고, 리소스 그룹은 리소스에만 적용되는 관리 도구입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q37', '# Azure AD 동적 구성원 규칙 - 해설
+**Azure AD 테넌트에서 사용자를 중앙집중식으로 관리하고, 리소스 그룹은 리소스에만 적용되는 관리 도구입니다.**', '2026-08-15T18:45:16.578457');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-1_Azure핵심아키텍처_2부 (37문제)', 'q37', '# Azure AD 동적 구성원 규칙 - 해설
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -1686,8 +1686,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-1
 
 ## 3️⃣ 핵심 한 줄 요약
 
-**Azure AD의 동적 그룹 구성원 규칙은 특정 사용자 속성 조건에 따라 그룹 멤버십을 자동으로 관리하는 기능입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q1', '# Azure 서버리스 컴퓨팅 - AZ-900 해설
+**Azure AD의 동적 그룹 구성원 규칙은 특정 사용자 속성 조건에 따라 그룹 멤버십을 자동으로 관리하는 기능입니다.**', '2026-08-15T18:45:22.238602');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q1', '# Azure 서버리스 컴퓨팅 - AZ-900 해설
 
 ## ✅ 정답: 3번. 애저 펑션 (Azure Functions)
 
@@ -1706,8 +1706,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 ---
 
 ## 🎯 핵심 개념 한 줄 요약
-**Azure Functions = 서버 관리 없이 이벤트 기반으로 코드를 실행하고 사용량만큼만 비용 지불하는 서버리스 컴퓨팅 서비스**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q2', '# AZ-900 문제 해설: VPN 어플라이언스 정의
+**Azure Functions = 서버 관리 없이 이벤트 기반으로 코드를 실행하고 사용량만큼만 비용 지불하는 서버리스 컴퓨팅 서비스**', '2026-08-15T18:45:26.299197');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q2', '# AZ-900 문제 해설: VPN 어플라이언스 정의
 
 ## ⚠️ 문제 검토
 먼저 명확히 할 점은 **문제의 선택지와 정답이 맞지 않는다**는 것입니다. 실제 올바른 정답은 문제에 제시된 선택지 중 **로컬 네트워크 게이트웨이(Local Network Gateway)**입니다.
@@ -1734,8 +1734,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 ---
 
 ## 💡 핵심 개념 한 줄 요약
-**로컬 네트워크 게이트웨이 = Azure가 온-프레미스 VPN 어플라이언스를 인식하기 위한 논리적 표현**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q3', '# Azure ExpressRoute 데이터 전송 요금 해설
+**로컬 네트워크 게이트웨이 = Azure가 온-프레미스 VPN 어플라이언스를 인식하기 위한 논리적 표현**', '2026-08-15T18:45:31.376776');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q3', '# Azure ExpressRoute 데이터 전송 요금 해설
 
 ## 1. 왜 ''예''인가? (공식 개념 근거)
 
@@ -1749,8 +1749,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 ## 3. 핵심 개념 한 줄 요약
 
-**"ExpressRoute의 인바운드 데이터 트래픽은 무료이지만, 아웃바운드 트래픽은 유료이다."**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q4', '# Azure 데이터 전송 요금 - 정확한 이해
+**"ExpressRoute의 인바운드 데이터 트래픽은 무료이지만, 아웃바운드 트래픽은 유료이다."**', '2026-08-15T18:45:35.809134');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q4', '# Azure 데이터 전송 요금 - 정확한 이해
 
 ## 1. 왜 ''아니오''인가?
 
@@ -1772,8 +1772,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 ## 3. 핵심 요약
 
-**"Azure에서 나가는(아웃바운드) 모든 트래픽은 데이터 전송 요금이 발생합니다."**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q5', '# Azure 지역 내 데이터 전송 비용 - 해설
+**"Azure에서 나가는(아웃바운드) 모든 트래픽은 데이터 전송 요금이 발생합니다."**', '2026-08-15T18:45:40.156887');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q5', '# Azure 지역 내 데이터 전송 비용 - 해설
 
 ## 1️⃣ 정답 근거: 예 ✅
 
@@ -1791,8 +1791,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 ## 3️⃣ 핵심 개념 (한 줄 요약)
 
-💡 **"같은 Azure 지역 = 데이터 전송 무료 / 다른 지역 또는 인터넷 = 유료"**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q6', '# Software Assurance와 Azure Hybrid Benefit
+💡 **"같은 Azure 지역 = 데이터 전송 무료 / 다른 지역 또는 인터넷 = 유료"**', '2026-08-15T18:45:45.127642');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q6', '# Software Assurance와 Azure Hybrid Benefit
 
 ## 정답: 4번. Software Assurance
 
@@ -1811,8 +1811,8 @@ Azure Hybrid Benefit = Software Assurance가 있는 라이선스 → Azure에서
 
 ## 요약
 
-**Software Assurance가 적용된 Windows Server/SQL Server 라이선스는 Azure VM에서 재사용(Azure Hybrid Benefit)할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q7', '# 온-프레미스 서버 Azure 관리 해설
+**Software Assurance가 적용된 Windows Server/SQL Server 라이선스는 Azure VM에서 재사용(Azure Hybrid Benefit)할 수 있습니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q7', '# 온-프레미스 서버 Azure 관리 해설
 
 ## 정답: 2번. Azure Arc
 
@@ -1830,8 +1830,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
   → CI/CD 파이프라인 실행용 에이전트로, 서버 관리 서비스가 아닙니다.
 
 - **4번 ❌ Azure VPN Gateway**
-  → 온-프레미스 네트워크와 Azure VNet을 연결하는 VPN 게이트웨이입니다. 서버 관리와 무관합니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q8', '# ExpressRoute와 BGP(Border Gateway Protocol) 해설
+  → 온-프레미스 네트워크와 Azure VNet을 연결하는 VPN 게이트웨이입니다. 서버 관리와 무관합니다.', '2026-08-15T18:45:55.825413');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q8', '# ExpressRoute와 BGP(Border Gateway Protocol) 해설
 
 ## 정답: 예 (올바른 진술)
 
@@ -1850,8 +1850,8 @@ ExpressRoute = **전용 프라이빗 연결** + **BGP 라우팅** + **인터넷 
 
 ## 요약
 
-**ExpressRoute는 BGP를 사용하여 라우팅 정보를 교환합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q9', '# ExpressRoute와 인터넷 연결에 관한 해설
+**ExpressRoute는 BGP를 사용하여 라우팅 정보를 교환합니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q9', '# ExpressRoute와 인터넷 연결에 관한 해설
 
 ## 1. 정답이 ''아니오''인 이유
 
@@ -1865,8 +1865,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 ## 3. 핵심 개념 한 줄 요약
 
-**ExpressRoute = 인터넷 우회, 전용 프라이빗 회선을 통한 고성능 연결**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q10', '# 복수의 ExpressRoute 회로 구성 해설
+**ExpressRoute = 인터넷 우회, 전용 프라이빗 회선을 통한 고성능 연결**', '2026-08-15T18:46:06.134612');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q10', '# 복수의 ExpressRoute 회로 구성 해설
 
 ## 정답: 예 (올바른 진술)
 
@@ -1885,8 +1885,8 @@ Microsoft는 실제로 ExpressRoute의 고가용성을 위해 **복수의 회로
 
 ## 요약
 
-**여러 ExpressRoute 회로를 구성하여 고가용성과 중복성을 확보할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q11', '# Azure Virtual Desktop 세션 호스트 OS 지원
+**여러 ExpressRoute 회로를 구성하여 고가용성과 중복성을 확보할 수 있습니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q11', '# Azure Virtual Desktop 세션 호스트 OS 지원
 
 ## 📌 정답 분석
 
@@ -1905,8 +1905,8 @@ Azure Virtual Desktop 세션 호스트는 **Windows 10, Windows 11뿐만 아니�
 
 ## 💡 핵심 개념 (한 줄 요약)
 
-**Azure Virtual Desktop은 클라이언트 OS(Windows 10/11)와 서버 OS(Windows Server)를 모두 세션 호스트로 지원합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q12', '# Azure Virtual Desktop 동시 사용자 연결 문제 해설
+**Azure Virtual Desktop은 클라이언트 OS(Windows 10/11)와 서버 OS(Windows Server)를 모두 세션 호스트로 지원합니다.**', '2026-08-15T18:46:14.791713');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q12', '# Azure Virtual Desktop 동시 사용자 연결 문제 해설
 
 ## 1️⃣ 왜 ''아니오''인가?
 
@@ -1929,8 +1929,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 ---
 
-💡 **시험 팁:** AVD 문제는 항상 "**리소스 사양 → 동시 사용자 수**" 순서로 생각하세요!');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q13', '# Azure Virtual Desktop (AVD) - 해설
+💡 **시험 팁:** AVD 문제는 항상 "**리소스 사양 → 동시 사용자 수**" 순서로 생각하세요!', '2026-08-15T18:46:19.586383');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q13', '# Azure Virtual Desktop (AVD) - 해설
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -1953,8 +1953,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 ---
 
-> ✅ **기억하세요**: AVD는 Azure 컴퓨팅 서비스 중에서 *사용자의 작업 환경 전체*(데스크톱+앱)를 원격으로 제공하는 전문 솔루션입니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q14', '# Azure 복합 SLA 계산 문제 해설
+> ✅ **기억하세요**: AVD는 Azure 컴퓨팅 서비스 중에서 *사용자의 작업 환경 전체*(데스크톱+앱)를 원격으로 제공하는 전문 솔루션입니다.', '2026-08-15T18:46:24.718821');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q14', '# Azure 복합 SLA 계산 문제 해설
 
 ## 1. 정답이 맞는 이유
 
@@ -1974,8 +1974,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 - 복합 SLA는 **항상 개별 SLA보다 낮거나 같습니다**
 - 서비스가 많을수록 복합 SLA는 더 낮아집니다
-- 가용성 향상을 위해 **중복성(Redundancy)** 구성이 필요합니다');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q15', '# Azure 가상 머신 비용 청구 - AZ-900 해설
+- 가용성 향상을 위해 **중복성(Redundancy)** 구성이 필요합니다', '2026-08-15T18:46:30.015659');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q15', '# Azure 가상 머신 비용 청구 - AZ-900 해설
 
 ## 📌 정답: 4번. 스토리지
 
@@ -1988,8 +1988,8 @@ Azure VM이 **중지됨(할당 취소됨)** 상태일 때, VM에 연결된 **관
 - **3번 네트워킹**: 공용 IP를 사용하면 추가 요금이 있지만, 일반적으로 할당 취소되면 청구 중단
 
 ### 💡 핵심 개념
-**VM을 중지하면 계산 비용은 절감되지만, 디스크는 남아있으므로 스토리지 비용은 계속 청구됩니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q16', '# AZ-900 시험 해설: Azure 가상 머신 네트워크 격리
+**VM을 중지하면 계산 비용은 절감되지만, 디스크는 남아있으므로 스토리지 비용은 계속 청구됩니다.**', '2026-08-15T18:46:34.290403');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q16', '# AZ-900 시험 해설: Azure 가상 머신 네트워크 격리
 
 ## ✅ 정답 분석 (1번)
 
@@ -2011,8 +2011,8 @@ Azure에서 **가상 네트워크(Virtual Network, VNet)는 네트워크 통신�
 
 ## 💡 핵심 개념 (한 줄 요약)
 
-**네트워크 격리는 가상 네트워크 분리로만 가능하며, 리소스 그룹이나 운영 체제 선택과는 무관합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q17', '# Azure 컨테이너 관리 서비스 해설
+**네트워크 격리는 가상 네트워크 분리로만 가능하며, 리소스 그룹이나 운영 체제 선택과는 무관합니다.**', '2026-08-15T18:46:39.250405');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q17', '# Azure 컨테이너 관리 서비스 해설
 
 ## ✅ 정답 분석
 
@@ -2034,8 +2034,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 ## 💡 핵심 개념 (한 줄 요약)
 
-**Azure Container Instances와 AKS는 Azure에서 제공하는 두 가지 완전한 컨테이너 관리 솔루션입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q18', '# Azure Container Instances 서비스 분류 해설
+**Azure Container Instances와 AKS는 Azure에서 제공하는 두 가지 완전한 컨테이너 관리 솔루션입니다.**', '2026-08-15T18:46:43.470825');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q18', '# Azure Container Instances 서비스 분류 해설
 
 ## 정답: 1번. 컴퓨팅 서비스
 
@@ -2053,8 +2053,8 @@ Azure 컨테이너 인스턴스(ACI)는 **컴퓨팅 서비스**에 해당합니�
   → VNet, Load Balancer 등 네트워크 관련 서비스입니다.
 
 - **4번 ❌ 스토리지 서비스**
-  → Azure Blob Storage, Azure Files 등 데이터 저장 서비스입니다. ACI는 스토리지 서비스가 아닙니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q19', '# Azure Policy의 적용 시점 - AZ-900 해설
+  → Azure Blob Storage, Azure Files 등 데이터 저장 서비스입니다. ACI는 스토리지 서비스가 아닙니다.', '2026-08-15T18:46:47.646717');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q19', '# Azure Policy의 적용 시점 - AZ-900 해설
 
 ## 1️⃣ 정답이 맞는 이유
 
@@ -2068,8 +2068,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**Azure Policy는 할당 시점 이후의 새로운 리소스 생성만 제어하며, 기존 리소스에는 영향을 주지 않습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q20', '# Azure 파일 공유 생성 문제 해설
+**Azure Policy는 할당 시점 이후의 새로운 리소스 생성만 제어하며, 기존 리소스에는 영향을 주지 않습니다.**', '2026-08-15T18:46:52.315748');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q20', '# Azure 파일 공유 생성 문제 해설
 
 ## 정답: **스토리지 계정 (Storage Account)**
 
@@ -2082,8 +2082,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 - **가상 네트워크**: 리소스 간 통신을 위한 네트워크 인프라로 스토리지 기능 없음
 
 ### 3. 핵심 개념
-**Azure 파일 공유는 스토리지 계정 내에서만 생성 가능한 클라우드 파일 시스템입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q21', '# Azure Reserved VM Instances 구매 기간 해설
+**Azure 파일 공유는 스토리지 계정 내에서만 생성 가능한 클라우드 파일 시스템입니다.**', '2026-08-15T18:46:56.344767');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-2_컴퓨팅및네트워크_2부 (21문제)', 'q21', '# Azure Reserved VM Instances 구매 기간 해설
 
 ## ✅ 정답: 1번 (3년)
 
@@ -2096,8 +2096,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-2
 - **4번 (1년)**: 유효한 옵션이지만 **가장 긴 기간이 아닙니다**
 
 ## 💡 핵심 요약
-**Azure Reserved VM Instances는 1년 또는 3년(최대) 두 가지 약정 기간만 선택 가능합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q1', '# Azure Blob Storage - AZ-900 해설
+**Azure Reserved VM Instances는 1년 또는 3년(최대) 두 가지 약정 기간만 선택 가능합니다.**', '2026-08-15T18:47:00.358795');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q1', '# Azure Blob Storage - AZ-900 해설
 
 ## ✅ 정답: 4번
 
@@ -2119,8 +2119,8 @@ Azure Blob Storage는 **대규모 비정형 데이터(Unstructured Data)** 저�
 
 ## 🎯 핵심 개념 (한 줄 요약)
 
-**Blob Storage = 비디오, 사진 등 대규모 비정형 데이터의 저장소**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q2', '# Azure Blob Storage 액세스 계층 해설
+**Blob Storage = 비디오, 사진 등 대규모 비정형 데이터의 저장소**', '2026-08-15T18:47:04.617688');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q2', '# Azure Blob Storage 액세스 계층 해설
 
 ## 1. 왜 ''예''인가?
 
@@ -2134,8 +2134,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3
 
 ## 3. 핵심 요약
 
-**표준 스토리지 계정은 핫, 쿨, 아카이브 세 가지 액세스 계층을 모두 지원하며, 핫 계층은 가장 높은 접근성을 제공하는 표준 옵션입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q3', '# Azure 스토리지 액세스 계층과 파일 공유
+**표준 스토리지 계정은 핫, 쿨, 아카이브 세 가지 액세스 계층을 모두 지원하며, 핫 계층은 가장 높은 접근성을 제공하는 표준 옵션입니다.**', '2026-08-15T18:47:12.021683');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q3', '# Azure 스토리지 액세스 계층과 파일 공유
 
 ## 1. 왜 ''아니오''인가?
 
@@ -2148,8 +2148,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3
 
 ## 3. 핵심 개념 한 줄 요약
 
-**액세스 계층(핫/쿨/아카이브)은 Blob 전용이고, 파일 공유와 프리미엄 스토리지는 해당 없습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q4', '# Azure 스토리지 액세스 계층 - 정답 해설
+**액세스 계층(핫/쿨/아카이브)은 Blob 전용이고, 파일 공유와 프리미엄 스토리지는 해당 없습니다.**', '2026-08-15T18:47:21.158363');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q4', '# Azure 스토리지 액세스 계층 - 정답 해설
 
 ## 1️⃣ 정답이 ''예''인 이유
 
@@ -2169,8 +2169,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3
 | 설정 수준 | 설명 |
 |---------|------|
 | **스토리지 계정** | Hot/Cool/Archive 기본값 설정 |
-| **개별 Blob** | 필요에 따라 다른 계층으로 변경 가능 |');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q5', '# Azure Storage - LRS 데이터 복제 해설
+| **개별 Blob** | 필요에 따라 다른 계층으로 변경 가능 |', '2026-08-15T18:47:27.321517');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q5', '# Azure Storage - LRS 데이터 복제 해설
 
 ## ✅ 정답: 1번 (3개)
 
@@ -2188,8 +2188,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3
 
 **LRS = 단일 데이터센터 내 3개 복사본 자동 유지**
 
-LRS는 저비용 옵션이지만 최소한의 중복성만 제공하므로, 재해 복구가 중요한 업무는 GRS/GZRS 사용을 권장합니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q6', '# Azure Storage 액세스 계층 - 보관(Archive) 계층
+LRS는 저비용 옵션이지만 최소한의 중복성만 제공하므로, 재해 복구가 중요한 업무는 GRS/GZRS 사용을 권장합니다.', '2026-08-15T18:47:31.888411');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q6', '# Azure Storage 액세스 계층 - 보관(Archive) 계층
 
 ## ✅ 정답: 4번 - 먼저 리하이드레이션해야 액세스 가능합니다.
 
@@ -2202,8 +2202,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3
 - **3번**: ''복원''이라는 용어는 부정확하며, 정확한 개념은 **리하이드레이션**입니다.
 
 ### 💡 핵심 개념 한 줄 요약
-> **보관 계층의 데이터는 오프라인이므로 리하이드레이션을 통해 온라인 상태로 전환한 후에만 액세스 가능합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q7', '# 프리미엄 블록 Blob 스토리지 계정 중복 옵션 해설
+> **보관 계층의 데이터는 오프라인이므로 리하이드레이션을 통해 온라인 상태로 전환한 후에만 액세스 가능합니다.**', '2026-08-15T18:47:37.003128');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q7', '# 프리미엄 블록 Blob 스토리지 계정 중복 옵션 해설
 
 ## 정답: 3번. LRS(로컬 중복 스토리지)
 
@@ -2226,8 +2226,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3
 
 ## 요약
 
-**프리미엄 블록 Blob 스토리지 계정은 LRS(로컬 중복 스토리지)만 지원합니다. (ZRS도 지원하지만, GRS/GZRS는 지원하지 않음)**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q8', '# Azure Blob Storage 보관 액세스 계층 해설
+**프리미엄 블록 Blob 스토리지 계정은 LRS(로컬 중복 스토리지)만 지원합니다. (ZRS도 지원하지만, GRS/GZRS는 지원하지 않음)**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q8', '# Azure Blob Storage 보관 액세스 계층 해설
 
 ## 1️⃣ 왜 ''예''인가? (공식 개념)
 
@@ -2241,8 +2241,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3
 
 ## 3️⃣ 핵심 요약
 
-**Azure Blob의 액세스 계층은 스토리지 계층 수준에서 설정되어 각각의 비용 정책과 접근성을 관리합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q9', '# Azure Blob Storage 액세스 계층: 핫 액세스 계층
+**Azure Blob의 액세스 계층은 스토리지 계층 수준에서 설정되어 각각의 비용 정책과 접근성을 관리합니다.**', '2026-08-15T18:47:47.039391');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q9', '# Azure Blob Storage 액세스 계층: 핫 액세스 계층
 
 ## 1️⃣ 왜 ''예''인가? (AZ-900 공식 개념)
 
@@ -2263,8 +2263,8 @@ Azure Blob Storage의 **핫 액세스 계층(Hot Tier)**은 **자주 액세스�
 
 ## 3️⃣ 핵심 한 줄 요약
 
-**"핫 액세스 계층은 높은 스토리지 비용 대신 낮은 액세스 비용으로 자주 사용하는 데이터에 최적화된 계층입니다."**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q10', '# Azure Blob Storage 액세스 계층 - 쿨 액세스 계층
+**"핫 액세스 계층은 높은 스토리지 비용 대신 낮은 액세스 비용으로 자주 사용하는 데이터에 최적화된 계층입니다."**', '2026-08-15T18:47:51.857321');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q10', '# Azure Blob Storage 액세스 계층 - 쿨 액세스 계층
 
 ## 1. 정답 해설 (예 - 정확함)
 
@@ -2289,8 +2289,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3
 
 ---
 
-✅ **AZ-900 팁**: 문제에서 "장기", "보관", "백업" 같은 키워드가 보이면 → **쿨 또는 아카이브** 계층을 떠올리세요!');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q11', '# Azure 스토리지 계정 중복 옵션 해설
+✅ **AZ-900 팁**: 문제에서 "장기", "보관", "백업" 같은 키워드가 보이면 → **쿨 또는 아카이브** 계층을 떠올리세요!', '2026-08-15T18:47:57.550809');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-3_스토리지서비스_2부 (11문제)', 'q11', '# Azure 스토리지 계정 중복 옵션 해설
 
 ## 정답
 **3 → 2 → 4** (LRS → ZRS → GRS)
@@ -2312,8 +2312,8 @@ Azure 공식 문서에 따르면 스토리지 중복은 **데이터 복제 범�
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**중복 범위: 단일 DC(LRS) < 단일 지역의 여러 DC(ZRS) < 복수 지역(GRS)**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q1', '# Azure AD와 SSO (Single Sign-On)
+**중복 범위: 단일 DC(LRS) < 단일 지역의 여러 DC(ZRS) < 복수 지역(GRS)**', '2026-08-15T18:48:01.743223');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q1', '# Azure AD와 SSO (Single Sign-On)
 
 ## 정답 해설
 
@@ -2329,8 +2329,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 핵심 개념 (한 줄 요약)
 
-**Azure AD = 클라우드 기반 ID 관리 서비스로, SSO를 통해 여러 애플리케이션에 단일 인증만으로 접근 가능하게 합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q2', '# Azure 규정 준수 평가 문제 해설
+**Azure AD = 클라우드 기반 ID 관리 서비스로, SSO를 통해 여러 애플리케이션에 단일 인증만으로 접근 가능하게 합니다.**', '2026-08-15T18:48:06.144851');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q2', '# Azure 규정 준수 평가 문제 해설
 
 ## 정답: **3번. 클라우드용 Microsoft Defender**
 
@@ -2345,8 +2345,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 - **4번 Azure Advisor**: 성능, 비용 최적화 권장사항 제공하며 규정 준수 평가와 무관
 
 ### 🎯 핵심 개념 한 줄 요약
-**규정 준수 평가는 클라우드용 Microsoft Defender의 Security Posture Management 기능으로 수행합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q3', '# AZ-900 자격증 문제 해설
+**규정 준수 평가는 클라우드용 Microsoft Defender의 Security Posture Management 기능으로 수행합니다.**', '2026-08-15T18:48:10.548763');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q3', '# AZ-900 자격증 문제 해설
 
 ## 정답: 1번
 
@@ -2365,8 +2365,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ### 📌 핵심 개념 한 줄 요약
 
-**SSO(편리성) + MFA(보안성) + 권한부여(접근제어)는 Azure 보안 전략의 삼각형입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q4', '# Azure MFA 구현과 ID 동기화 관계
+**SSO(편리성) + MFA(보안성) + 권한부여(접근제어)는 Azure 보안 전략의 삼각형입니다.**', '2026-08-15T18:48:14.997167');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q4', '# Azure MFA 구현과 ID 동기화 관계
 
 ## 📌 왜 ''아니오''인가?
 
@@ -2380,8 +2380,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 💡 핵심 요약
 
-**MFA는 보안 강화 기능이고, ID 동기화는 ID 관리 전략일 뿐 둘은 독립적입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q5', '# Azure MFA(다중 인증) - 해설
+**MFA는 보안 강화 기능이고, ID 동기화는 ID 관리 전략일 뿐 둘은 독립적입니다.**', '2026-08-15T18:48:19.926691');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q5', '# Azure MFA(다중 인증) - 해설
 
 ## 1️⃣ 왜 ''아니오''인가?
 
@@ -2405,8 +2405,8 @@ Azure MFA의 올바른 방법은:
 
 ---
 
-💡 *시험 팁: MFA 관련 문제에서는 "기술적으로 검증 가능한가?"를 기준으로 판단하세요!*');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q6', '# Azure MFA(다중 인증) - 해설
+💡 *시험 팁: MFA 관련 문제에서는 "기술적으로 검증 가능한가?"를 기준으로 판단하세요!*', '2026-08-15T18:48:26.569062');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q6', '# Azure MFA(다중 인증) - 해설
 
 ## 1. 왜 ''예''인가?
 
@@ -2420,8 +2420,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 3. 핵심 개념 한 줄 요약
 
-**Azure MFA는 계정 유형 구분 없이 모든 사용자에게 요구할 수 있는 필수 보안 기능입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q7', '# 규정 준수 보고서 위치 해설
+**Azure MFA는 계정 유형 구분 없이 모든 사용자에게 요구할 수 있는 필수 보안 기능입니다.**', '2026-08-15T18:48:31.276786');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q7', '# 규정 준수 보고서 위치 해설
 
 ## 정답: 4번. 클라우드용 Microsoft Defender
 
@@ -2447,8 +2447,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 요약
 
-**회사의 Azure 규정 준수 보고서는 클라우드용 Microsoft Defender에서 확인할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q8', '# Azure AD 그룹 정책 해설
+**회사의 Azure 규정 준수 보고서는 클라우드용 Microsoft Defender에서 확인할 수 있습니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q8', '# Azure AD 그룹 정책 해설
 
 ## 1. 정답: 예 ✓
 
@@ -2470,8 +2470,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 3. 핵심 한 줄 요약
 
-**Azure AD에서 그룹은 사용자와 리소스를 조직화하고 권한을 일괄 관리하는 핵심 기능입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q9', '# Windows 10을 Azure AD에 연결할 수 있나요?
+**Azure AD에서 그룹은 사용자와 리소스를 조직화하고 권한을 일괄 관리하는 핵심 기능입니다.**', '2026-08-15T18:48:39.945128');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q9', '# Windows 10을 Azure AD에 연결할 수 있나요?
 
 ## ✅ 정답: 예
 
@@ -2487,8 +2487,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 | **조인 방식의 차이** | Hybrid 조인(기존 AD + Azure AD), Azure AD 조인(클라우드만) 두 가지 방식 존재 |
 
 ### 3. **핵심 요약**
-> **Windows 10은 Hybrid 또는 Cloud 방식으로 Azure AD에 조인 가능하며, 이를 통해 클라우드 기반 ID 관리 서비스를 이용할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q10', '# Azure AD와 Android 디바이스 연결
+> **Windows 10은 Hybrid 또는 Cloud 방식으로 Azure AD에 조인 가능하며, 이를 통해 클라우드 기반 ID 관리 서비스를 이용할 수 있습니다.**', '2026-08-15T18:48:43.690874');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q10', '# Azure AD와 Android 디바이스 연결
 
 ## 1. 왜 ''예''인가?
 
@@ -2504,8 +2504,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 3. 핵심 한 줄 요약
 
-**"Azure AD는 OS에 관계없이 모든 플랫폼의 디바이스를 지원하며, Android도 Intune을 통해 관리 가능합니다."**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q11', '# Microsoft Defender for Cloud - 해설
+**"Azure AD는 OS에 관계없이 모든 플랫폼의 디바이스를 지원하며, Android도 Intune을 통해 관리 가능합니다."**', '2026-08-15T18:48:47.825328');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q11', '# Microsoft Defender for Cloud - 해설
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -2523,8 +2523,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**Defender for Cloud는 Azure뿐 아니라 온-프레미스 및 다중 클라우드 리소스를 통합으로 모니터링하는 하이브리드 보안 플랫폼입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q12', '# Microsoft Defender for Cloud 가격 모델
+**Defender for Cloud는 Azure뿐 아니라 온-프레미스 및 다중 클라우드 리소스를 통합으로 모니터링하는 하이브리드 보안 플랫폼입니다.**', '2026-08-15T18:48:51.985753');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q12', '# Microsoft Defender for Cloud 가격 모델
 
 ## 1. 정답 해설 (아니오인 이유)
 
@@ -2545,8 +2545,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 | 항목 | 내용 |
 |------|------|
 | **무료** | 보안 점수 평가, 규정 준수 상태 모니터링 |
-| **유료(Standard)** | 위협 탐지, 취약성 스캔, 고급 보호 |');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q13', '# Microsoft Defender for Cloud - 규정 준수 보고서
+| **유료(Standard)** | 위협 탐지, 취약성 스캔, 고급 보호 |', '2026-08-15T18:48:56.850680');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q13', '# Microsoft Defender for Cloud - 규정 준수 보고서
 
 ## 1. 정답 근거 (예)
 
@@ -2560,8 +2560,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 3. 핵심 개념 (한 줄 요약)
 
-**Microsoft Defender for Cloud는 보안 위협 탐지뿐 아니라 규정 준수 상태 모니터링 및 보고서 다운로드 기능을 제공합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q14', '# Azure AD를 사용한 온-프레미스 애플리케이션 액세스 관리
+**Microsoft Defender for Cloud는 보안 위협 탐지뿐 아니라 규정 준수 상태 모니터링 및 보고서 다운로드 기능을 제공합니다.**', '2026-08-15T18:49:00.895934');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q14', '# Azure AD를 사용한 온-프레미스 애플리케이션 액세스 관리
 
 ## 1️⃣ 정답: 예 (이유)
 
@@ -2575,8 +2575,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 3️⃣ 핵심 요약
 
-**Azure AD는 Application Proxy와 AD Connect를 통해 온-프레미스 애플리케이션의 액세스 제어와 사용자 인증을 관리할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q15', '# Azure AD와 SSO (Single Sign-On)
+**Azure AD는 Application Proxy와 AD Connect를 통해 온-프레미스 애플리케이션의 액세스 제어와 사용자 인증을 관리할 수 있습니다.**', '2026-08-15T18:49:06.044008');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q15', '# Azure AD와 SSO (Single Sign-On)
 
 ## 1️⃣ 왜 ''예''인가? (공식 개념)
 
@@ -2594,8 +2594,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ---
 
-이 개념은 **클라우드 ID 관리**의 기본이므로 AZ-900에서 자주 출제됩니다! ✨');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q16', '# Azure AD와 iOS 디바이스 등록
+이 개념은 **클라우드 ID 관리**의 기본이므로 AZ-900에서 자주 출제됩니다! ✨', '2026-08-15T18:49:10.539234');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('2-4_ID접근보안_2부 (16문제)', 'q16', '# Azure AD와 iOS 디바이스 등록
 
 ## 1. 왜 ''예''인가? (공식 개념 근거)
 
@@ -2609,8 +2609,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('2-4
 
 ## 3. 핵심 개념 한 줄 요약 🎯
 
-**iOS는 Intune을 통해 Azure AD에 등록 가능하며, 조직의 클라우드 기반 ID 관리와 보안 정책 적용을 받을 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1_비용관리_2부 (7문제)', 'q1', '# Azure 리소스 비용 영향 요인 - AZ-900 해설
+**iOS는 Intune을 통해 Azure AD에 등록 가능하며, 조직의 클라우드 기반 ID 관리와 보안 정책 적용을 받을 수 있습니다.**', '2026-08-15T18:49:15.155923');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-1_비용관리_2부 (7문제)', 'q1', '# Azure 리소스 비용 영향 요인 - AZ-900 해설
 
 ## 정답: **2번. 아웃바운드 데이터 볼륨**
 
@@ -2638,8 +2638,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-🎯 **"Azure 비용을 줄이려면 아웃바운드 데이터 전송을 최소화하고, 리소스가 위치한 지역 및 서비스 계층을 최적화해야 한다."**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1_비용관리_2부 (7문제)', 'q2', '# Azure 리소스 비용 추적 해설
+🎯 **"Azure 비용을 줄이려면 아웃바운드 데이터 전송을 최소화하고, 리소스가 위치한 지역 및 서비스 계층을 최적화해야 한다."**', '2026-08-15T18:49:19.712599');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-1_비용관리_2부 (7문제)', 'q2', '# Azure 리소스 비용 추적 해설
 
 ## 정답: 4번. 태그(Tags)
 
@@ -2664,8 +2664,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1
 
 ## 요약
 
-**Azure 리소스의 비용을 추적하고 분류하려면 태그(Tags)를 사용해야 합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1_비용관리_2부 (7문제)', 'q3', '# Azure AZ-900 문제 해설
+**Azure 리소스의 비용을 추적하고 분류하려면 태그(Tags)를 사용해야 합니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-1_비용관리_2부 (7문제)', 'q3', '# Azure AZ-900 문제 해설
 
 ## ⚠️ 문제 분석
 먼저 **정답이 3번(IAM)이라는 것은 오류**입니다. 문제의 올바른 정답은 **4번. 예산 경고**입니다.
@@ -2689,8 +2689,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1
 ---
 
 ## 🎯 핵심 개념
-**Azure 예산 경고는 Cost Management의 핵심 기능으로, 설정한 예산 한도를 초과하면 자동으로 알림을 보내어 비용을 효율적으로 관리할 수 있게 합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1_비용관리_2부 (7문제)', 'q4', '# Azure Cost Management와 관리 그룹 - 해설
+**Azure 예산 경고는 Cost Management의 핵심 기능으로, 설정한 예산 한도를 초과하면 자동으로 알림을 보내어 비용을 효율적으로 관리할 수 있게 합니다.**', '2026-08-15T18:49:30.005168');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-1_비용관리_2부 (7문제)', 'q4', '# Azure Cost Management와 관리 그룹 - 해설
 
 ## 1. 왜 ''아니오''인가?
 
@@ -2704,8 +2704,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1
 
 ## 3. 핵심 개념 한 줄 요약
 
-**💡 Cost Management는 구독 단위로 비용을 추적하며, 관리 그룹은 조직화 도구일 뿐 비용 추적 단위가 아닙니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1_비용관리_2부 (7문제)', 'q5', '# Azure Cost Management와 리소스 그룹 비용 추적
+**💡 Cost Management는 구독 단위로 비용을 추적하며, 관리 그룹은 조직화 도구일 뿐 비용 추적 단위가 아닙니다.**', '2026-08-15T18:49:34.625179');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-1_비용관리_2부 (7문제)', 'q5', '# Azure Cost Management와 리소스 그룹 비용 추적
 
 ## 1️⃣ **왜 ''예''인가? (공식 개념)**
 
@@ -2727,8 +2727,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1
 ---
 
 ### 💼 실무 팁
-조직에서 부서별로 리소스 그룹을 나누면, Cost Management를 통해 **부서별 지출 현황을 쉽게 파악**할 수 있어 예산 관리에 매우 유용합니다!');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1_비용관리_2부 (7문제)', 'q6', '# Azure Cost Management - 사용량 추적 문제 해설
+조직에서 부서별로 리소스 그룹을 나누면, Cost Management를 통해 **부서별 지출 현황을 쉽게 파악**할 수 있어 예산 관리에 매우 유용합니다!', '2026-08-15T18:49:39.786363');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-1_비용관리_2부 (7문제)', 'q6', '# Azure Cost Management - 사용량 추적 문제 해설
 
 ## 1️⃣ 왜 ''예''인가? (공식 개념 근거)
 
@@ -2763,8 +2763,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1
 - 사용 현황 분석 (Usage Analysis)
 - 비용 분석 (Cost Analysis)
 - 예산 설정 및 알림
-- 최적화 권고사항 제공');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1_비용관리_2부 (7문제)', 'q7', '# 부서별 리소스 비용 담당자 확인 해설
+- 최적화 권고사항 제공', '2026-08-15T18:49:45.730416');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-1_비용관리_2부 (7문제)', 'q7', '# 부서별 리소스 비용 담당자 확인 해설
 
 ## 정답: 3번. 태그(Tags)
 
@@ -2789,8 +2789,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-1
 
 ## 요약
 
-**각 리소스의 비용을 담당하는 부서를 확인하려면 리소스에 태그를 적용하고 Azure Cost Management에서 분석합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q1', '# Azure 감사 보고서 및 규정 준수 정보 위치 해설
+**각 리소스의 비용을 담당하는 부서를 확인하려면 리소스에 태그를 적용하고 Azure Cost Management에서 분석합니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q1', '# Azure 감사 보고서 및 규정 준수 정보 위치 해설
 
 ## 정답: 4번. Microsoft Service Trust Portal
 
@@ -2816,8 +2816,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2
 
 ## 요약
 
-**Azure 서비스에 대한 공식 감사 보고서와 규정 준수 정보는 Microsoft Service Trust Portal에서 확인합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q2', '# Azure 거버넌스 기능 매칭 문제 해설
+**Azure 서비스에 대한 공식 감사 보고서와 규정 준수 정보는 Microsoft Service Trust Portal에서 확인합니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q2', '# Azure 거버넌스 기능 매칭 문제 해설
 
 ## 정답
 - **2번 → Azure Policy**
@@ -2840,8 +2840,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2
 ---
 
 ## 핵심 요약
-🎯 **Policy(제한) + 태그(분류) + Blueprint(배포) = 완벽한 Azure 거버넌스**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q3', '# Microsoft 보안 센터 - AZ-900 해설
+🎯 **Policy(제한) + 태그(분류) + Blueprint(배포) = 완벽한 Azure 거버넌스**', '2026-08-15T18:49:59.549241');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q3', '# Microsoft 보안 센터 - AZ-900 해설
 
 ## ✅ 정답: 4번. Microsoft 보안 센터
 
@@ -2858,8 +2858,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2
 ---
 
 ## 🎯 핵심 개념
-**Microsoft 보안 센터** = Microsoft 전체 클라우드 제품의 보안·개인정보·규정준수 정보 통합 제공 센터');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q4', '# Azure 정책을 이용한 리소스 생성 제한
+**Microsoft 보안 센터** = Microsoft 전체 클라우드 제품의 보안·개인정보·규정준수 정보 통합 제공 센터', '2026-08-15T18:50:04.151393');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q4', '# Azure 정책을 이용한 리소스 생성 제한
 
 ## 정답 해설: Azure 정책 (3번)
 
@@ -2873,8 +2873,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2
 
 ## 핵심 개념 한 줄 요약
 
-**Azure 정책은 "특정 리소스만" 선택적으로 제한하는 거버넌스 도구이고, 잠금은 리소스 그룹 "전체"를 제한하는 도구입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q5', '# AZ-900 시험 문제 해설
+**Azure 정책은 "특정 리소스만" 선택적으로 제한하는 거버넌스 도구이고, 잠금은 리소스 그룹 "전체"를 제한하는 도구입니다.**', '2026-08-15T18:50:09.041407');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-2_거버넌스및규정준수_2부 (5문제)', 'q5', '# AZ-900 시험 문제 해설
 
 **정답: 2번. Azure Arc**
 
@@ -2890,8 +2890,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-2
 
 ## 핵심 개념 한 줄 정리
 
-**Azure Arc = 하이브리드·다중 클라우드 환경을 Azure 관리 영역으로 확장하는 서비스**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q1', '# Azure Resource Manager 템플릿 - 해설
+**Azure Arc = 하이브리드·다중 클라우드 환경을 Azure 관리 영역으로 확장하는 서비스**', '2026-08-15T18:50:13.105179');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q1', '# Azure Resource Manager 템플릿 - 해설
 
 ## ✅ 정답: 3번 Azure Resource Manager 템플릿
 
@@ -2911,8 +2911,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 
 ## 🎯 핵심 개념 한 줄 요약
 
-**ARM 템플릿은 JSON 코드로 작성된 재사용 가능한 IaC 도구로, 동일한 복수 리소스를 여러 환경에 자동 배포하는 데 최적**입니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q2', '# Azure 가상 머신 비용 절감 - AZ-900 해설
+**ARM 템플릿은 JSON 코드로 작성된 재사용 가능한 IaC 도구로, 동일한 복수 리소스를 여러 환경에 자동 배포하는 데 최적**입니다.', '2026-08-15T18:50:17.874820');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q2', '# Azure 가상 머신 비용 절감 - AZ-900 해설
 
 ## ✅ 정답: 3번 (Azure Portal에서 중지 선택)
 
@@ -2930,8 +2930,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 | **4번 (종료)** | 게스트 OS를 종료해도 Azure 리소스는 할당된 상태로 유지되어 비용 발생 |
 
 ## 🎯 핵심 개념
-**Azure VM의 비용 절감은 OS 수준 작업이 아닌 Azure Portal에서 ''중지(할당 취소)'' 명령어로 컴퓨팅 리소스를 완전히 해제해야 합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q3', '# Azure PowerShell macOS 설치 가능성
+**Azure VM의 비용 절감은 OS 수준 작업이 아닌 Azure Portal에서 ''중지(할당 취소)'' 명령어로 컴퓨팅 리소스를 완전히 해제해야 합니다.**', '2026-08-15T18:50:26.324483');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q3', '# Azure PowerShell macOS 설치 가능성
 
 ## 1️⃣ 왜 ''예''인가?
 
@@ -2945,8 +2945,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**PowerShell Core 기반의 Azure PowerShell은 macOS를 포함한 모든 주요 운영체제에서 설치 가능한 크로스 플랫폼 도구입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q4', '# Azure Cloud Shell 액세스 - AZ-900 해설
+**PowerShell Core 기반의 Azure PowerShell은 macOS를 포함한 모든 주요 운영체제에서 설치 가능한 크로스 플랫폼 도구입니다.**', '2026-08-15T18:50:30.999378');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q4', '# Azure Cloud Shell 액세스 - AZ-900 해설
 
 ## 📌 정답 분석: **아니오**
 
@@ -2961,8 +2961,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 - 실제로는 **Azure 계정이 있는 사용자만** Cloud Shell을 브라우저에서 열 수 있음
 
 ### 3. 핵심 요약
-**Azure Cloud Shell은 웹 브라우저에서 접근 가능하지만, Azure 인증된 사용자의 구독 환경 내에서만 동작합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q5', '# Azure Portal 접근성 - AZ-900 해설
+**Azure Cloud Shell은 웹 브라우저에서 접근 가능하지만, Azure 인증된 사용자의 구독 환경 내에서만 동작합니다.**', '2026-08-15T18:50:35.895476');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q5', '# Azure Portal 접근성 - AZ-900 해설
 
 ## 1. 왜 ''예''인가?
 
@@ -2984,8 +2984,8 @@ Azure Portal은 **모든 운영체제에서 웹 브라우저를 통해 접근 �
 
 ---
 
-**참고**: 혹시 문제에서 "예"가 정답으로 표기되었다면, 문제 자체가 오류일 가능성이 높습니다. AZ-900 공식 자료를 확인하시기 바랍니다.');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q6', '# Azure Cloud Shell 아이콘 문제 해설
+**참고**: 혹시 문제에서 "예"가 정답으로 표기되었다면, 문제 자체가 오류일 가능성이 높습니다. AZ-900 공식 자료를 확인하시기 바랍니다.', '2026-08-15T18:50:40.402225');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q6', '# Azure Cloud Shell 아이콘 문제 해설
 
 ## 1️⃣ 정답: 150번 (>_ 기호 아이콘)
 
@@ -3002,8 +3002,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**Azure Cloud Shell = `>_` 터미널 아이콘으로 브라우저에서 Azure CLI/PowerShell 명령어 실행 가능**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q7', '# Azure Cloud Shell 시작 방법 - AZ-900 해설
+**Azure Cloud Shell = `>_` 터미널 아이콘으로 브라우저에서 Azure CLI/PowerShell 명령어 실행 가능**', '2026-08-15T18:50:44.401363');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q7', '# Azure Cloud Shell 시작 방법 - AZ-900 해설
 
 ## ✅ 정답: 2번. Azure Portal
 
@@ -3022,8 +3022,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 ---
 
 ## 💡 핵심 한 줄 요약
-**Azure Cloud Shell은 Azure Portal에서 직접 실행하는 브라우저 기반의 관리 셸입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q8', '# ARM 템플릿 형식 문제 해설
+**Azure Cloud Shell은 Azure Portal에서 직접 실행하는 브라우저 기반의 관리 셸입니다.**', '2026-08-15T18:50:48.888934');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q8', '# ARM 템플릿 형식 문제 해설
 
 ## ✅ 정답: 3번. JSON 형식
 
@@ -3042,8 +3042,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 ---
 
 ## 🎯 핵심 개념
-**ARM 템플릿 = JSON 형식으로 Azure 리소스를 선언적으로 정의하는 Infrastructure as Code(IaC) 도구**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q9', '# Azure 리소스 그룹 역할 할당 문제 해설
+**ARM 템플릿 = JSON 형식으로 Azure 리소스를 선언적으로 정의하는 Infrastructure as Code(IaC) 도구**', '2026-08-15T18:50:53.886111');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q9', '# Azure 리소스 그룹 역할 할당 문제 해설
 
 ## 정답: **1번. 노드**
 
@@ -3063,8 +3063,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 
 - **RBAC**: Role-Based Access Control의 약자로, Azure의 권한 관리 시스템입니다
 - **IAM 메뉴**: Identity & Access Management의 약자이며, 접근 제어 노드와 동일합니다
-- 시험 팁: "역할 할당", "권한 부여" 관련 문제는 항상 **접근 제어(IAM)** 를 선택하세요');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q10', '# Azure AZ-900 문제 해설
+- 시험 팁: "역할 할당", "권한 부여" 관련 문제는 항상 **접근 제어(IAM)** 를 선택하세요', '2026-08-15T18:50:58.641337');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-3_리소스관리및배포_2부 (11문제)', 'q10', '# Azure AZ-900 문제 해설
 
 ## **정답: 3번. Azure CLI (명령줄 인터페이스)**
 
@@ -3088,8 +3088,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-3
 
 ## 💡 **핵심 요약**
 
-**Azure CLI는 데스크톱에서 설치하여 사용하는 명령줄 기반의 Azure 관리 도구입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4_모니터링_2부 (5문제)', 'q1', '# Azure Monitor 성능 데이터 저장 위치 - 해설
+**Azure CLI는 데스크톱에서 설치하여 사용하는 명령줄 기반의 Azure 관리 도구입니다.**', '2026-08-15T18:51:03.437333');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-4_모니터링_2부 (5문제)', 'q1', '# Azure Monitor 성능 데이터 저장 위치 - 해설
 
 ## ✅ 정답: 1번. Log Analytics 작업 영역
 
@@ -3104,8 +3104,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4
 | **4번. 이벤트 구독** | 데이터를 저장하는 위치가 아니라 **이벤트 라우팅 메커니즘**입니다 |
 
 ## 💡 핵심 개념
-**Azure Monitor의 성능 데이터는 Log Analytics 작업 영역에 저장되어 중앙 집중식 모니터링과 분석을 지원합니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4_모니터링_2부 (5문제)', 'q2', '# Azure Service Health - 정답 해설
+**Azure Monitor의 성능 데이터는 Log Analytics 작업 영역에 저장되어 중앙 집중식 모니터링과 분석을 지원합니다.**', '2026-08-15T18:51:08.939905');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-4_모니터링_2부 (5문제)', 'q2', '# Azure Service Health - 정답 해설
 
 ## 1️⃣ 정답인 이유: Azure Service Health
 
@@ -3123,8 +3123,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4
 
 ## 3️⃣ 핵심 개념 한 줄 요약
 
-**Azure Service Health = Microsoft의 계획된 유지 관리와 서비스 문제를 실시간으로 알려주는 알림 서비스**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4_모니터링_2부 (5문제)', 'q3', '# Azure Monitor와 Azure AD 활동 로그 해설
+**Azure Service Health = Microsoft의 계획된 유지 관리와 서비스 문제를 실시간으로 알려주는 알림 서비스**', '2026-08-15T18:51:13.441140');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-4_모니터링_2부 (5문제)', 'q3', '# Azure Monitor와 Azure AD 활동 로그 해설
 
 ## 정답: 예 (올바른 진술)
 
@@ -3148,8 +3148,8 @@ Azure AD 활동 로그 → 진단 설정 → **Azure Monitor(Log Analytics) 연�
 
 ## 요약
 
-**Azure AD 활동 로그는 진단 설정을 통해 Azure Monitor로 전송하여 확인할 수 있습니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4_모니터링_2부 (5문제)', 'q4', '# Azure Monitor 경고 기능 해설
+**Azure AD 활동 로그는 진단 설정을 통해 Azure Monitor로 전송하여 확인할 수 있습니다.**', '2026-08-17T12:07:53.503119');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-4_모니터링_2부 (5문제)', 'q4', '# Azure Monitor 경고 기능 해설
 
 ## 1. 왜 ''예''인가?
 
@@ -3162,8 +3162,8 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4
 
 ## 3. 핵심 개념 한 줄 요약
 
-**Azure Monitor는 메트릭과 로그 기반의 경고를 자동으로 생성하고 다양한 채널을 통해 알림을 전송하는 Azure의 통합 모니터링 플랫폼입니다.**');
-INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4_모니터링_2부 (5문제)', 'q5', '# Azure Monitor의 다중 구독 모니터링
+**Azure Monitor는 메트릭과 로그 기반의 경고를 자동으로 생성하고 다양한 채널을 통해 알림을 전송하는 Azure의 통합 모니터링 플랫폼입니다.**', '2026-08-15T18:51:24.388362');
+INSERT OR REPLACE INTO explanations (exam_id, question_id, content, created_at) VALUES ('3-4_모니터링_2부 (5문제)', 'q5', '# Azure Monitor의 다중 구독 모니터링
 
 ## 1. 왜 ''예''인가?
 
@@ -3180,4 +3180,4 @@ INSERT OR REPLACE INTO explanations (exam_id, question_id, content) VALUES ('3-4
 
 ---
 
-**📌 시험 팁:** "다중 구독", "Log Analytics 워크스페이스", "RBAC" 세 키워드가 함께 나오면 Azure Monitor의 다중 구독 지원을 의심하세요!');
+**📌 시험 팁:** "다중 구독", "Log Analytics 워크스페이스", "RBAC" 세 키워드가 함께 나오면 Azure Monitor의 다중 구독 지원을 의심하세요!', '2026-08-15T18:51:29.268131');
