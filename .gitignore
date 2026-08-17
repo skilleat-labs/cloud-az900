@@ -8,5 +8,8 @@ __pycache__/
 *.pyc
 *.pyo
 
+# Database (서버에서 직접 관리, 배포 시 덮어쓰지 않음)
+quiz.db
+
 # macOS
 .DS_Store
