@@ -33,55 +33,70 @@
     .top-bar {
       background: var(--bg-secondary);
       border-bottom: 1px solid var(--border);
-      padding: 0 28px;
+      padding: 0 24px;
       height: 60px;
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .top-bar h1 { font-size: 17px; font-weight: 700; }
-    .top-bar h1 span { color: var(--azure-light); }
-    .spacer { flex: 1; }
-    .back-link {
+
+    .back-btn {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 13px;
-      transition: var(--transition);
-    }
-    .back-link:hover { color: var(--text-primary); }
-
-    /* ── Controls ── */
-    .controls {
-      max-width: 900px;
-      margin: 28px auto 0;
-      padding: 0 20px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 5px;
+      transition: var(--transition);
+      white-space: nowrap;
     }
-    .controls label { font-size: 14px; color: var(--text-secondary); }
-    select {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text-primary);
-      padding: 8px 14px;
-      font-size: 14px;
-      font-family: inherit;
-      cursor: pointer;
-      min-width: 260px;
-    }
-    select:focus { outline: none; border-color: var(--azure-blue); }
+    .back-btn:hover { color: var(--text-primary); }
 
+    /* ── Page Nav Toggle ── */
+    .page-nav {
+      display: flex;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .page-nav-btn {
+      padding: 7px 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .page-nav-btn.active {
+      background: var(--azure-blue);
+      color: white;
+    }
+    .page-nav-btn:not(.active):hover {
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .spacer { flex: 1; }
+
+    /* ── Mode Toggle ── */
     .mode-toggle {
       display: flex;
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
+      flex-shrink: 0;
     }
     .mode-btn {
-      padding: 8px 18px;
+      padding: 7px 16px;
       background: transparent;
       border: none;
       color: var(--text-muted);
@@ -96,10 +111,54 @@
       color: white;
     }
 
+    /* ── Exam Tabs ── */
+    .tabs-section {
+      max-width: 960px;
+      margin: 24px auto 0;
+      padding: 0 20px;
+    }
+
+    .tabs-wrapper {
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      min-width: max-content;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .tab-btn:hover {
+      border-color: var(--azure-blue);
+      color: var(--text-primary);
+    }
+    .tab-btn.active {
+      background: var(--azure-blue);
+      border-color: var(--azure-blue);
+      color: white;
+      font-weight: 700;
+    }
+
     /* ── Stats Summary ── */
     .summary {
-      max-width: 900px;
-      margin: 20px auto 0;
+      max-width: 960px;
+      margin: 16px auto 0;
       padding: 0 20px;
       display: flex;
       gap: 12px;
@@ -117,8 +176,8 @@
 
     /* ── List View ── */
     .list-view {
-      max-width: 900px;
-      margin: 24px auto 60px;
+      max-width: 960px;
+      margin: 20px auto 60px;
       padding: 0 20px;
       display: flex;
       flex-direction: column;
@@ -159,10 +218,7 @@
     .rank-3 { background: #CD7F32; color: #fff; }
     .rank-n { background: var(--bg-card); color: var(--text-muted); }
 
-    .rate-bar-wrap {
-      flex: 1;
-      min-width: 0;
-    }
+    .rate-bar-wrap { flex: 1; min-width: 0; }
     .q-text-preview {
       font-size: 14px;
       color: var(--text-primary);
@@ -183,34 +239,14 @@
       transition: width 0.6s ease;
     }
 
-    .rate-info {
-      text-align: right;
-      flex-shrink: 0;
-    }
-    .rate-pct {
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 1;
-    }
-    .rate-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+    .rate-info { text-align: right; flex-shrink: 0; }
+    .rate-pct { font-size: 22px; font-weight: 800; line-height: 1; }
+    .rate-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
-    .chevron {
-      color: var(--text-muted);
-      font-size: 12px;
-      transition: transform 0.25s;
-      flex-shrink: 0;
-    }
+    .chevron { color: var(--text-muted); font-size: 12px; transition: transform 0.25s; flex-shrink: 0; }
     .chevron.open { transform: rotate(180deg); }
 
-    .card-body {
-      display: none;
-      border-top: 1px solid var(--border);
-      padding: 20px;
-    }
+    .card-body { display: none; border-top: 1px solid var(--border); padding: 20px; }
     .card-body.open { display: block; }
 
     .q-full { font-size: 15px; font-weight: 600; margin-bottom: 14px; line-height: 1.6; }
@@ -224,11 +260,7 @@
       margin-bottom: 10px;
     }
 
-    .answer-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
+    .answer-row { display: flex; gap: 10px; margin-bottom: 16px; }
     .answer-pill {
       padding: 6px 14px;
       border-radius: 20px;
@@ -241,12 +273,7 @@
       color: #00c853;
     }
 
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
+    .options-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
     .opt-row {
       display: flex;
       align-items: center;
@@ -295,7 +322,6 @@
     /* ── Slide Mode ── */
     .slide-view { display: none; }
     .slide-view.active { display: block; }
-    .list-view-wrap { }
     .list-view-wrap.hidden { display: none; }
 
     .slide-container {
@@ -343,16 +369,8 @@
       gap: 10px;
       margin-bottom: 16px;
     }
-    .slide-wrong-rate {
-      font-size: 32px;
-      font-weight: 900;
-      line-height: 1;
-    }
-    .slide-wrong-label {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+    .slide-wrong-rate { font-size: 32px; font-weight: 900; line-height: 1; }
+    .slide-wrong-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
     .slide-q-text {
       font-size: 18px;
       font-weight: 700;
@@ -361,11 +379,7 @@
       color: var(--text-primary);
     }
 
-    .slide-nav-bottom {
-      display: flex;
-      gap: 12px;
-      margin-top: 24px;
-    }
+    .slide-nav-bottom { display: flex; gap: 12px; margin-top: 24px; }
     .nav-btn {
       padding: 12px 24px;
       border: 1.5px solid var(--border);
@@ -389,11 +403,7 @@
     .nav-btn.primary:hover { opacity: 0.9; }
 
     /* ── Empty / Loading ── */
-    .center-msg {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-muted);
-    }
+    .center-msg { text-align: center; padding: 60px 20px; color: var(--text-muted); }
     .spinner {
       width: 36px; height: 36px;
       border: 3px solid var(--border);
@@ -403,26 +413,46 @@
       margin: 0 auto 16px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 600px) {
+      .page-nav-btn { padding: 7px 12px; font-size: 12px; }
+      .mode-btn { padding: 7px 12px; font-size: 12px; }
+    }
   </style>
 </head>
 <body>
 
 <div class="top-bar">
-  <h1>AZ-900 <span>오답 분석</span></h1>
-  <div class="spacer"></div>
-  <a href="index.html" class="back-link">← 홈으로</a>
-</div>
+  <a href="index.html" class="back-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    홈
+  </a>
 
-<!-- Controls -->
-<div class="controls">
-  <label>시험지</label>
-  <select id="examSelect" onchange="load()">
-    <option value="">전체</option>
-  </select>
+  <div class="page-nav">
+    <a id="lbLink" href="leaderboard.html" class="page-nav-btn">
+      🏆 리더보드
+    </a>
+    <span class="page-nav-btn active">
+      📊 오답 분석
+    </span>
+  </div>
+
+  <div class="spacer"></div>
 
   <div class="mode-toggle">
-    <button class="mode-btn active" id="btnList" onclick="setMode('list')">목록 보기</button>
-    <button class="mode-btn" id="btnSlide" onclick="setMode('slide')">오답풀이 모드</button>
+    <button class="mode-btn active" id="btnList" onclick="setMode('list')">목록</button>
+    <button class="mode-btn" id="btnSlide" onclick="setMode('slide')">오답풀이</button>
+  </div>
+</div>
+
+<!-- Exam Tabs -->
+<div class="tabs-section">
+  <div class="tabs-wrapper">
+    <div class="tabs" id="tabs">
+      <button class="tab-btn" disabled>로딩 중...</button>
+    </div>
   </div>
 </div>
 
@@ -452,24 +482,50 @@
 </div>
 
 <script>
+const urlParams = new URLSearchParams(location.search);
+let exams = [];
+let currentExamId = urlParams.get('exam_id') || '';
 let allData = [];
 let slideIdx = 0;
 let currentMode = 'list';
 
-// ── Init ──
 async function init() {
-  // 시험지 목록 로드
   const res = await fetch('/api/exams');
-  const exams = await res.json();
-  const sel = document.getElementById('examSelect');
-  exams.forEach(e => {
-    const opt = document.createElement('option');
-    opt.value = e.id;
-    opt.textContent = e.title;
-    sel.appendChild(opt);
-  });
+  exams = await res.json();
+  renderTabs();
 
+  if (!currentExamId && exams.length > 0) {
+    currentExamId = exams[0].id;
+    renderTabs();
+  }
+
+  updateLbLink();
   await load();
+}
+
+function renderTabs() {
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = exams.map(exam => `
+    <button
+      class="tab-btn ${exam.id === currentExamId ? 'active' : ''}"
+      onclick="selectExam('${exam.id}')"
+    >${exam.title}</button>
+  `).join('');
+}
+
+function selectExam(examId) {
+  currentExamId = examId;
+  renderTabs();
+  updateLbLink();
+  history.replaceState(null, '', `?exam_id=${encodeURIComponent(examId)}`);
+  load();
+}
+
+function updateLbLink() {
+  const link = document.getElementById('lbLink');
+  if (currentExamId) {
+    link.href = `leaderboard.html?exam_id=${encodeURIComponent(currentExamId)}`;
+  }
 }
 
 async function load() {
@@ -477,15 +533,20 @@ async function load() {
     '<div class="center-msg"><div class="spinner"></div><p>불러오는 중...</p></div>';
   document.getElementById('summary').innerHTML = '';
 
-  const examId = document.getElementById('examSelect').value;
-  const url = '/api/admin/wrong-stats' + (examId ? `?exam_id=${encodeURIComponent(examId)}` : '');
+  const url = '/api/admin/wrong-stats' + (currentExamId ? `?exam_id=${encodeURIComponent(currentExamId)}` : '');
 
-  const res = await fetch(url);
-  allData = await res.json();
+  try {
+    const res = await fetch(url);
+    allData = await res.json();
+  } catch (e) {
+    document.getElementById('listView').innerHTML =
+      '<div class="center-msg"><p>데이터를 불러오지 못했습니다.</p></div>';
+    return;
+  }
 
   renderSummary();
   if (currentMode === 'list') renderList();
-  else renderSlide();
+  else { slideIdx = 0; renderSlide(); }
 }
 
 function setMode(mode) {
@@ -670,7 +731,6 @@ function escHtml(str) {
 
 function mdToHtml(text) {
   if (!text) return '';
-  // 테이블
   text = text.replace(/((?:^\|.+\|\n?)+)/gm, (block) => {
     const rows = block.trim().split('\n').filter(r => r.trim());
     let html = '<table class="md-table">';

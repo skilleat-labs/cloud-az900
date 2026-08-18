@@ -31,6 +31,7 @@
       min-height: 100vh;
     }
 
+    /* ── Top Bar ── */
     .top-bar {
       background: var(--bg-secondary);
       border-bottom: 1px solid var(--border);
@@ -42,31 +43,63 @@
     }
 
     .back-btn {
-      color: var(--azure-light);
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .back-btn:hover { color: var(--text-primary); }
+
+    /* ── Page Nav Toggle ── */
+    .page-nav {
+      display: flex;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .page-nav-btn {
+      padding: 7px 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+      text-decoration: none;
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: var(--transition);
+      white-space: nowrap;
     }
-    .back-btn:hover { color: white; }
+    .page-nav-btn.active {
+      background: var(--azure-blue);
+      color: white;
+    }
+    .page-nav-btn:not(.active):hover {
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.05);
+    }
 
-    .top-title {
-      font-size: 20px;
-      font-weight: 700;
-      flex: 1;
-      text-align: center;
-    }
+    .spacer { flex: 1; }
 
     .refresh-info {
       font-size: 12px;
       color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 28px 16px;
     }
@@ -194,9 +227,7 @@
       text-align: center;
     }
 
-    .rank-medal {
-      font-size: 20px;
-    }
+    .rank-medal { font-size: 20px; }
 
     .name-cell {
       font-weight: 600;
@@ -209,9 +240,7 @@
       font-size: 15px;
     }
 
-    .pct-cell {
-      font-weight: 600;
-    }
+    .pct-cell { font-weight: 600; }
 
     .pct-bar-wrap {
       width: 80px;
@@ -240,28 +269,17 @@
       font-size: 12px;
     }
 
-    /* ── Empty State ── */
+    /* ── Empty / Loading ── */
     .empty-state {
       padding: 60px 24px;
       text-align: center;
       color: var(--text-muted);
     }
 
-    .empty-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-    }
+    .empty-icon { font-size: 48px; margin-bottom: 16px; }
+    .empty-state p { font-size: 15px; margin-bottom: 8px; }
+    .empty-state small { font-size: 13px; }
 
-    .empty-state p {
-      font-size: 15px;
-      margin-bottom: 8px;
-    }
-
-    .empty-state small {
-      font-size: 13px;
-    }
-
-    /* ── Loading ── */
     .loading-state {
       padding: 60px 24px;
       text-align: center;
@@ -294,6 +312,7 @@
     }
 
     @media (max-width: 600px) {
+      .page-nav-btn { padding: 7px 12px; font-size: 12px; }
       th.hide-sm, td.hide-sm { display: none; }
       td { padding: 12px 10px; }
     }
@@ -303,15 +322,26 @@
 
 <div class="top-bar">
   <a href="index.html" class="back-btn">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
       <polyline points="15 18 9 12 15 6"></polyline>
     </svg>
-    홈으로
+    홈
   </a>
-  <span class="top-title">리더보드</span>
+
+  <div class="page-nav">
+    <span class="page-nav-btn active">
+      🏆 리더보드
+    </span>
+    <a id="adminLink" href="admin.html" class="page-nav-btn">
+      📊 오답 분석
+    </a>
+  </div>
+
+  <div class="spacer"></div>
+
   <div class="refresh-info">
     <span class="refresh-dot"></span>
-    <span id="refreshCounter" style="margin-left:4px;">30s</span>
+    <span id="refreshCounter" style="margin-left:2px;">30s</span>
   </div>
 </div>
 
@@ -334,7 +364,6 @@
 const urlParams = new URLSearchParams(location.search);
 let exams = [];
 let currentExamId = urlParams.get('exam_id') || '';
-let refreshTimer = null;
 let countdown = 30;
 let countdownInterval = null;
 
@@ -349,6 +378,7 @@ async function loadExams() {
     }
 
     if (currentExamId) {
+      updateAdminLink();
       loadLeaderboard(currentExamId);
       startRefreshTimer();
     }
@@ -358,19 +388,28 @@ async function loadExams() {
   }
 }
 
+function updateAdminLink() {
+  const link = document.getElementById('adminLink');
+  if (currentExamId) {
+    link.href = `admin.html?exam_id=${encodeURIComponent(currentExamId)}`;
+  }
+}
+
 function renderTabs() {
   const tabsEl = document.getElementById('tabs');
   tabsEl.innerHTML = exams.map(exam => `
     <button
       class="tab-btn ${exam.id === currentExamId ? 'active' : ''}"
       onclick="selectExam('${exam.id}')"
-    >${exam.title.substring(0, 20)}${exam.title.length > 20 ? '...' : ''}</button>
+    >${exam.title}</button>
   `).join('');
 }
 
 function selectExam(examId) {
   currentExamId = examId;
   renderTabs();
+  updateAdminLink();
+  history.replaceState(null, '', `?exam_id=${encodeURIComponent(examId)}`);
   loadLeaderboard(examId);
   resetCountdown();
 }
@@ -416,7 +455,7 @@ function renderLeaderboard(data, examId) {
 
   const medals = ['🥇', '🥈', '🥉'];
 
-  const rows = data.map((entry, i) => {
+  const rows = data.map((entry) => {
     const rankNum = entry.rank;
     const rankClass = rankNum <= 3 ? `rank-${rankNum}` : '';
     const medalOrNum = rankNum <= 3
