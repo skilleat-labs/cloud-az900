@@ -23,6 +23,7 @@ nav:
     - Lab 03 · App Service: labs/lab03-app-service.md
     - Lab 04 · 가상 네트워크: labs/lab04-virtual-network.md
     - Lab 05 · 스토리지: labs/lab05-storage.md
+    - Lab 06 · Cloud Shell 네트워크: labs/lab06-cloud-shell-network.md
 
 markdown_extensions:
   - admonition
