@@ -1,0 +1,38 @@
+site_name: AZ-900 Azure 실습 가이드
+site_description: AZ-900 시험 준비를 위한 Azure Portal 실습 가이드
+site_author: 스킬잇
+
+theme:
+  name: material
+  language: ko
+  palette:
+    primary: blue
+    accent: light blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+    - content.code.copy
+
+nav:
+  - 홈: index.md
+  - 실습:
+    - Lab 01 · 리소스 그룹: labs/lab01-resource-group.md
+    - Lab 02 · 가상 머신: labs/lab02-virtual-machine.md
+    - Lab 03 · App Service: labs/lab03-app-service.md
+    - Lab 04 · 가상 네트워크: labs/lab04-virtual-network.md
+    - Lab 05 · 스토리지: labs/lab05-storage.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - tables
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/skilleat-labs/cloud-az900
