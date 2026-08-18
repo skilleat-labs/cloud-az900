@@ -104,46 +104,108 @@
       padding: 28px 16px;
     }
 
-    /* ── Exam Tabs ── */
-    .tabs-wrapper {
-      overflow-x: auto;
-      padding-bottom: 4px;
-      margin-bottom: 28px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
+    /* ── Exam Selector Dropdown ── */
+    .exam-selector {
+      max-width: 960px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+      position: relative;
     }
 
-    .tabs {
-      display: flex;
-      gap: 8px;
-      min-width: max-content;
-    }
-
-    .tab-btn {
-      padding: 8px 16px;
+    .exam-dropdown-btn {
+      width: 100%;
+      padding: 12px 18px;
+      background: var(--bg-secondary);
       border: 1.5px solid var(--border);
-      border-radius: 8px;
-      background: transparent;
-      color: var(--text-secondary);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 600;
       font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: var(--transition);
+      text-align: left;
+    }
+    .exam-dropdown-btn:hover,
+    .exam-dropdown-btn.open {
+      border-color: var(--azure-blue);
+    }
+    .exam-dropdown-btn .btn-label {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
+    .exam-dropdown-btn .btn-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .exam-dropdown-btn .exam-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .exam-dropdown-btn .chevron-icon {
+      color: var(--text-muted);
+      transition: transform 0.25s;
+    }
+    .exam-dropdown-btn.open .chevron-icon {
+      transform: rotate(180deg);
+    }
 
-    .tab-btn:hover {
-      border-color: var(--azure-blue);
+    .exam-dropdown-list {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 20px;
+      right: 20px;
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--azure-blue);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      z-index: 100;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+    .exam-dropdown-list.open {
+      display: block;
+    }
+    .exam-option {
+      padding: 12px 18px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(42,74,107,0.5);
+      transition: var(--transition);
+    }
+    .exam-option:last-child { border-bottom: none; }
+    .exam-option:hover {
+      background: rgba(0,120,212,0.1);
       color: var(--text-primary);
     }
-
-    .tab-btn.active {
-      background: var(--azure-blue);
-      border-color: var(--azure-blue);
-      color: white;
-      font-weight: 700;
+    .exam-option.active {
+      background: rgba(0,120,212,0.15);
+      color: var(--azure-light);
+      font-weight: 600;
     }
+    .exam-option .opt-title { flex: 1; }
+    .exam-option .opt-check {
+      color: var(--azure-light);
+      font-size: 16px;
+      opacity: 0;
+    }
+    .exam-option.active .opt-check { opacity: 1; }
 
     /* ── Leaderboard Table ── */
     .lb-container {
@@ -345,13 +407,19 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="tabs-wrapper">
-    <div class="tabs" id="tabs">
-      <button class="tab-btn" disabled>로딩 중...</button>
-    </div>
-  </div>
+<!-- Exam Selector -->
+<div class="exam-selector">
+  <button class="exam-dropdown-btn" id="examDropdownBtn" onclick="toggleDropdown()">
+    <span class="btn-label" id="examBtnLabel">로딩 중...</span>
+    <span class="btn-right">
+      <span class="exam-count" id="examBtnCount"></span>
+      <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </span>
+  </button>
+  <div class="exam-dropdown-list" id="examDropdownList"></div>
+</div>
 
+<div class="container">
   <div class="lb-container" id="lbContainer">
     <div class="loading-state">
       <div class="spinner"></div>
@@ -371,20 +439,20 @@ async function loadExams() {
   try {
     const res = await fetch('/api/exams');
     exams = await res.json();
-    renderTabs();
+    renderExamDropdown();
 
     if (!currentExamId && exams.length > 0) {
       currentExamId = exams[0].id;
     }
 
     if (currentExamId) {
+      renderExamDropdown();
       updateAdminLink();
       loadLeaderboard(currentExamId);
       startRefreshTimer();
     }
   } catch (e) {
-    document.getElementById('tabs').innerHTML =
-      '<span style="color: var(--error); font-size: 14px;">시험 목록 로드 실패</span>';
+    document.getElementById('examBtnLabel').textContent = '시험 목록 로드 실패';
   }
 }
 
@@ -395,24 +463,59 @@ function updateAdminLink() {
   }
 }
 
-function renderTabs() {
-  const tabsEl = document.getElementById('tabs');
-  tabsEl.innerHTML = exams.map(exam => `
-    <button
-      class="tab-btn ${exam.id === currentExamId ? 'active' : ''}"
-      onclick="selectExam('${exam.id}')"
-    >${exam.title}</button>
+function renderExamDropdown() {
+  const btn = document.getElementById('examDropdownBtn');
+  const list = document.getElementById('examDropdownList');
+  const label = document.getElementById('examBtnLabel');
+  const countEl = document.getElementById('examBtnCount');
+
+  const current = exams.find(e => e.id === currentExamId);
+  label.textContent = current ? current.title : '시험지 선택';
+  countEl.textContent = `${exams.length}개`;
+
+  list.innerHTML = exams.map(exam => `
+    <div class="exam-option ${exam.id === currentExamId ? 'active' : ''}"
+         onclick="selectExam('${exam.id}')">
+      <span class="opt-title">${exam.title}</span>
+      <span class="opt-check">✓</span>
+    </div>
   `).join('');
+}
+
+function toggleDropdown() {
+  const btn = document.getElementById('examDropdownBtn');
+  const list = document.getElementById('examDropdownList');
+  const isOpen = list.classList.contains('open');
+  if (isOpen) {
+    btn.classList.remove('open');
+    list.classList.remove('open');
+  } else {
+    btn.classList.add('open');
+    list.classList.add('open');
+  }
+}
+
+function closeDropdown() {
+  document.getElementById('examDropdownBtn').classList.remove('open');
+  document.getElementById('examDropdownList').classList.remove('open');
 }
 
 function selectExam(examId) {
   currentExamId = examId;
-  renderTabs();
+  closeDropdown();
+  renderExamDropdown();
   updateAdminLink();
   history.replaceState(null, '', `?exam_id=${encodeURIComponent(examId)}`);
   loadLeaderboard(examId);
   resetCountdown();
 }
+
+document.addEventListener('click', function(e) {
+  const selector = document.querySelector('.exam-selector');
+  if (selector && !selector.contains(e.target)) {
+    closeDropdown();
+  }
+});
 
 async function loadLeaderboard(examId) {
   const container = document.getElementById('lbContainer');
