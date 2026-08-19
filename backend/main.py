@@ -111,23 +111,40 @@ async def list_exams():
         exams = await database.get_all_exams()
     except Exception as e:
         print(f"Warning: get_all_exams failed ({e}), re-running init_db")
-        await database.init_db()
+        try:
+            await database.init_db()
+        except Exception as e2:
+            print(f"Warning: init_db also failed ({e2})")
         exams = []
 
     # Refresh from filesystem if empty
     if not exams:
         docx_files = get_docx_files()
+        fs_exams = []
         for f in docx_files:
             exam_id = get_exam_id_from_filename(f.name)
             try:
                 data = load_exam(exam_id)
                 if data:
-                    await database.upsert_exam(
-                        exam_id, f.name, data['title'], data['question_count']
-                    )
+                    try:
+                        await database.upsert_exam(
+                            exam_id, f.name, data['title'], data['question_count']
+                        )
+                    except Exception:
+                        pass
+                    fs_exams.append({
+                        'id': exam_id,
+                        'filename': f.name,
+                        'title': data['title'],
+                        'question_count': data['question_count'],
+                        'created_at': '',
+                    })
             except Exception:
                 pass
-        exams = await database.get_all_exams()
+        try:
+            exams = await database.get_all_exams()
+        except Exception:
+            exams = fs_exams  # DB 완전 실패 시 파일시스템 결과 직접 반환
 
     # ALLOWED_FILES 기준으로 필터링 (삭제된 시험이 DB에 남아 있어도 노출 안 됨)
     exams = [e for e in exams if e['filename'] in ALLOWED_FILES]
