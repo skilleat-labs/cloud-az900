@@ -85,40 +85,44 @@ VM이 처음 시작될 때 자동으로 웹 서버를 설치하고 페이지를 
 
 **사용자 데이터** 항목을 찾아서 아래 스크립트를 붙여넣습니다.
 
-```bash
-#!/bin/bash
-apt-get update -y
-apt-get install -y nginx
-cat > /var/www/html/index.html << 'EOF'
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Azure VM 실습</title>
-  <style>
-    body { font-family: sans-serif; text-align: center; padding: 80px 20px;
-           background: #0f1923; color: #e8f4fd; margin: 0; }
-    h1 { color: #50e6ff; font-size: 2.8em; margin-bottom: 16px; }
-    p { font-size: 1.2em; color: #a8c4d8; margin: 8px 0; }
-    .badge { display: inline-block; margin-top: 24px; padding: 10px 28px;
-             background: #0078D4; border-radius: 8px; font-weight: bold; }
-  </style>
-</head>
-<body>
-  <h1>🎉 Azure VM 실습 성공!</h1>
-  <p>이 페이지는 Azure 가상 머신에서 실행 중입니다.</p>
-  <p>IaaS(Infrastructure as a Service) 체험 완료!</p>
-  <div class="badge">AZ-900 실습</div>
-</body>
-</html>
-EOF
-systemctl enable nginx
-systemctl start nginx
+```yaml
+#cloud-config
+package_update: true
+packages:
+  - nginx
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Azure VM 실습</title>
+        <style>
+          body { font-family: sans-serif; text-align: center; padding: 80px 20px;
+                 background: #0f1923; color: #e8f4fd; margin: 0; }
+          h1 { color: #50e6ff; font-size: 2.8em; margin-bottom: 16px; }
+          p { font-size: 1.2em; color: #a8c4d8; margin: 8px 0; }
+          .badge { display: inline-block; margin-top: 24px; padding: 10px 28px;
+                   background: #0078D4; border-radius: 8px; font-weight: bold; }
+        </style>
+      </head>
+      <body>
+        <h1>Azure VM 실습 성공!</h1>
+        <p>이 페이지는 Azure 가상 머신에서 실행 중입니다.</p>
+        <p>IaaS(Infrastructure as a Service) 체험 완료!</p>
+        <div class="badge">AZ-900 실습</div>
+      </body>
+      </html>
+runcmd:
+  - systemctl enable nginx
+  - systemctl start nginx
 ```
 
-!!! tip "사용자 스크립트란?"
-    VM이 **처음 부팅될 때 딱 한 번** 자동으로 실행되는 명령어 모음입니다.
-    nginx 설치 → HTML 파일 작성 → nginx 시작 순서로 실행됩니다.
+!!! tip "사용자 데이터란?"
+    VM이 **처음 부팅될 때 딱 한 번** 자동으로 실행되는 초기화 설정입니다.
+    `#cloud-config` 형식은 Azure Linux VM에서 권장하는 방식으로,
+    패키지 설치 → 파일 작성 → 명령어 실행 순서로 처리됩니다.
 
 ---
 
@@ -155,7 +159,7 @@ http://공용IP주소
 ```
 
 !!! success "이렇게 뜨면 성공!"
-    파란 배경에 **"🎉 Azure VM 실습 성공!"** 페이지가 보이면 완료입니다.
+    파란 배경에 **"Azure VM 실습 성공!"** 페이지가 보이면 완료입니다.
 
 !!! warning "안 뜨는 경우"
     스크립트 실행에 **1~2분** 더 걸릴 수 있습니다. 잠시 후 새로고침(F5) 해보세요.
