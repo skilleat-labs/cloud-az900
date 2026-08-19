@@ -77,18 +77,25 @@ def parse_yes_no_answer(answer_raw: str) -> list[str]:
     return results
 
 
-def parse_multiple_choice_answer(answer_raw: str) -> Optional[int]:
+def parse_multiple_choice_answer(answer_raw: str) -> 'int | list[int] | None':
     """
-    Parse multiple choice answer. Returns 0-indexed integer.
-    Answer raw may be '2\n184' or '1\n140', etc.
-    First line contains the answer digit (or digits like '1,2').
+    Parse multiple choice answer. Returns 0-indexed integer or list of ints for multi-select.
+    Answer raw may be '2\n184' or '1,4\n102', etc.
+    First line contains the answer digit(s).
     """
     lines = answer_raw.strip().split('\n')
     first_line = lines[0].strip()
 
-    # Check for comma-separated answers (e.g., '1,2') - take first
+    # Check for comma-separated answers (e.g., '1,4') → multi-select
     if ',' in first_line:
-        first_line = first_line.split(',')[0].strip()
+        parts = re.split(r'[,\s]+', first_line.strip())
+        indices = []
+        for p in parts:
+            m = re.match(r'^(\d+)', p.strip())
+            if m:
+                indices.append(int(m.group(1)) - 1)
+        if len(indices) >= 2:
+            return indices
 
     # Extract leading digit
     match = re.match(r'^(\d+)', first_line)
@@ -190,11 +197,10 @@ def extract_options_from_mc_text(question_lines: list[str]) -> tuple[str, list[s
         if len(option_candidates) >= 3:
             question_end_idx = len(lines) - len(option_candidates)
 
-    # Ensure we have at most 4 options (typical MC)
-    if len(option_candidates) > 4:
+    # Ensure we have at most 5 options (some questions have 5)
+    if len(option_candidates) > 5:
         # Too many "options" - adjust boundary
-        # Keep only last 3-4
-        excess = len(option_candidates) - 4
+        excess = len(option_candidates) - 5
         question_end_idx += excess
         option_candidates = option_candidates[excess:]
 
@@ -206,6 +212,10 @@ def extract_options_from_mc_text(question_lines: list[str]) -> tuple[str, list[s
         mid = max(1, len(lines) - 4)
         question = '\n'.join(lines[:mid])
         options = lines[mid:]
+
+    # Filter out instruction lines that leaked into options (e.g., "참고: ...")
+    _OPTION_NOISE = ('참고:', '답변하려면', '지침:', '주의:')
+    options = [o for o in options if not any(o.startswith(p) for p in _OPTION_NOISE)]
 
     return question, options
 
@@ -299,8 +309,8 @@ def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a
     return result
 
 
-# 정답 오버라이드: {(파일명 stem, q_seq): 0-indexed 정답}
-_ANSWER_OVERRIDES: dict[tuple[str, str], int] = {
+# 정답 오버라이드: {(파일명 stem, q_seq): 0-indexed 정답 (int 또는 list[int] for multi_select)}
+_ANSWER_OVERRIDES: dict[tuple[str, str], 'int | list[int]'] = {
     ('1-1_클라우드컴퓨팅_2부 (32문제)', '9'): 3,   # Azure China → 4번 (Microsoft Azure의 고유한 개별 인스턴스)
     ('2-2_컴퓨팅및네트워크_2부 (21문제)', '5'): 1,  # 온프레미스 서버 관리 → 2번 (Azure Arc)
     ('2-2_컴퓨팅및네트워크_2부 (21문제)', '12'): 0, # 컨테이너 인스턴스 분류 → 1번 (컴퓨팅 서비스)
@@ -315,6 +325,12 @@ _ANSWER_OVERRIDES: dict[tuple[str, str], int] = {
     ('3-1_비용관리_2부 (7문제)', '5'): 2,           # 부서별 비용 담당 확인 → 태그 → 3번 (index=2)
     # 3-2 거버넌스및규정준수
     ('3-2_거버넌스및규정준수_2부 (5문제)', '1'): 3, # 감사 보고서 위치 → Service Trust Portal → 4번 (index=3)
+    # 1-2 클라우드서비스이점: IaaS 마이그레이션 후 사라지는 책임
+    # DOCX 원본 A="2,5"이나 정답은 물리적보안관리(idx0) + 고장난하드웨어교체(idx4)
+    ('1-2_클라우드서비스이점_2부 (13문제)', '4'): [0, 4],
+    # 모의고사5번 Q20: IaaS 마이그레이션 후 사라지는 책임
+    # DOCX 원본 A="1,3" → [0,2]이나 정답은 고장난하드웨어교체(idx0) + 물리적보안관리(idx2)
+    ('모의고사5번 (30문제)', '20'): [0, 2],
 }
 
 # yes/no 정답 오버라이드: {(파일명 stem, q_seq, statement_index): '예'|'아니오'}
@@ -350,24 +366,39 @@ def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: lis
     options = [clean_text(o) for o in options]
 
     # Parse answer (with override support)
-    answer_idx = _ANSWER_OVERRIDES.get((exam_stem, q_seq)) if exam_stem else None
-    if answer_idx is None:
-        answer_idx = parse_multiple_choice_answer(a_text)
+    answer_raw = _ANSWER_OVERRIDES.get((exam_stem, q_seq)) if exam_stem else None
+    if answer_raw is None:
+        answer_raw = parse_multiple_choice_answer(a_text)
+
+    # Determine type and indices
+    if isinstance(answer_raw, list):
+        q_type = 'multi_select'
+        answer_indices = answer_raw
+        answer_idx = answer_raw[0] if answer_raw else None
+    else:
+        q_type = 'multiple_choice'
+        answer_indices = None
+        answer_idx = answer_raw
 
     # Get answer text
     answer_text = None
-    if answer_idx is not None and options and answer_idx < len(options):
+    if q_type == 'multi_select' and answer_indices and options:
+        answer_text = ', '.join(
+            options[i] for i in answer_indices if i < len(options)
+        )
+    elif answer_idx is not None and options and answer_idx < len(options):
         answer_text = options[answer_idx]
 
     return {
         'id': f'q{q_seq}',
         'original_num': orig_num,
-        'type': 'multiple_choice',
+        'type': q_type,
         'question': question_text,
         'statements': [],
         'options': options,
         'answer': [],
         'answer_index': answer_idx,
+        'answer_indices': answer_indices,
         'answer_text': answer_text,
     }
 

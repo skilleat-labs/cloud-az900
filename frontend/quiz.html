@@ -267,6 +267,18 @@
       color: var(--text-primary);
     }
 
+    /* ── Multi-select hint ── */
+    .ms-hint {
+      font-size: 13px;
+      color: var(--azure-blue);
+      font-weight: 600;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      background: rgba(0, 120, 212, 0.08);
+      border-radius: 6px;
+      display: inline-block;
+    }
+
     /* ── Navigation ── */
     .nav-bar {
       position: fixed;
@@ -634,11 +646,15 @@ function renderQuestion() {
   const main = document.getElementById('main');
 
   const isFlagged = flagged.has(q.id);
-  const typeLabel = q.type === 'yes_no' ? '예/아니오' : '객관식';
+  const typeLabel = q.type === 'yes_no' ? '예/아니오'
+                  : q.type === 'multi_select' ? `객관식 (${q.answer_count || 2}개 선택)`
+                  : '객관식';
 
   let bodyHtml = '';
   if (q.type === 'yes_no') {
     bodyHtml = renderYesNo(q);
+  } else if (q.type === 'multi_select') {
+    bodyHtml = renderMultiSelect(q);
   } else {
     bodyHtml = renderMultipleChoice(q);
   }
@@ -661,7 +677,9 @@ function renderQuestion() {
     <div class="q-navigator" id="qNavigator">
       ${questions.map((qq, i) => {
         const ans = answers[qq.id];
-        const hasAns = ans !== undefined && ans !== null && ans !== '';
+        const hasAns = qq.type === 'multi_select'
+          ? (Array.isArray(ans) && ans.length > 0)
+          : (ans !== undefined && ans !== null && ans !== '');
         const cls = [
           i === currentIdx ? 'current' : '',
           hasAns ? 'answered' : '',
@@ -709,6 +727,22 @@ function renderMultipleChoice(q) {
   `;
 }
 
+function renderMultiSelect(q) {
+  const opts = q.options || [];
+  const count = q.answer_count || 2;
+  return `
+    <div class="ms-hint">✓ ${count}개를 선택하세요</div>
+    <div class="mc-options">
+      ${opts.map((opt, oi) => `
+        <button class="mc-option" id="mc-opt-${oi}" onclick="toggleMS('${q.id}', ${oi}, ${count})">
+          <span class="mc-num">${oi + 1}</span>
+          <span class="mc-text">${escapeHtml(opt)}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+}
+
 function restoreAnswers(q) {
   const saved = answers[q.id];
   if (saved === undefined || saved === null) return;
@@ -718,6 +752,10 @@ function restoreAnswers(q) {
       document.getElementById('yn-yes')?.classList.add('selected-yes');
     } else if (saved === '아니오') {
       document.getElementById('yn-no')?.classList.add('selected-no');
+    }
+  } else if (q.type === 'multi_select') {
+    if (Array.isArray(saved)) {
+      saved.forEach(idx => document.getElementById(`mc-opt-${idx}`)?.classList.add('selected'));
     }
   } else {
     document.getElementById(`mc-opt-${saved}`)?.classList.add('selected');
@@ -748,6 +786,25 @@ function selectMC(qId, optIdx) {
   document.getElementById(`mc-opt-${optIdx}`)?.classList.add('selected');
 }
 
+function toggleMS(qId, optIdx, maxCount) {
+  if (!Array.isArray(answers[qId])) answers[qId] = [];
+  const sel = answers[qId];
+  const pos = sel.indexOf(optIdx);
+  if (pos >= 0) {
+    sel.splice(pos, 1);
+    document.getElementById(`mc-opt-${optIdx}`)?.classList.remove('selected');
+  } else {
+    if (sel.length >= maxCount) {
+      // Deselect the first selected
+      const removed = sel.shift();
+      document.getElementById(`mc-opt-${removed}`)?.classList.remove('selected');
+    }
+    sel.push(optIdx);
+    document.getElementById(`mc-opt-${optIdx}`)?.classList.add('selected');
+  }
+  answers[qId] = [...sel];
+}
+
 // ── Flag ──
 function toggleFlag(qId) {
   if (flagged.has(qId)) {
@@ -769,7 +826,8 @@ function goTo(idx) {
 function countAnswered() {
   return questions.filter(q => {
     const ans = answers[q.id];
-    return ans !== undefined && ans !== null;
+    if (q.type === 'multi_select') return Array.isArray(ans) && ans.length > 0;
+    return ans !== undefined && ans !== null && ans !== '';
   }).length;
 }
 
@@ -809,7 +867,8 @@ async function confirmSubmit() {
   // Build answers array
   const answersArr = questions.map(q => ({
     question_id: q.id,
-    user_answer: answers[q.id] !== undefined ? answers[q.id] : (q.type === 'yes_no' ? '' : -1),
+    user_answer: answers[q.id] !== undefined ? answers[q.id]
+              : q.type === 'yes_no' ? '' : q.type === 'multi_select' ? [] : -1,
   }));
 
   try {

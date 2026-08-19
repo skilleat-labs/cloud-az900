@@ -665,12 +665,21 @@ function renderResult(data) {
 
 function renderWrongCard(q, qNum) {
   const isYN = q.type === 'yes_no';
+  const isMS = q.type === 'multi_select';
   let userAnsDisplay = '';
   let correctAnsDisplay = '';
 
   if (isYN) {
     userAnsDisplay = q.user_answer || '미응답';
     correctAnsDisplay = q.correct_answer || '';
+  } else if (isMS) {
+    const opts = q.options || [];
+    const userSel = Array.isArray(q.user_answer) ? q.user_answer : [];
+    userAnsDisplay = userSel.length > 0
+      ? userSel.map(i => formatMCAnswer(i, opts)).join(', ')
+      : '미응답';
+    const correctIdxs = q.correct_answer_indices || [];
+    correctAnsDisplay = correctIdxs.map(i => formatMCAnswer(i, opts)).join(', ');
   } else {
     const opts = q.options || [];
     userAnsDisplay = (q.user_answer !== null && q.user_answer >= 0)

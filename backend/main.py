@@ -153,6 +153,9 @@ async def get_questions(exam_id: str, shuffle: bool = True):
             'statements': q.get('statements', []),
             'options': q.get('options', []),
         }
+        # Include answer count hint for multi_select so frontend can show "N개 선택"
+        if q['type'] == 'multi_select' and q.get('answer_indices'):
+            safe_q['answer_count'] = len(q['answer_indices'])
         safe_questions.append(safe_q)
 
     return {
@@ -229,6 +232,12 @@ async def submit_session(session_id: str, body: SessionSubmit):
                 is_correct = user_answer == correct
             else:
                 is_correct = False
+        elif q_type == 'multi_select':
+            correct_indices = question.get('answer_indices') or []
+            if isinstance(user_answer, list):
+                is_correct = sorted(user_answer) == sorted(correct_indices)
+            else:
+                is_correct = False
         else:
             correct_idx = question.get('answer_index')
             if isinstance(user_answer, int):
@@ -269,6 +278,10 @@ async def submit_session(session_id: str, body: SessionSubmit):
 
         if q_type == 'yes_no':
             q_result['correct_answer'] = question.get('answer', '')
+        elif q_type == 'multi_select':
+            q_result['options'] = question.get('options', [])
+            q_result['correct_answer_indices'] = question.get('answer_indices', [])
+            q_result['correct_answer_text'] = question.get('answer_text', '')
         else:
             q_result['options'] = question.get('options', [])
             q_result['correct_answer_index'] = question.get('answer_index')
@@ -321,6 +334,10 @@ async def get_session_result(session_id: str):
 
         if q_type == 'yes_no':
             q_result['correct_answer'] = question.get('answer', '')
+        elif q_type == 'multi_select':
+            q_result['options'] = question.get('options', [])
+            q_result['correct_answer_indices'] = question.get('answer_indices', [])
+            q_result['correct_answer_text'] = question.get('answer_text', '')
         else:
             q_result['options'] = question.get('options', [])
             q_result['correct_answer_index'] = question.get('answer_index')
