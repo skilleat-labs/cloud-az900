@@ -23,6 +23,7 @@ nav:
     - Lab 03 · 가상 머신 + 웹 데모: labs/lab02-virtual-machine.md
     - Lab 04 · 스토리지: labs/lab05-storage.md
     - Lab 05 · Cloud Shell: labs/lab06-cloud-shell-network.md
+    - Lab 06 · 리소스 정리: labs/lab07-cleanup.md
 
 markdown_extensions:
   - admonition
