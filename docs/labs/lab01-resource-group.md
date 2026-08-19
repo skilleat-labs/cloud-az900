@@ -20,9 +20,18 @@
 
 ## Step 1 · Azure Portal 로그인
 
-1. 브라우저를 열고 **[https://portal.azure.com](https://portal.azure.com)** 에 접속합니다.
-2. 강사에게 받은 계정(이메일 + 임시 비밀번호)으로 로그인합니다.
-3. 비밀번호 변경을 요청하면 새 비밀번호로 설정합니다.
+1. 브라우저를 열고 아래 주소에 접속합니다.
+
+    **[https://portal.azure.com](https://portal.azure.com)**
+
+2. 강사에게 배정받은 계정으로 로그인합니다.
+
+    | 항목 | 값 |
+    |------|-----|
+    | 아이디 | `user##@nrkim0615outlook.onmicrosoft.com` |
+    | 비밀번호 | `Skilleat2025!` |
+
+    > `##` 자리에 본인 번호를 입력합니다. (예: user01, user02 ...)
 
 !!! tip "팁"
     처음 로그인하면 "Microsoft Azure에 오신 것을 환영합니다" 팝업이 표시될 수 있습니다.
@@ -35,7 +44,7 @@
 1. 상단 검색창에 **`리소스 그룹`** 을 입력하고 클릭합니다.
 2. 목록에서 본인에게 배정된 리소스 그룹을 찾습니다.
 
-    > 예: `rg-student01`, `rg-gildong` 등 강사가 알려준 이름
+    > 예: user01 → `test01-rg`, user02 → `test02-rg`
 
 !!! warning "주의"
     목록에 리소스 그룹이 보이지 않거나 다른 사람의 리소스 그룹이 보이면
