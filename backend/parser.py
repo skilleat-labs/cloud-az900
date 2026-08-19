@@ -192,7 +192,9 @@ def extract_options_from_mc_text(question_lines: list[str]) -> tuple[str, list[s
             '무엇입니까' in line or
             '선택하십시오' in line or
             '권장해야' in line or
-            len(line) > 100
+            len(line) > 100 or
+            # 연결 문제의 항목 목록 ("용어 :", "장점 :", "서비스 :" 등)
+            bool(re.match(r'^[가-힣]+ :', line))
         )
 
         if is_question_line and len(option_candidates) >= 2:
