@@ -124,6 +124,9 @@ async def list_exams():
                 pass
         exams = await database.get_all_exams()
 
+    # ALLOWED_FILES 기준으로 필터링 (삭제된 시험이 DB에 남아 있어도 노출 안 됨)
+    exams = [e for e in exams if e['filename'] in ALLOWED_FILES]
+
     return exams
 
 
