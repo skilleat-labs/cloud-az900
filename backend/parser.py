@@ -149,6 +149,14 @@ def extract_options_from_mc_text(question_lines: list[str]) -> tuple[str, list[s
         question = '\n'.join(question_parts)
         return question, options
 
+    # "설명을 완성하는" 문제인데 blank_marker가 없는 경우:
+    # 두 번째 줄이 완성할 문장(문제 텍스트)이고 나머지가 선택지
+    # 예: "설명을 완성하는 답을 선택하십시오.\n회사의 규정 준수 보고서는 다음 위치에서 볼 수 있습니다.\nAzure Advisor\n..."
+    if lines and '설명을 완성하는' in lines[0] and len(lines) >= 3:
+        question = '\n'.join(lines[:2])
+        options = lines[2:]
+        return question, options
+
     # For regular multiple choice questions:
     # The options are typically the last 3-4 lines
     # We need to figure out where the question ends and options begin
@@ -321,7 +329,7 @@ _ANSWER_OVERRIDES: dict[tuple[str, str], 'int | list[int]'] = {
     # 2-4 ID접근보안
     ('2-4_ID접근보안_2부 (16문제)', '1'): 2,        # SSO 제공 서비스 → Azure AD → 3번 (index=2)
     ('2-4_ID접근보안_2부 (16문제)', '2'): 2,        # 규정 요구사항 평가 → 클라우드용 Microsoft Defender → 3번 (index=2)
-    ('2-4_ID접근보안_2부 (16문제)', '5'): 4,        # 규정 준수 보고서 위치 → 클라우드용 Microsoft Defender → 5번 (index=4)
+    ('2-4_ID접근보안_2부 (16문제)', '5'): 3,        # 규정 준수 보고서 위치 → 클라우드용 Microsoft Defender → 4번 (index=3)
     # 3-1 비용관리
     ('3-1_비용관리_2부 (7문제)', '2'): 3,           # 비용 추적 → 태그 → 4번 (index=3)
     ('3-1_비용관리_2부 (7문제)', '5'): 2,           # 부서별 비용 담당 확인 → 태그 → 3번 (index=2)
