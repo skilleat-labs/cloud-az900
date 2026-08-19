@@ -107,7 +107,12 @@ async def startup():
 @app.get("/api/exams")
 async def list_exams():
     """List all available exam files."""
-    exams = await database.get_all_exams()
+    try:
+        exams = await database.get_all_exams()
+    except Exception as e:
+        print(f"Warning: get_all_exams failed ({e}), re-running init_db")
+        await database.init_db()
+        exams = []
 
     # Refresh from filesystem if empty
     if not exams:

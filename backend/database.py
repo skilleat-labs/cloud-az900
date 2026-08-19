@@ -14,15 +14,16 @@ DB_PATH = os.getenv('DB_PATH', '/home/quiz.db')
 async def init_db():
     """Initialize database tables."""
     async with aiosqlite.connect(DB_PATH) as db:
-        await db.executescript("""
+        await db.execute("""
             CREATE TABLE IF NOT EXISTS exams (
                 id TEXT PRIMARY KEY,
                 filename TEXT NOT NULL,
                 title TEXT NOT NULL,
                 question_count INTEGER NOT NULL,
                 created_at TEXT NOT NULL
-            );
-
+            )
+        """)
+        await db.execute("""
             CREATE TABLE IF NOT EXISTS sessions (
                 id TEXT PRIMARY KEY,
                 exam_id TEXT NOT NULL,
@@ -33,8 +34,9 @@ async def init_db():
                 total INTEGER,
                 time_seconds INTEGER,
                 FOREIGN KEY (exam_id) REFERENCES exams(id)
-            );
-
+            )
+        """)
+        await db.execute("""
             CREATE TABLE IF NOT EXISTS answers (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 session_id TEXT NOT NULL,
@@ -42,8 +44,9 @@ async def init_db():
                 user_answer TEXT NOT NULL,
                 is_correct INTEGER NOT NULL,
                 FOREIGN KEY (session_id) REFERENCES sessions(id)
-            );
-
+            )
+        """)
+        await db.execute("""
             CREATE TABLE IF NOT EXISTS explanations (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 exam_id TEXT NOT NULL,
@@ -51,7 +54,7 @@ async def init_db():
                 content TEXT NOT NULL,
                 created_at TEXT NOT NULL,
                 UNIQUE(exam_id, question_id)
-            );
+            )
         """)
         await db.commit()
 
