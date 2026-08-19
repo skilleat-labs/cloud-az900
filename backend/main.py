@@ -31,6 +31,8 @@ QUESTIONS_DIR = os.getenv(
 
 # In-memory cache for parsed questions
 _questions_cache: dict[str, dict] = {}
+# In-memory cache for exam list (avoids slow NFS SQLite reads on every request)
+_exams_cache: list[dict] = []
 
 
 ALLOWED_FILES = {
@@ -83,6 +85,7 @@ def load_exam(exam_id: str) -> dict | None:
 @app.on_event("startup")
 async def startup():
     """Initialize database on startup."""
+    global _exams_cache
     await database.init_db()
 
     # Scan and register all exams
@@ -101,6 +104,14 @@ async def startup():
         except Exception as e:
             print(f"Warning: Failed to load {f.name}: {e}")
 
+    # Build exam list cache so /api/exams never hits NFS SQLite
+    try:
+        all_exams = await database.get_all_exams()
+        _exams_cache = [e for e in all_exams if e['filename'] in ALLOWED_FILES]
+    except Exception as e:
+        print(f"Warning: Failed to build exams cache ({e})")
+        _exams_cache = []
+
 
 # ─────────────────────────────────────────────
 #  API Routes
@@ -109,32 +120,25 @@ async def startup():
 @app.get("/api/exams")
 async def list_exams():
     """List all available exam files."""
+    # 메모리 캐시에서 바로 반환 (NFS SQLite 매번 조회 방지)
+    if _exams_cache:
+        return _exams_cache
+
+    # 캐시 미스 시 폴백 (startup 실패 케이스)
     try:
         exams = await database.get_all_exams()
     except Exception as e:
-        print(f"Warning: get_all_exams failed ({e}), re-running init_db")
-        try:
-            await database.init_db()
-        except Exception as e2:
-            print(f"Warning: init_db also failed ({e2})")
+        print(f"Warning: get_all_exams failed ({e})")
         exams = []
 
-    # Refresh from filesystem if empty
     if not exams:
         docx_files = get_docx_files()
-        fs_exams = []
         for f in docx_files:
             exam_id = get_exam_id_from_filename(f.name)
             try:
                 data = load_exam(exam_id)
                 if data:
-                    try:
-                        await database.upsert_exam(
-                            exam_id, f.name, data['title'], data['question_count']
-                        )
-                    except Exception:
-                        pass
-                    fs_exams.append({
+                    exams.append({
                         'id': exam_id,
                         'filename': f.name,
                         'title': data['title'],
@@ -143,15 +147,8 @@ async def list_exams():
                     })
             except Exception:
                 pass
-        try:
-            exams = await database.get_all_exams()
-        except Exception:
-            exams = fs_exams  # DB 완전 실패 시 파일시스템 결과 직접 반환
 
-    # ALLOWED_FILES 기준으로 필터링 (삭제된 시험이 DB에 남아 있어도 노출 안 됨)
-    exams = [e for e in exams if e['filename'] in ALLOWED_FILES]
-
-    return exams
+    return [e for e in exams if e['filename'] in ALLOWED_FILES]
 
 
 @app.get("/api/exams/{exam_id}/questions")
