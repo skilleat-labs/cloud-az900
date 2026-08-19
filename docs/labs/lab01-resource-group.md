@@ -29,7 +29,7 @@
     | 항목 | 값 |
     |------|-----|
     | 아이디 | `user##@nrkim0615outlook.onmicrosoft.com` |
-    | 비밀번호 | `Skilleat2025!` |
+    | 비밀번호 | `Skilleat2026!` |
 
     > `##` 자리에 본인 번호를 입력합니다. (예: user01, user02 ...)
 
