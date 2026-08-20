@@ -178,6 +178,7 @@ async def get_questions(exam_id: str, shuffle: bool = True):
         if q['type'] == 'multi_select' and q.get('answer_indices'):
             safe_q['answer_count'] = len(q['answer_indices'])
         safe_questions.append(safe_q)
+        # informational questions: no options, auto-correct — just pass through as-is
 
     return {
         'exam_id': exam_id,
@@ -247,7 +248,9 @@ async def submit_session(session_id: str, body: SessionSubmit):
         is_correct = False
         q_type = question.get('type', 'multiple_choice')
 
-        if q_type == 'yes_no':
+        if q_type == 'informational':
+            is_correct = True  # 정보성 문제: 항상 정답 처리
+        elif q_type == 'yes_no':
             correct = question.get('answer', '')
             if isinstance(user_answer, str):
                 is_correct = user_answer == correct

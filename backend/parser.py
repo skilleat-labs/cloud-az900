@@ -136,12 +136,20 @@ def extract_options_from_mc_text(question_lines: list[str]) -> tuple[str, list[s
         question_parts = []
         options = []
         found_end_of_question = False
+        skip_next = False
 
         for i, line in enumerate(lines):
+            if skip_next:
+                skip_next = False
+                continue
             if found_end_of_question:
                 options.append(line)
             elif blank_marker in line:
                 question_parts.append(line)
+                # If blank line ends with ',' the sentence continues on the next line
+                if line.rstrip().endswith(',') and i + 1 < len(lines):
+                    question_parts.append(lines[i + 1])
+                    skip_next = True
                 found_end_of_question = True
             else:
                 question_parts.append(line)
@@ -153,8 +161,13 @@ def extract_options_from_mc_text(question_lines: list[str]) -> tuple[str, list[s
     # 두 번째 줄이 완성할 문장(문제 텍스트)이고 나머지가 선택지
     # 예: "설명을 완성하는 답을 선택하십시오.\n회사의 규정 준수 보고서는 다음 위치에서 볼 수 있습니다.\nAzure Advisor\n..."
     if lines and '설명을 완성하는' in lines[0] and len(lines) >= 3:
-        question = '\n'.join(lines[:2])
-        options = lines[2:]
+        # 두 번째 줄이 ','로 끝나면 세 번째 줄도 문장 이어짐 (문제 텍스트의 연속)
+        if len(lines) >= 4 and lines[1].rstrip().endswith(','):
+            question = '\n'.join(lines[:3])
+            options = lines[3:]
+        else:
+            question = '\n'.join(lines[:2])
+            options = lines[2:]
         return question, options
 
     # For regular multiple choice questions:
@@ -338,6 +351,10 @@ _ANSWER_OVERRIDES: dict[tuple[str, str], 'int | list[int]'] = {
     ('3-1_비용관리_2부 (7문제)', '5'): 2,           # 부서별 비용 담당 확인 → 태그 → 3번 (index=2)
     # 3-2 거버넌스및규정준수
     ('3-2_거버넌스및규정준수_2부 (5문제)', '1'): 3, # 감사 보고서 위치 → Service Trust Portal → 4번 (index=3)
+    ('3-2_거버넌스및규정준수_2부 (5문제)', '3'): 3, # Microsoft 보안 센터 (blank continuation 제거 후 index=3)
+    ('3-2_거버넌스및규정준수_2부 (5문제)', '5'): 1, # Azure Arc → 2번 (index=1)
+    # 3-3 리소스관리및배포
+    ('3-3_리소스관리및배포_2부 (11문제)', '9'): 2,  # 데스크톱 앱 → Azure CLI → 3번 (index=2)
     # 1-2 클라우드서비스이점: IaaS 마이그레이션 후 사라지는 책임
     # DOCX 원본 A="2,5"이나 정답은 물리적보안관리(idx0) + 고장난하드웨어교체(idx4)
     ('1-2_클라우드서비스이점_2부 (13문제)', '4'): [0, 4],
@@ -348,6 +365,7 @@ _ANSWER_OVERRIDES: dict[tuple[str, str], 'int | list[int]'] = {
 
 # yes/no 정답 오버라이드: {(파일명 stem, q_seq, statement_index): '예'|'아니오'}
 _YES_NO_OVERRIDES: dict[tuple[str, str, int], str] = {
+    ('3-3_리소스관리및배포_2부 (11문제)', '3', 1): '예',      # Linux 웹 브라우저에서 Cloud Shell 접근? → 예 (브라우저 기반)
     ('3-3_리소스관리및배포_2부 (11문제)', '3', 2): '아니오',  # Windows에서만 Azure Portal 접근? → 아니오
     # 1-1 클라우드컴퓨팅
     ('1-1_클라우드컴퓨팅_2부 (32문제)', '2', 1): '예',     # 하이브리드 클라우드로 앱 위치 제어 가능 → 예
@@ -378,6 +396,32 @@ _MATCH_QUESTION_SPLITS: dict[tuple[str, str], list[tuple[str, int]]] = {
         ('MFA(다단계 인증)란 무엇입니까?', 2),
         ('SSO(Single Sign-On)란 무엇입니까?', 0),
     ],
+    ('3-2_거버넌스및규정준수_2부 (5문제)', '2'): [
+        # 원본 options 중 [2,3,4]만 사용 (기능 설명만, 기능명 labels 제외)
+        # filtered: 0=(VM 유형 제한), 1=(비용 센터 식별), 2=(전체 환경 배포)
+        ('Azure 태그(Tag)를 사용하면 어떤 기능을 제공합니까?', 1),
+        ('Azure 정책(Policy)을 사용하면 어떤 기능을 제공합니까?', 0),
+        ('Azure Blueprints를 사용하면 어떤 기능을 제공합니까?', 2),
+    ],
+    ('3-3_리소스관리및배포_2부 (11문제)', '8'): [
+        # 원본 options: 노드(엑세스 제어 포함), 설정(속성/잠금 포함)
+        # 독자 역할 할당 = 엑세스 제어(IAM) = 노드 항목 (index 0)
+        ('Azure Portal에서 리소스 그룹의 사용자에게 독자(Reader) 역할을 할당하려면 어느 항목을 선택해야 합니까?\n(엑세스 제어가 포함된 항목을 고르세요)', 0),
+    ],
+}
+
+# 연결 문제 분리 시 사용할 옵션 필터: {(exam_stem, q_seq): [사용할 option index 목록]}
+# 지정 시 해당 인덱스의 옵션만 사용, 답 index는 필터링 후 기준
+_MATCH_QUESTION_OPTION_FILTERS: dict[tuple[str, str], list[int]] = {
+    ('3-2_거버넌스및규정준수_2부 (5문제)', '2'): [2, 3, 4],  # 기능 설명만 (기능명 labels 제외)
+}
+
+# 정보성 문제: {(exam_stem, q_seq): 표시할 안내 메시지}
+# 선택지 없이 메시지만 표시, 자동으로 정답(+1) 처리
+_INFORMATIONAL_OVERRIDES: dict[tuple[str, str], str] = {
+    ('3-3_리소스관리및배포_2부 (11문제)', '4'):
+        'Azure Cloud Shell 아이콘은 Azure Portal 상단 메뉴바(검색창 오른쪽)에 있습니다.\n'
+        '이 문제가 나올 수 있으니 콘솔에서 아이콘 위치를 기억하세요.',
 }
 
 
@@ -390,10 +434,32 @@ def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: lis
     question_text = clean_text(question_text)
     options = [clean_text(o) for o in options]
 
+    # 정보성 문제: 선택지 없이 안내 메시지만 표시
+    if exam_stem:
+        info_msg = _INFORMATIONAL_OVERRIDES.get((exam_stem, q_seq))
+        if info_msg is not None:
+            return [{
+                'id': f'q{q_seq}',
+                'original_num': orig_num,
+                'type': 'informational',
+                'question': info_msg,
+                'statements': [],
+                'options': [],
+                'answer': [],
+                'answer_index': None,
+                'answer_indices': None,
+                'answer_text': None,
+            }]
+
     # 연결 문제 분리: 여러 개의 개별 객관식 문제로 반환
     if exam_stem:
         splits = _MATCH_QUESTION_SPLITS.get((exam_stem, q_seq))
         if splits and options:
+            option_filter = _MATCH_QUESTION_OPTION_FILTERS.get((exam_stem, q_seq))
+            if option_filter:
+                display_options = [options[i] for i in option_filter if i < len(options)]
+            else:
+                display_options = options
             result = []
             for q_text, ans_idx in splits:
                 result.append({
@@ -402,11 +468,11 @@ def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: lis
                     'type': 'multiple_choice',
                     'question': clean_text(q_text),
                     'statements': [],
-                    'options': options,
+                    'options': display_options,
                     'answer': [],
                     'answer_index': ans_idx,
                     'answer_indices': None,
-                    'answer_text': options[ans_idx] if ans_idx < len(options) else None,
+                    'answer_text': display_options[ans_idx] if ans_idx < len(display_options) else None,
                 })
             return result
 

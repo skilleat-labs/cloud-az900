@@ -279,6 +279,28 @@
       display: inline-block;
     }
 
+    /* ── Informational ── */
+    .informational-box {
+      background: linear-gradient(135deg, rgba(0, 120, 212, 0.08), rgba(0, 120, 212, 0.04));
+      border: 1.5px solid rgba(0, 120, 212, 0.3);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .informational-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .informational-text {
+      font-size: 14px;
+      color: var(--azure-blue);
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
     /* ── Navigation ── */
     .nav-bar {
       position: fixed;
@@ -648,13 +670,21 @@ function renderQuestion() {
   const isFlagged = flagged.has(q.id);
   const typeLabel = q.type === 'yes_no' ? '예/아니오'
                   : q.type === 'multi_select' ? `객관식 (${q.answer_count || 2}개 선택)`
+                  : q.type === 'informational' ? '📌 참고'
                   : '객관식';
+
+  // 정보성 문제는 자동으로 답변 완료 처리
+  if (q.type === 'informational') {
+    answers[q.id] = 'informational';
+  }
 
   let bodyHtml = '';
   if (q.type === 'yes_no') {
     bodyHtml = renderYesNo(q);
   } else if (q.type === 'multi_select') {
     bodyHtml = renderMultiSelect(q);
+  } else if (q.type === 'informational') {
+    bodyHtml = renderInformational(q);
   } else {
     bodyHtml = renderMultipleChoice(q);
   }
@@ -709,6 +739,15 @@ function renderYesNo(q) {
     <div class="yn-options">
       <button class="yn-btn" id="yn-yes" onclick="selectYN('${q.id}', '예')">예</button>
       <button class="yn-btn" id="yn-no" onclick="selectYN('${q.id}', '아니오')">아니오</button>
+    </div>
+  `;
+}
+
+function renderInformational(q) {
+  return `
+    <div class="informational-box">
+      <div class="informational-icon">💡</div>
+      <div class="informational-text">위치를 기억하면 자동으로 정답 처리됩니다.</div>
     </div>
   `;
 }
@@ -867,7 +906,8 @@ async function confirmSubmit() {
   // Build answers array
   const answersArr = questions.map(q => ({
     question_id: q.id,
-    user_answer: answers[q.id] !== undefined ? answers[q.id]
+    user_answer: q.type === 'informational' ? 'informational'
+              : answers[q.id] !== undefined ? answers[q.id]
               : q.type === 'yes_no' ? '' : q.type === 'multi_select' ? [] : -1,
   }));
 
