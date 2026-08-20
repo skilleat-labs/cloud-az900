@@ -100,7 +100,7 @@ async def run():
 
     for file_path in files:
         exam_id = file_path.stem  # 파일명에서 .docx 제거
-        data = parse_docx_file(str(file_path))
+        data = parse_docx_file(str(file_path), exam_stem=file_path.stem)
         questions = data['questions']
 
         print(f"📄 {file_path.name}  ({len(questions)}문제)")

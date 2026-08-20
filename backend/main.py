@@ -388,6 +388,29 @@ async def get_session_result(session_id: str):
     }
 
 
+class ExplanationItem(BaseModel):
+    question_id: str
+    content: str
+
+
+class ExplanationBatch(BaseModel):
+    exam_id: str
+    explanations: list[ExplanationItem]
+    secret: str
+
+
+@app.post("/api/admin/import-explanations")
+async def import_explanations(body: ExplanationBatch):
+    """해설 일괄 업데이트 (임시 관리자용 — 배포 후 제거 예정)."""
+    if body.secret != os.getenv('ADMIN_SECRET', ''):
+        raise HTTPException(status_code=403, detail="Forbidden")
+    updated = 0
+    for item in body.explanations:
+        await database.save_explanation(body.exam_id, item.question_id, item.content)
+        updated += 1
+    return {'updated': updated}
+
+
 @app.get("/api/admin/wrong-stats")
 async def get_wrong_stats(exam_id: Optional[str] = None):
     """문제별 오답 통계 + 문제 텍스트 + 해설 반환 (관리자용)."""
