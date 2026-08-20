@@ -309,6 +309,12 @@
     .card-body.open { display: block; }
 
     .q-full { font-size: 15px; font-weight: 600; margin-bottom: 14px; line-height: 1.6; }
+    .q-full u, .slide-q-text u {
+      text-decoration: underline;
+      text-decoration-color: #f59e0b;
+      text-underline-offset: 3px;
+      color: #fcd34d;
+    }
     .q-type-tag {
       display: inline-block;
       font-size: 11px;
@@ -737,7 +743,7 @@ function renderCardBody(d) {
 
   return `
     <span class="q-type-tag">${typeTag}</span>
-    <div class="q-full">${escHtml(d.question || '')}</div>
+    <div class="q-full">${renderSafeHtml(d.question || '')}</div>
     ${answerHtml}
     ${expHtml}`;
 }
@@ -800,7 +806,7 @@ function renderSlide() {
           <span class="q-type-tag">${typeTag}</span>
         </div>
       </div>
-      <div class="slide-q-text">${escHtml(d.question || '')}</div>
+      <div class="slide-q-text">${renderSafeHtml(d.question || '')}</div>
       ${answerHtml}
       ${expHtml}
     </div>`;
@@ -824,6 +830,13 @@ function rateColor(rate) {
 function escHtml(str) {
   if (!str) return '';
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+function renderSafeHtml(str) {
+  if (!str) return '';
+  return escHtml(str)
+    .replace(/&lt;u&gt;/g, '<u>')
+    .replace(/&lt;\/u&gt;/g, '</u>');
 }
 
 function mdToHtml(text) {

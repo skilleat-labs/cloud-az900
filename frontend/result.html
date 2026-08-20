@@ -254,6 +254,12 @@
       margin-bottom: 16px;
       white-space: pre-wrap;
     }
+    .wrong-q-text u {
+      text-decoration: underline;
+      text-decoration-color: #f59e0b;
+      text-underline-offset: 3px;
+      color: #fcd34d;
+    }
 
     .stmt-list {
       display: flex;
@@ -466,6 +472,13 @@ function escapeHtml(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/\n/g, '<br>');
+}
+
+function renderSafeHtml(str) {
+  if (!str) return '';
+  return escapeHtml(str)
+    .replace(/&lt;u&gt;/g, '<u>')
+    .replace(/&lt;\/u&gt;/g, '</u>');
 }
 
 function formatTime(seconds) {
@@ -702,7 +715,7 @@ function renderWrongCard(q, qNum) {
   return `
     <div class="wrong-card">
       <div class="wrong-q-num">문제 ${qNum}</div>
-      <div class="wrong-q-text">${escapeHtml(q.question)}</div>
+      <div class="wrong-q-text">${renderSafeHtml(q.question)}</div>
       <div class="answer-comparison">
         <div class="answer-box answer-wrong">
           <div class="answer-box-label">내 답변</div>
