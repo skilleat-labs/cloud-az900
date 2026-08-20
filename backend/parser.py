@@ -612,6 +612,29 @@ _CUSTOM_QUESTION_OVERRIDES: dict[tuple[str, str], 'dict | list[dict]'] = {
         'answer_index': 3,  # Microsoft Azure의 고유한 별도 인스턴스 (21Vianet이 운영)
     },
 
+    # 1-3 클라우드서비스유형 Q4 / 모의고사1번 Q23: "SQL Server 예는 ___" 문장이 선택지 1번으로
+    # 잘못 파싱되어 번호가 밀림 → 문제+선택지 완전 재정의 (정답: PaaS)
+    ('1-3_클라우드서비스유형_2부 (10문제)', '2'): {
+        'question': '설명을 완성하는 답을 선택하십시오.\n클라우드에서 호스팅되고 Azure에서 소프트웨어 업데이트를 관리하는 Microsoft SQL Server 데이터베이스의 예는 무엇입니까?',
+        'options': [
+            'DRaaS(Disaster Recovery as a Service)입니다.',
+            'IaaS(Infrastructure as a Service)입니다.',
+            'PaaS(Platform as a Service)입니다.',
+            'SaaS(Software as a Service)입니다.',
+        ],
+        'answer_index': 2,  # PaaS — Azure가 업데이트를 관리하면 PaaS
+    },
+    ('모의고사1번 (30문제)', '23'): {
+        'question': '설명을 완성하는 답을 선택하십시오.\n클라우드에서 호스팅되고 Azure에서 소프트웨어 업데이트를 관리하는 Microsoft SQL Server 데이터베이스의 예는 무엇입니까?',
+        'options': [
+            'DRaaS(Disaster Recovery as a Service)입니다.',
+            'IaaS(Infrastructure as a Service)입니다.',
+            'PaaS(Platform as a Service)입니다.',
+            'SaaS(Software as a Service)입니다.',
+        ],
+        'answer_index': 2,  # PaaS — Azure가 업데이트를 관리하면 PaaS
+    },
+
     # ── 최종 모의고사2 용어 현행화 ────────────────────────────────
     # Q5: "Azure 보안 센터" → "Microsoft Defender for Cloud" (distractor 교체, 정답=키 자격 증명 모음)
     ('최종 모의고사2 (40문제)', '5'): {
