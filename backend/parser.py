@@ -276,7 +276,8 @@ def parse_question_paragraph(q_text: str, a_text: str, q_index: int, exam_stem: 
     if is_yes_no:
         return parse_yes_no_question(q_seq, orig_num, content_lines, a_text, exam_stem=exam_stem)  # returns list
     else:
-        return [parse_multiple_choice_question(q_seq, orig_num, content_lines, a_text, exam_stem=exam_stem)]  # wrap in list
+        result = parse_multiple_choice_question(q_seq, orig_num, content_lines, a_text, exam_stem=exam_stem)
+        return result if isinstance(result, list) else [result]
 
 
 def parse_yes_no_question(q_seq: str, orig_num: str, content_lines: list[str], a_text: str, exam_stem: str = '') -> list[dict]:
@@ -331,7 +332,6 @@ _ANSWER_OVERRIDES: dict[tuple[str, str], 'int | list[int]'] = {
     # 2-4 ID접근보안
     ('2-4_ID접근보안_2부 (16문제)', '1'): 1,        # SSO 제공 서비스 → Azure AD → 2번 (index=1, blank줄 제거 후)
     ('2-4_ID접근보안_2부 (16문제)', '2'): 2,        # 규정 요구사항 평가 → 클라우드용 Microsoft Defender → 3번 (index=2)
-    ('2-4_ID접근보안_2부 (16문제)', '3'): [0, 1, 2], # 용어 연결(SSO/권한부여/MFA) → 3개 설명 모두 정답
     ('2-4_ID접근보안_2부 (16문제)', '5'): 3,        # 규정 준수 보고서 위치 → 클라우드용 Microsoft Defender → 4번 (index=3)
     # 3-1 비용관리
     ('3-1_비용관리_2부 (7문제)', '2'): 3,           # 비용 추적 → 태그 → 4번 (index=3)
@@ -369,14 +369,46 @@ _YES_NO_OVERRIDES: dict[tuple[str, str, int], str] = {
 }
 
 
-def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: list[str], a_text: str, exam_stem: str = '') -> dict:
-    """Parse a multiple choice question."""
+# 연결(매칭) 문제 분리: {(exam_stem, q_seq): [(질문 텍스트, 정답 option index), ...]}
+# 원본 DOCX의 드래그&드롭 연결 문제를 개별 객관식 문제로 변환
+_MATCH_QUESTION_SPLITS: dict[tuple[str, str], list[tuple[str, int]]] = {
+    ('2-4_ID접근보안_2부 (16문제)', '3'): [
+        # options: 0=SSO설명, 1=권한부여설명, 2=MFA설명
+        ('권한 부여(Authorization)란 무엇입니까?', 1),
+        ('MFA(다단계 인증)란 무엇입니까?', 2),
+        ('SSO(Single Sign-On)란 무엇입니까?', 0),
+    ],
+}
+
+
+def parse_multiple_choice_question(q_seq: str, orig_num: str, content_lines: list[str], a_text: str, exam_stem: str = '') -> 'dict | list[dict]':
+    """Parse a multiple choice question. Returns list if split into multiple questions."""
 
     question_text, options = extract_options_from_mc_text(content_lines)
 
     # Apply corrections
     question_text = clean_text(question_text)
     options = [clean_text(o) for o in options]
+
+    # 연결 문제 분리: 여러 개의 개별 객관식 문제로 반환
+    if exam_stem:
+        splits = _MATCH_QUESTION_SPLITS.get((exam_stem, q_seq))
+        if splits and options:
+            result = []
+            for q_text, ans_idx in splits:
+                result.append({
+                    'id': f'q{q_seq}',
+                    'original_num': orig_num,
+                    'type': 'multiple_choice',
+                    'question': clean_text(q_text),
+                    'statements': [],
+                    'options': options,
+                    'answer': [],
+                    'answer_index': ans_idx,
+                    'answer_indices': None,
+                    'answer_text': options[ans_idx] if ans_idx < len(options) else None,
+                })
+            return result
 
     # Parse answer (with override support)
     answer_raw = _ANSWER_OVERRIDES.get((exam_stem, q_seq)) if exam_stem else None
